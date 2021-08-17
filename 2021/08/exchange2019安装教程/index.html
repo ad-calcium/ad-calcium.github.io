@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        exchange2019安装教程 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="exchange2019安装教程" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>exchange2019安装教程 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="exchange2019安装教程" />
+<meta property="og:description" content="exchange2019安装教程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-17T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" />
+
+<meta itemprop="name" content="exchange2019安装教程">
+<meta itemprop="description" content="exchange2019安装教程"><meta itemprop="datePublished" content="2021-08-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="943">
+<meta itemprop="keywords" content="exchange," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="exchange2019安装教程"/>
+<meta name="twitter:description" content="exchange2019安装教程"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>十年寒窗无人问，一举成名天下知。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link" rel="2">exchange<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="1">mssql<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="2">内网渗透<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="11">漏洞复现<span
+               class="tag-list-count">11</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">9</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">11</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="title">exchange2019安装教程</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-08-17 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-17</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/" class="title">ProxyShell漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-08-17 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-17</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/%E6%9F%90%E4%BF%A1xxx%E8%AE%BE%E5%A4%87%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" class="title">某信xxx设备存在任意文件读取漏洞</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-30</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-36934 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" class="title">jdc未授权访问</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-26</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"
+    >exchange2019安装教程</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2021-08-17 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-17</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"> 小技巧 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/exchange/"> exchange </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 943字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="要求">要求</h2>
+<h3 id="exchange-2019-目录服务器要求">Exchange 2019 目录服务器要求</h3>
+<p>**域控制器：**林中的所有域控制器都需要运行 Windows Server 2012 R2 Standard 或 Datacenter版本以上
+**Active Directory 林的功能级别：**Windows Server 2012 R2 或更高版本。</p>
+<h3 id="exchange-2019支持的操作系统">Exchange 2019支持的操作系统：</h3>
+<p>**邮箱和边缘传输服务器角色：**Windows Server 2019 Standard 或 Datacenter
+**管理工具：**Windows Server 2019 Standard或Datacenter和64位版本的 Windows 10</p>
+<h2 id="安装">安装</h2>
+<h3 id="1新增exchange用户">1.新增exchange用户</h3>
+<p>在域控上将exchange用户加入到Enterprise admins组中</p>
+<p><img src="images/image-20210812161915249.png" alt="image-20210812161915249"></p>
+<h3 id="2安装常用组件">2.安装常用组件</h3>
+<ul>
+<li>
+<p>切换域管理员或拥有Exchange管理权限的用户登录并安装必备组件（此次实验环境用域管理员登录）</p>
+<ul>
+<li><a href="https://go.microsoft.com/fwlink/?linkid=2088631">.NET Framework 4.8</a></li>
+<li><a href="https://www.microsoft.com/download/details.aspx?id=30679">Visual C++ Redistributable Package for Visual Studio 2012</a></li>
+<li><a href="https://support.microsoft.com/help/4032938/update-for-visual-c-2013-redistributable-package">Visual C++ Redistributable Package for Visual Studio 2013</a></li>
+<li><a href="https://www.microsoft.com/download/details.aspx?id=34992">Unified Communications Managed API 4.0</a></li>
+<li>通过Power Shell安装Exchange必备的Windows组件</li>
+</ul>
+</li>
+<li>
+<p>通过Power Shell安装Exchange必备的Windows组件</p>
+<pre><code>Install-WindowsFeature Server-Media-Foundation, NET-Framework-45-Features, RPC-over-HTTP-proxy, RSAT-Clustering, RSAT-Clustering-CmdInterface, RSAT-Clustering-Mgmt, RSAT-Clustering-PowerShell, WAS-Process-Model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth, Web-Digest-Auth, Web-Dir-Browsing, Web-Dyn-Compression, Web-Http-Errors, Web-Http-Logging, Web-Http-Redirect, Web-Http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service, Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content, Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation, RSAT-ADDS
+</code></pre>
+</li>
+</ul>
+<p><img src="images/image-20210812155607262.png" alt="image-20210812155607262"></p>
+<h3 id="3安装主程序">3.安装主程序</h3>
+<ul>
+<li>挂载Exchange 2019 光盘文件，并运行Setup.exe 程序</li>
+</ul>
+<p><img src="images/image-20210812160418499.png" alt="image-20210812160418499"></p>
+<ul>
+<li>为节约时间选择“现在不检查更新”后续可以自己更新</li>
+</ul>
+<p><img src="images/image-20210812160445405.png" alt="image-20210812160445405"></p>
+<ul>
+<li>文件复制完成后便开始进入向导安装。</li>
+</ul>
+<p><img src="images/image-20210812155701953.png" alt="image-20210812155701953"></p>
+<ul>
+<li>选择“不使用推荐设置”</li>
+</ul>
+<p><img src="images/image-20210812155737866.png" alt="image-20210812155737866"></p>
+<ul>
+<li>在服务器角色选择页面勾选邮箱角色 。从exchange 2016 起，exchange 将2013中的客户端访问角色和邮箱角色合并为邮箱角色。</li>
+</ul>
+<p><img src="images/image-20210812155825664.png" alt="image-20210812155825664"></p>
+<ul>
+<li>
+<p>指定exchange组织的名称</p>
+<p><img src="images/image-20210812155853577.png" alt="image-20210812155853577"></p>
+</li>
+<li>
+<p>恶意软件防护设置，按需选择，比较弱鸡，外层有邮件网关的可以不开启。</p>
+</li>
+</ul>
+<p><img src="images/image-20210812155905383.png" alt="image-20210812155905383"></p>
+<ul>
+<li>分析先决条件，没有错误即可开始安装</li>
+</ul>
+<p><img src="images/image-20210812155921117.png" alt="image-20210812155921117"></p>
+<ul>
+<li>开始安装，整个过程共14步，安装速度与机器配置有关，请耐心等待。</li>
+</ul>
+<p><img src="images/image-20210812162744975.png" alt="image-20210812162744975"></p>
+<ul>
+<li>等待安装完成，访问owa页面可以正常打开，安装到此结束。</li>
+</ul>
+<pre><code>https://127.0.0.1/owa/
+</code></pre>
+<p><img src="images/image-20210813140307302.png" alt="image-20210813140307302"></p>
+<h2 id="用户和组管理">用户和组管理</h2>
+<p>方法一：先创建域用户，再把现有用户创建为邮箱。</p>
+<p><img src="images/image-20210817222320776.png" alt="image-20210817222320776"></p>
+<p>根据要求一步步新建用户，用户创建好之后</p>
+<p>使用管理员身份登录exchange ECP管理中心(一般情况下是exchange机器的用户密码)：https://127.0.0.1/ecp/    选择收件人&gt;邮箱&gt;➕&gt;</p>
+<p><img src="images/image-20210813140934991.png" alt="image-20210813140934991"></p>
+<p>用户邮箱 打开创建邮箱向导。</p>
+<p><img src="images/image-20210813140951393.png" alt="image-20210813140951393"></p>
+<p>勾选现有用户，点击浏览按钮即可选择域控中的用户<img src="images/image-20210813141017100.png" alt="image-20210813141017100"></p>
+<p><img src="images/image-20210813141040336.png" alt="image-20210813141040336"></p>
+<p>保存之后既可以看到用户</p>
+<p><img src="images/image-20210813141107847.png" alt="image-20210813141107847"></p>
+<p>在邮箱处可以看到刚刚添加的 邮箱</p>
+<p><img src="images/image-20210813141143850.png" alt="image-20210813141143850"></p>
+<p>方法二：通过ECP后台直接创建邮箱和域账号。</p>
+<p>点击添加</p>
+<p><img src="images/image-20210817222727204.png" alt="image-20210817222727204"></p>
+<p>选择用户时改为选择新用户填入用户资料即可，其他步骤都一样。</p>
+<p><img src="images/image-20210817222817211.png" alt="image-20210817222817211"></p>
+<p>参考地址：</p>
+<p><a href="https://www.xiaobei.us/archives/775.html">https://www.xiaobei.us/archives/775.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="exchange2019安装教程" target="_blank" rel="external">https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/" title="ProxyShell漏洞复现"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
