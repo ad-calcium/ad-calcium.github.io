@@ -17,7 +17,7 @@
       <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
-      <description>要求 Exchange 2019 目录服务器要求 **域控制器：**林中的所有域控制器都需要运行 Windows Server 2012 R2 Standard 或 Datacenter版本以上 **Active Directory 林的功能级别：**Windo</description>
+      <description>要求 Exchange 2019 目录服务器要求 域控制器：林中的所有域控制器都需要运行 Windows Server 2012 R2 Standard 或 Datacenter版本以上 Active Directory 林的功能级别：Windows Server 2012 R2 或</description>
     </item>
     
     <item>
