@@ -40,7 +40,7 @@
 <meta itemprop="name" content="ProxyShell漏洞复现">
 <meta itemprop="description" content="ProxyShell漏洞复现"><meta itemprop="datePublished" content="2021-08-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-17T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1170">
+<meta itemprop="wordCount" content="1186">
 <meta itemprop="keywords" content="漏洞复现,exchange," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ProxyShell漏洞复现"/>
 <meta name="twitter:description" content="ProxyShell漏洞复现"/>
@@ -410,7 +410,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/exchange/"> exchange </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1170字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1186字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
       </div>
     </div>
@@ -471,7 +471,7 @@ function tagCloud(where, min, max) {
 -e  exchange的用户名
 </code></pre>
 <p><img src="images/image-20210817215150258.png" alt="image-20210817215150258"></p>
-<p>清理邮件导出请求</p>
+<p>清理邮件导出请求(如果报错，多执行几次脚本即可)</p>
 <pre><code>Get-MailboxExportRequest
 Get-MailboxExportRequest|Remove-MailboxExportRequest -Confirm:$false
 </code></pre>
