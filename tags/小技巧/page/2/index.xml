@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>小技巧 on AD钙奶的博客</title>
+    <link>https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content in 小技巧 on AD钙奶的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hugo搭建个人博客</title>
+      <link>https://ad-calcium.github.io/2020/07/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2020/07/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>1、hugo hugo是基于命令行的静态网站生成工具，使用go语言开发。因此，下载编译好的二进制文件，就可以直接运行，无需安装其它依赖。将hu</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ad-calcium.github.io/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/about/</guid>
+      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+Hugo makes use of a variety of open source projects including:
+ https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

