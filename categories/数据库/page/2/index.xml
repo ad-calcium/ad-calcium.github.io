@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>离线安装docker</title>
+      <link>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>1.下载docker-19.03.8.tgz wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.8.tgz 2.解压 docker-19.03.8.tgz tar -xvf docker-19.03.8.tgz 复制 sudo cp docker/* /usr/bin/ 4.复制一下内容到 vim /etc/systemd/system/docker.service [Unit] Description=Docker Application Container Engine Documentation=https://docs.docker.com After=network-online.target firewalld.service Wants=network-online.target [Service] Type=notify # the default is not to use systemd for cgroups</description>
+    </item>
+    
+    <item>
       <title>NetLogon 域内提权漏洞（CVE-2020-1472）</title>
       <link>https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</link>
       <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
