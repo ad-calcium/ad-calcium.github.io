@@ -39,7 +39,7 @@
 <meta itemprop="name" content="解决Win10 文件夹下无法自动刷新的问题">
 <meta itemprop="description" content="小技巧"><meta itemprop="datePublished" content="2021-09-22T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-09-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="726">
+<meta itemprop="wordCount" content="724">
 <meta itemprop="keywords" content="Win10相关," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="解决Win10 文件夹下无法自动刷新的问题"/>
 <meta name="twitter:description" content="小技巧"/>
@@ -212,8 +212,8 @@
                class="tag-list-count">2</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="13">漏洞复现<span
-               class="tag-list-count">13</span></a>
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="16">漏洞复现<span
+               class="tag-list-count">16</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
@@ -265,7 +265,7 @@ function tagCloud(where, min, max) {
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">2</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">11</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">14</span></li>
         </ul>
     </div>
 </div>
@@ -340,7 +340,7 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
-                    class="tag-list-count">13</span></li>
+                    class="tag-list-count">16</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
@@ -459,7 +459,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/win10%E7%9B%B8%E5%85%B3/"> Win10相关 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 726字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 724字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
       </div>
     </div>
@@ -467,28 +467,33 @@ function tagCloud(where, min, max) {
       <h1 id="起因">起因</h1>
 <p>在Win10使用过程中，总是会出现无法新建文件夹或者新建文件无法自动刷新，需要手动刷新才能解决。</p>
 <h1 id="问题">问题</h1>
-<p>什么问题呢 ？ 就是在文件夹下 新建或者删除一个文件，需要手动刷新才能显示。无法自动刷新显示做出更改的条目。</p>
+<p>什么问题呢 ？在文件夹下 新建或者删除一个文件，需要手动刷新才能显示。无法自动刷新显示做出更改的条目。</p>
 <p>问题其他近似描述：</p>
 <pre><code>新建文件夹不显示，需要手动刷新显示；
 删除文件夹依然存在，需要手动刷新消失；
 保存文件不显示，需要手动刷新显示；
 </code></pre>
 <h1 id="机器环境">机器环境</h1>
-<p>Win10 64位</p>
+<pre><code>Win10 64位
+</code></pre>
 <h1 id="解决方法">解决方法</h1>
 <p>通过百度，我发现网络上常见的是解决方法是前面三种，按照他们的方法执行修改后，文件夹下文件图标还是无法自动更新，都不好用。于是我尝试用英文去谷歌搜索，结果一下就解决了这个问题。</p>
 <p>下面简单阐述一下解决问题中使用的一些解决方法。</p>
 <h2 id="方法一修改注册表updatemode">方法一：修改注册表UpdateMode</h2>
-<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Update\UpdateMode 的Dword值修改为0</p>
+<pre><code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Update\UpdateMode 的Dword值修改为0
+</code></pre>
 <p>效果：不行</p>
 <h2 id="方法二重置文件夹选项">方法二：重置文件夹选项</h2>
-<p>在资源管理器下，依次选择查看-选项-查看-重置文件夹；或查看-选项-查看-还原默认值；</p>
+<pre><code>在资源管理器下，依次选择查看-选项-查看-重置文件夹；或查看-选项-查看-还原默认值；
+</code></pre>
 <p>效果：不行</p>
 <h2 id="方法三unpin未连接的网络位置">方法三：Unpin未连接的网络位置</h2>
-<p>因为我的电脑有默认Pin一些网络位置的存储，但是可能那些存储位置已经不存在了，所以导致自动刷新失败，所以需要我们将那些网络位置Unpin掉。</p>
+<pre><code>因为我的电脑有默认Pin一些网络位置的存储，但是可能那些存储位置已经不存在了，所以导致自动刷新失败，所以需要我们将那些网络位置Unpin掉。
+</code></pre>
 <p>效果：不行</p>
 <h2 id="方法四修改注册表instance">方法四：修改注册表Instance</h2>
-<p>HKEY_CLASSES_ROOT\Wow6432Node\CLSID{BDEADE7F-C265-11D0-BCED-00A0C90AB50F}\Instance 下创建一个Dword字段DontRefresh ，并配置为0</p>
+<pre><code>HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{BDEADE7F-C265-11D0-BCED-00A0C90AB50F}\Instance 下创建一个Dword字段DontRefresh ，并配置为0
+</code></pre>
 <p><img src="images/image-20210922105920009.png" alt="image-20210922105920009"></p>
 <p>如果没有对应字段，可自行创建，具体方法可以参考下面这篇文章</p>
 <p>我这是基于64位的 具体还有基于32位的:https://answers.microsoft.com/en-us/windows/forum/windows_10-files/win-10-64-bit-file-explorer-auto-refresh/703492e6-dffb-4344-9699-7e41b2c4ddee</p>
