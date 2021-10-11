@@ -6,10 +6,28 @@
     <description>Recent content in web dev on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 13 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/web-dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mysql提权</title>
+      <link>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</link>
+      <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</guid>
+      <description>MySQL UDF提权 1.漏洞原理 UDF (user defined function)，即用户自定义函数。是通过添加新函数，对MySQL的功能进行扩充，其实就像使用本地MySQL</description>
+    </item>
+    
+    <item>
+      <title>Apache（CVE-2021-41773）漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/10/apache-cve-2021-41773/</link>
+      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/apache-cve-2021-41773/</guid>
+      <description>0x01 漏洞描述 在 Apache HTTP Server 2.4.49 中对路径规范化所做的更改中发现了一个缺陷。早期版本中并没有 ap_normalize_path 这个函数，该函数是在v2.4.49版本中引入的，正是这个函数</description>
+    </item>
     
     <item>
       <title>解决Win10 文件夹下无法自动刷新的问题</title>
@@ -171,24 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
       <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
-    </item>
-    
-    <item>
-      <title>MSSQL获取shell和提权</title>
-      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
-      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
-      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
-    </item>
-    
-    <item>
-      <title>Citrix路径遍历（CVE-2019-19781）</title>
-      <link>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</link>
-      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</guid>
-      <description>0x01 漏洞描述 Citrix旗下多款交付控制器和网关存在RCE漏洞，攻击者在无需身份验证的情况下就可执行任意命令。根据其他安全网站的说法，这个RC</description>
     </item>
     
   </channel>
