@@ -6,10 +6,19 @@
     <description>Recent content in Series on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>通达oa11.9前台注入</title>
+      <link>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</guid>
+      <description>0x01 前言 在群里和tools中看到有表哥们发了关于通达OA11.9版本存在前台SQL注入漏洞，赶紧复现了一下 0x02 漏洞版本 通达oa 11.9 0x03 fofa语法 i</description>
+    </item>
     
     <item>
       <title>mysql提权</title>
@@ -22,10 +31,10 @@
     
     <item>
       <title>Apache（CVE-2021-41773）漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/10/apache-cve-2021-41773/</link>
+      <link>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</link>
       <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ad-calcium.github.io/2021/10/apache-cve-2021-41773/</guid>
+      <guid>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</guid>
       <description>0x01 漏洞描述 在 Apache HTTP Server 2.4.49 中对路径规范化所做的更改中发现了一个缺陷。早期版本中并没有 ap_normalize_path 这个函数，该函数是在v2.4.49版本中引入的，正是这个函数</description>
     </item>
     
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
       <description>0x01 漏洞描述 万户Ezoffice系统是一套基于jsp的oa系统，该系统基于J2EE架构技术的三层架构，完全采用B/S体系结构，广泛应用于各个行</description>
-    </item>
-    
-    <item>
-      <title>MSSQL获取shell和提权</title>
-      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
-      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
-      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
     </item>
     
   </channel>

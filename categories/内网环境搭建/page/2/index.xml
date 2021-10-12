@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>MSSQL获取shell和提权</title>
+      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
+      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
+    </item>
+    
+    <item>
       <title>Citrix路径遍历（CVE-2019-19781）</title>
       <link>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
