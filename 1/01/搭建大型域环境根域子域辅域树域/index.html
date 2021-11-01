@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        搭建大型域环境(根域、子域、辅域、树域) - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="搭建大型域环境(根域、子域、辅域、树域)" />
+    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <title>搭建大型域环境(根域、子域、辅域、树域) - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="搭建大型域环境(根域、子域、辅域、树域)" />
+<meta property="og:description" content="搭建大型域环境(根域、子域、辅域、树域)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/1/01/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/" /><meta property="article:section" content="posts" />
+
+
+<meta property="og:see_also" content="https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/cve-2021-40444%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" />
+
+<meta itemprop="name" content="搭建大型域环境(根域、子域、辅域、树域)">
+<meta itemprop="description" content="搭建大型域环境(根域、子域、辅域、树域)">
+
+<meta itemprop="wordCount" content="2647">
+<meta itemprop="keywords" content="内网环境搭建," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="搭建大型域环境(根域、子域、辅域、树域)"/>
+<meta name="twitter:description" content="搭建大型域环境(根域、子域、辅域、树域)"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>不忘初心方能始终</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link" rel="1">exchange<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="3">mssql<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">mysql提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link" rel="2">web<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link" rel="1">win10相关<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="5">内网渗透<span
+               class="tag-list-count">5</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link" rel="4">内网环境搭建<span
+               class="tag-list-count">4</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="1">小技巧<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="20">漏洞复现<span
+               class="tag-list-count">20</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link" rel="1">钓鱼<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">5</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-list-link">内网环境搭建</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">18</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link">mysql提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link">web</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link">win10相关</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">5</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link">内网环境搭建</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">20</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link">钓鱼</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/" class="title">GITLAB 远程命令执行漏洞(CVE-2021-22205)</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-10-29</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/" class="title">Dedecms_V5.8.1 RCE</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-20 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-10-20</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/" class="title">通达oa11.9前台注入</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-10-12</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/" class="title">mysql提权</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-10-11</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/" class="title">Apache（CVE-2021-41773）漏洞复现</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-10 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-10-10</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/"
+    >搭建大型域环境(根域、子域、辅域、树域)</a
+  >
+</h1>
+
+      <div class="article-meta">
+        <span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"> 内网环境搭建 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"> 内网环境搭建 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2647字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>主机信息</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>主机名</th>
+<th>域名</th>
+<th>IP地址</th>
+<th>DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>windows 2012</td>
+<td>DC1</td>
+<td>adlab.com</td>
+<td>10.10.10.50</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>windows 2019</td>
+<td>DC4</td>
+<td>adlab.com</td>
+<td>10.10.10.20</td>
+<td></td>
+</tr>
+<tr>
+<td>windows 2012</td>
+<td>DC2</td>
+<td>sec.adlab.com</td>
+<td>10.10.11.50</td>
+<td>127.0.0.1和10.10.10.50</td>
+</tr>
+<tr>
+<td>windows 2012</td>
+<td>DC3</td>
+<td>ad.com</td>
+<td>10.10.12.50</td>
+<td>127.0.0.1和10.10.10.50</td>
+</tr>
+</tbody>
+</table>
+<h2 id="一安装域控">一、安装域控</h2>
+<h3 id="1准备工作">1、准备工作</h3>
+<p>如果域内主机都是克隆过来的，则需要重置SID。因为克隆过来的SID一样 （SID可以在cmd中whoami/all查看）所以每一次克隆后都要进行这一步在win+r 进行搜索sysprep 双击 等待重启</p>
+<p><img src="images/image-20211020172016953.png" alt="image-20211020172016953"></p>
+<p><img src="images/image-20211020171956085.png" alt="image-20211020171956085"></p>
+<h3 id="2修改主机名">2、修改主机名</h3>
+<p><img src="images/image-20210905133355265-163567346932311.png" alt="image-20210905133355265"></p>
+<h3 id="3安装域">3、安装域</h3>
+<p>打开服务器管理器，添加角色和功能。</p>
+<p><img src="images/image-20210903110636139-163567346932413.png" alt="image-20210903110636139"></p>
+<p>出现“添加角色和功能”界面，下一步 。</p>
+<p><img src="images/image-20210903110647309-163567346932412.png" alt="image-20210903110647309"></p>
+<p>根据提示操作，下一步。</p>
+<p><img src="images/image-20210903110657104-163567346932415.png" alt="image-20210903110657104"></p>
+<p>选择添加AD域服务（Active Directory 域服务），同时添加所需功能。</p>
+<p><img src="images/image-20210903110722703-163567346932416.png" alt="image-20210903110722703"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110732207-163567346932417.png" alt="image-20210903110732207"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110745192-163567346932418.png" alt="image-20210903110745192"></p>
+<p>根据提示操作，安装</p>
+<p><img src="images/image-20210903110805570-163567346932419.png" alt="image-20210903110805570"></p>
+<p>等待安装完成</p>
+<p><img src="images/image-20210903110814492-163567346932420.png" alt="image-20210903110814492"></p>
+<p>安装完成</p>
+<p><img src="images/image-20210903111843002-163567346932421.png" alt="image-20210903111843002"></p>
+<h3 id="4配置域">4、配置域</h3>
+<p>点击服务器管理器左侧“AD DS” 、点击黄色提示部分中的更多。</p>
+<p><img src="images/image-20210903123437982-163567346932522.png" alt="image-20210903123437982"></p>
+<p>进入AD域服务器配置向导，选择 “添加新林” ，输入域，点击下一步。</p>
+<p><img src="images/image-20210903123518315-163567346932523.png" alt="image-20210903123518315"></p>
+<p>填写密码，下一步 。</p>
+<p><img src="images/image-20210903123545613-163567346932524.png" alt="image-20210903123545613"></p>
+<p>提示DNS无法创建，不用管，继续下一步</p>
+<p><img src="images/image-20210903123601497-163567346932525.png" alt="image-20210903123601497"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210905172715991-163567346932526.png" alt="image-20210905172715991"></p>
+<p>安装路径，默认，下一步</p>
+<p><img src="images/image-20210903123644051-163567346932527.png" alt="image-20210903123644051"></p>
+<p>查看选项，默认，下一步</p>
+<p><img src="images/image-20210903123654456-163567346932528.png" alt="image-20210903123654456"></p>
+<p>点击安装 。此过程可能会报错，提示登陆用户没有设置密码，去设置给当前登陆用户（Administrator）设置一个密码，然后回来点击 “重新运行先决条件检查” 即可！</p>
+<p><img src="images/image-20210903123808177-163567346932529.png" alt="image-20210903123808177"></p>
+<p>安装完成，会提示注销重启 （此过程比较漫长，耐心等待）</p>
+<p><img src="images/image-20210903124118599-163567346932530.png" alt="image-20210903124118599"></p>
+<p>重启之后存在以下几个说明安装成功</p>
+<p><img src="images/image-20210903124441448-163567346932531.png" alt="image-20210903124441448"></p>
+<p>接下来我们需要同步配置一下域控制器的 DNS 区域传输：</p>
+<p>现在主域控制器和 DNS 集成，为了让后期搭建完辅域控制器的 DNS 同步主域控制器 DNS ，需要把主域控制器的 DNS 服务器_msdcs.adlab.com和 adlab.com 的起始授权机构(SOA)区域传送设置成允许:</p>
+<p><img src="images/image-20211031202038803.png" alt="image-20211031202038803"></p>
+<h3 id="5新建域管理员">5、新建域管理员</h3>
+<p>打开&quot;Active Directory 用户和计算机&quot;</p>
+<p><img src="images/image-20211031174743166.png" alt="image-20211031174743166"></p>
+<p>选择Users,新建用户</p>
+<p><img src="images/image-20211031174816593.png" alt="image-20211031174816593"></p>
+<p>输入&quot;用户登录名&quot;</p>
+<p><img src="images/image-20211031175017340.png" alt="image-20211031175017340"></p>
+<p>输入密码，点击&quot;密码永不过期&quot;</p>
+<p><img src="images/image-20211031174913079.png" alt="image-20211031174913079"></p>
+<p>点击完成</p>
+<p><img src="images/image-20211031175105709.png" alt="image-20211031175105709"></p>
+<p>找到刚刚新建的用户，右键选择&quot;属性&quot;</p>
+<p><img src="images/image-20211031175122233.png" alt="image-20211031175122233"></p>
+<p>将用户新增管理员组，点击添加</p>
+<p><img src="images/image-20211031175139285.png" alt="image-20211031175139285"></p>
+<p>点击&quot;高级&quot;</p>
+<p><img src="images/image-20211031175153438.png" alt="image-20211031175153438"></p>
+<p>点击&quot;立即查找&quot;</p>
+<p><img src="images/image-20211031175231671.png" alt="image-20211031175231671"></p>
+<p>依次添加以下三个组</p>
+<p>Domain Admins; Enterprise Admins; Schema Admins</p>
+<p><img src="images/image-20211031175355722.png" alt="image-20211031175355722"></p>
+<p>添加之后，点击完成</p>
+<p><img src="images/image-20211031175412232.png" alt="image-20211031175412232"></p>
+<h2 id="二辅域搭建">二、辅域搭建</h2>
+<h3 id="1修改主机名">1、修改主机名</h3>
+<p><img src="images/image-20211031211917137.png" alt="image-20211031211917137"></p>
+<h3 id="2修改dns">2、修改DNS</h3>
+<p><img src="images/image-20211031213501284.png" alt="image-20211031213501284"></p>
+<h3 id="3安装域-1">3、安装域</h3>
+<p><img src="images/image-20211031212010792.png" alt="image-20211031212010792"></p>
+<p>出现“添加角色和功能”界面，下一步 。</p>
+<p><img src="images/image-20210903110647309-16356731896622.png" alt="image-20210903110647309"></p>
+<p>根据提示操作，下一步。</p>
+<p><img src="images/image-20210903110657104-16356731896624.png" alt="image-20210903110657104"></p>
+<p>选择添加AD域服务（Active Directory 域服务），同时添加所需功能。</p>
+<p><img src="images/image-20210903110722703-16356731896625.png" alt="image-20210903110722703"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110732207-16356731896626.png" alt="image-20210903110732207"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110745192-16356731896627.png" alt="image-20210903110745192"></p>
+<p>根据提示操作，安装</p>
+<p><img src="images/image-20210903110805570-16356731896638.png" alt="image-20210903110805570"></p>
+<p>等待安装完成</p>
+<p><img src="images/image-20210903110814492-16356731896639.png" alt="image-20210903110814492"></p>
+<p>安装完成</p>
+<p><img src="images/image-20210903111843002-163567318966310.png" alt="image-20210903111843002"></p>
+<h3 id="4配置域-1">4、配置域</h3>
+<p>点击服务器管理器左侧“AD DS” 、点击黄色提示部分中的更多。</p>
+<p><img src="images/image-20211031213718408.png" alt="image-20211031213718408"></p>
+<p><img src="images/image-20211031213812643.png" alt="image-20211031213812643"></p>
+<p>填写刚才新建具有权限的用户，不使用默认的administrator</p>
+<p><img src="images/image-20210903165019591-163569188316532.png" alt="image-20210903165019591"></p>
+<p>选择域，确定</p>
+<p><img src="images/image-20210903165029644-163569188316633.png" alt="image-20210903165029644"></p>
+<p>完成域确认后，下一步</p>
+<p><img src="images/image-20210903165051817-163569188316634.png" alt="image-20210903165051817"></p>
+<p>保持默认，填写还原模式密码</p>
+<p><img src="images/image-20210903165110262-163569188316635.png" alt="image-20210903165110262"></p>
+<p>下一步</p>
+<p><img src="images/image-20210903165145500-163569188316636.png" alt="image-20210903165145500"></p>
+<p>选择dc01（由于测试环境，没有任何数据，此处不需要“从介质安装”，多站点，数据库文件大时，使用该项）</p>
+<p><img src="images/image-20210903165157719-163569188316637.png" alt="image-20210903165157719"></p>
+<p>默认路径，下一步</p>
+<p><img src="images/image-20210903225654799-163569188316638.png" alt="image-20210903225654799"></p>
+<p>下一步</p>
+<p><img src="images/image-20210903225702032-163569188316639.png" alt="image-20210903225702032"></p>
+<p>安装</p>
+<p><img src="images/image-20210903225710190-163569188316640.png" alt="image-20210903225710190"></p>
+<p>安装完成后，重启</p>
+<p><img src="images/image-20210903225718084-163569188316641.png" alt="image-20210903225718084"></p>
+<p>登录</p>
+<p><img src="images/image-20210905012152765-163569188316642.png" alt="image-20210905012152765"></p>
+<p>安装后用户和计算机、站点和服务中，都看到了二台域控制器。</p>
+<p>到些主辅二台域控制器搭建完成</p>
+<h2 id="二子域控制器搭建">二、子域控制器搭建</h2>
+<p>搭建子域的操作系统只能大于等于根域的操作系统，不能低于根域的操作系统，这里我推荐都用相同的操作系统。</p>
+<h3 id="1修改主机名-1">1、修改主机名</h3>
+<p>首先修改主机名</p>
+<p><img src="images/image-20211031160848395.png" alt="image-20211031160848395"></p>
+<h3 id="2修改dns-1">2、修改DNS</h3>
+<p>1、搭建⼦域控制器前需要先把 DNS 指向主域控制器的 IP地址，然后委派完DNS再把⼦域控制器DNS指向⾃⼰：</p>
+<pre><code>⽗域控制器：adlab.com 
+⼦域控制器：sec.adlab.com
+
+子域控制器：
+IP：10.10.11.50
+子网掩码：255.255.255.0
+默认网光：10.10.11.254
+首选DNS：10.10.10.50
+</code></pre>
+<p><img src="images/image-20211031162620717.png" alt="image-20211031162620717"></p>
+<h3 id="3安装域-2">3、安装域</h3>
+<p>打开服务器管理器，添加角色和功能。</p>
+<p><img src="images/image-20210903110636139-16356731896621.png" alt="image-20210903110636139"></p>
+<p>出现“添加角色和功能”界面，下一步 。</p>
+<p><img src="images/image-20210903110647309-16356731896622.png" alt="image-20210903110647309"></p>
+<p>根据提示操作，下一步。</p>
+<p><img src="images/image-20210903110657104-16356731896624.png" alt="image-20210903110657104"></p>
+<p>选择添加AD域服务（Active Directory 域服务），同时添加所需功能。</p>
+<p><img src="images/image-20210903110722703-16356731896625.png" alt="image-20210903110722703"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110732207-16356731896626.png" alt="image-20210903110732207"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20210903110745192-16356731896627.png" alt="image-20210903110745192"></p>
+<p>根据提示操作，安装</p>
+<p><img src="images/image-20210903110805570-16356731896638.png" alt="image-20210903110805570"></p>
+<p>等待安装完成</p>
+<p><img src="images/image-20210903110814492-16356731896639.png" alt="image-20210903110814492"></p>
+<p>安装完成</p>
+<p><img src="images/image-20210903111843002-163567318966310.png" alt="image-20210903111843002"></p>
+<h3 id="4配置域-2">4、配置域</h3>
+<p>点击服务器管理器左侧“AD DS” 、点击黄色提示部分中的更多。</p>
+<p><img src="images/image-20211031161214037.png" alt="image-20211031161214037"></p>
+<p>部署的时候需要设置:</p>
+<p>选择部署操作：将新域添加到现有林选择域类型：⼦域 ⽗域名：adlab.com 子域名：sec.adlab.com 凭据：填写⽗域的⽤户名密码即可</p>
+<p><img src="images/image-20211031163227303.png" alt="image-20211031163227303"></p>
+<p>输入密码，点击下一步</p>
+<pre><code>域功能级别：windows Server 2012指定域控制器功能和站点信息：域名系统（DNS）服务器 、全局编录 填写新的DSRM密码:Redteam.com
+</code></pre>
+<p><img src="images/image-20211031163311510.png" alt="image-20211031163311510"></p>
+<p>默认下一步</p>
+<p><img src="images/image-20211031163321522.png" alt="image-20211031163321522"></p>
+<p>NetBIOS 我们默认用系统设置的就好，点击”下一步“</p>
+<p><img src="images/image-20211031163353552.png" alt="image-20211031163353552"></p>
+<p>默认下一步</p>
+<p><img src="images/image-20211031163405874.png" alt="image-20211031163405874"></p>
+<p>默认下一步</p>
+<p><img src="images/image-20211031163415756.png" alt="image-20211031163415756"></p>
+<p>来到”安装”界面，等待安装成功机器会自动重启：</p>
+<p><img src="images/image-20211031163434095.png" alt="image-20211031163434095"></p>
+<p>配置好之后，在子域中ping 父域</p>
+<p><img src="images/image-20211031171105077.png" alt="image-20211031171105077"></p>
+<p>至此子域配置完成</p>
+<h2 id="三树域搭建">三、树域搭建</h2>
+<p>搭建树域的操作系统只能大于等于根域的操作系统，不能低于根域的操作系统，这里我推荐都用相同的操作系统。</p>
+<h3 id="1修改主机名-2">1、修改主机名</h3>
+<p><img src="images/image-20211031171243164.png" alt="image-20211031171243164"></p>
+<h3 id="2设置dns">2、设置DNS</h3>
+<pre><code>⽗域控制器：adlab.com 
+⼦域控制器：ad.com
+
+子域控制器：
+IP：10.10.12.50
+子网掩码：255.255.255.0
+默认网光：10.10.12.254
+首选DNS：10.10.10.50
+</code></pre>
+<p><img src="images/image-20211031171344213.png" alt="image-20211031171344213"></p>
+<h3 id="3安装域-3">3、安装域</h3>
+<p><img src="images/image-20211031171429042.png" alt="image-20211031171429042"></p>
+<p>出现“添加角色和功能”界面，下一步 。</p>
+<p><img src="images/image-20211031171449284.png" alt="image-20211031171449284"></p>
+<p>根据提示操作，下一步。</p>
+<p><img src="images/image-20211031171456571.png" alt="image-20211031171456571"></p>
+<p>根据提示操作，下一步。</p>
+<p><img src="images/image-20211031171505177.png" alt="image-20211031171505177"></p>
+<p>选择添加AD域服务（Active Directory 域服务），同时添加所需功能。</p>
+<p><img src="images/image-20211031171521089.png" alt="image-20211031171521089"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20211031171531155.png" alt="image-20211031171531155"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20211031171610623.png" alt="image-20211031171610623"></p>
+<p>根据提示操作，安装</p>
+<p><img src="images/image-20211031171636251.png" alt="image-20211031171636251"></p>
+<p>点击&quot;将此服务器提升为域控制器&quot;</p>
+<p><img src="images/image-20211031171811891.png" alt="image-20211031171811891"></p>
+<h3 id="4配置域-3">4、配置域</h3>
+<p>根据以下顺序填写</p>
+<pre><code>1.选择&quot;树域&quot;
+2.先输入凭据，这里要输入域名adlab.com\sysadmin
+3.输入新域名
+</code></pre>
+<p><img src="images/image-20211031171921707.png" alt="image-20211031171921707"></p>
+<p>填写密码，下一步 。</p>
+<p><img src="images/image-20211031172109064.png" alt="image-20211031172109064"></p>
+<p>提示DNS无法创建，不用管，继续下一步</p>
+<p><img src="images/image-20211031172120647.png" alt="image-20211031172120647"></p>
+<p>根据提示操作，下一步</p>
+<p><img src="images/image-20211031172238888.png" alt="image-20211031172238888"></p>
+<p>安装路径，默认，下一步</p>
+<p><img src="images/image-20211031172255358.png" alt="image-20211031172255358"></p>
+<p>查看选项，默认，下一步</p>
+<p><img src="images/image-20211031172306140.png" alt="image-20211031172306140"></p>
+<p>点击安装 。此过程可能会报错，提示登陆用户没有设置密码，去设置给当前登陆用户（Administrator）设置一个密码，然后回来点击 “重新运行先决条件检查” 即可！</p>
+<p><img src="images/image-20211031172326718.png" alt="image-20211031172326718"></p>
+<h3 id="5检查配置">5、检查配置</h3>
+<p>安装好之后，ping根域</p>
+<p>ping dc1.adlab.com</p>
+<p><img src="images/image-20211031173144716.png" alt="image-20211031173144716"></p>
+<p>两者之间也是互相信任的</p>
+<p><img src="images/image-20211031173208881.png" alt="image-20211031173208881"></p>
+<p><img src="images/image-20211031173220943.png" alt="image-20211031173220943"></p>
+<p>说明两个域是互相信任的</p>
+<h2 id="bug汇总">bug汇总</h2>
+<h3 id="1域名无法解析">1.域名无法解析</h3>
+<p>通过树域ping根域ping不通或者找不到域名，在根域的DNS中新增一个条件转发器</p>
+<p><img src="images/image-20211031173516943.png" alt="image-20211031173516943"></p>
+<p>若不行在另外一个域中的DNS中新增一个条件转发器</p>
+<h3 id="2无法联系到一个主域控制器pdc仿真器">2.无法联系到一个主域控制器（PDC）仿真器。</h3>
+<p>在dc上运行命令<strong>dcdiag /v</strong>，看看有无任何错误信息。
+请运行命令<strong>repadmin /syncall</strong>，查看AD复制是否正常。</p>
+<p>参考地址</p>
+<pre><code>https://social.technet.microsoft.com/Forums/msonline/en-US/606538d5-18dc-409b-b21a-83a29a654681/26080278613285231995210401996820010200272249525511210462212065?forum=windowsserversystemzhchs
+</code></pre>
+<h3 id="3找不到命名信息">3.找不到命名信息</h3>
+<p>点击域内服务时，提示以下内容</p>
+<p><img src="images/image-20211031205346258.png" alt="image-20211031205346258"></p>
+<p>打开服务，检查Netlogon服务的状态</p>
+<p><img src="images/image-20211031205557572.png" alt="image-20211031205557572"></p>
+<p>如果服务未启动或者暂停等，则需要手动将该服务启动</p>
+<p><img src="images/image-20211031205644107.png" alt="image-20211031205644107"></p>
+<h2 id="参考地址">参考地址</h2>
+<pre><code>https://mp.weixin.qq.com/s/2GKMFKmjCF_vht8hKl4iFw
+https://www.bilibili.com/read/cv13367444
+https://sec-in.com/article/1140
+https://www.office26.com/windows/windows_17514.html
+https://docs.microsoft.com/zh-cn/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/1/01/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/" title="搭建大型域环境(根域、子域、辅域、树域)" target="_blank" rel="external">https://ad-calcium.github.io/1/01/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="next">
+                <a href="https://ad-calcium.github.io/about/"
+                    title="About"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2021
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-289626488-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>
