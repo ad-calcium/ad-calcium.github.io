@@ -17,7 +17,7 @@
       <pubDate>Sun, 31 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</guid>
-      <description>主机信息 操作系统 主机名 域名 IP地址 DNS windows 2012 DC1 adlab.com 10.10.10.50 127.0.0.1 windows 2019 DC4 adlab.com 10.10.10.20 windows 2012 DC2 sec.adlab.com 10.10.11.50 127.0.0.1和10.10.10.50 windows 2012 DC3 ad.com 10.10.12.50 127.0.0.1和</description>
+      <description>主机信息 用途 操作系统 主机名 域名 IP地址 DNS 根域 windows 2012 DC1 adlab.com 10.10.10.50 127.0.0.1 辅域 windows 2019 DC4 adlab.com 10.10.10.20 127.0.0.1和10.10.10.50 子域 windows 2012 DC2 sec.adlab.com 10.10.11.50 127.0.0</description>
     </item>
     
     <item>

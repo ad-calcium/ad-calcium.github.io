@@ -40,7 +40,7 @@
 <meta itemprop="name" content="搭建大型域环境(根域、子域、辅域、树域)">
 <meta itemprop="description" content="搭建大型域环境(根域、子域、辅域、树域)"><meta itemprop="datePublished" content="2021-10-31T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-10-31T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2647">
+<meta itemprop="wordCount" content="2678">
 <meta itemprop="keywords" content="内网环境搭建," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="搭建大型域环境(根域、子域、辅域、树域)"/>
 <meta name="twitter:description" content="搭建大型域环境(根域、子域、辅域、树域)"/>
@@ -476,15 +476,16 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"> 内网环境搭建 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2647字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2678字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>主机信息</p>
+      <h2 id="主机信息">主机信息</h2>
 <table>
 <thead>
 <tr>
+<th>用途</th>
 <th>操作系统</th>
 <th>主机名</th>
 <th>域名</th>
@@ -494,6 +495,7 @@ function tagCloud(where, min, max) {
 </thead>
 <tbody>
 <tr>
+<td>根域</td>
 <td>windows 2012</td>
 <td>DC1</td>
 <td>adlab.com</td>
@@ -501,13 +503,15 @@ function tagCloud(where, min, max) {
 <td>127.0.0.1</td>
 </tr>
 <tr>
+<td>辅域</td>
 <td>windows 2019</td>
 <td>DC4</td>
 <td>adlab.com</td>
 <td>10.10.10.20</td>
-<td></td>
+<td>127.0.0.1和10.10.10.50</td>
 </tr>
 <tr>
+<td>子域</td>
 <td>windows 2012</td>
 <td>DC2</td>
 <td>sec.adlab.com</td>
@@ -515,6 +519,7 @@ function tagCloud(where, min, max) {
 <td>127.0.0.1和10.10.10.50</td>
 </tr>
 <tr>
+<td>树域</td>
 <td>windows 2012</td>
 <td>DC3</td>
 <td>ad.com</td>
