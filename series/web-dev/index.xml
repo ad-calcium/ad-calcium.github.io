@@ -6,10 +6,19 @@
     <description>Recent content in web dev on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 31 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/web-dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>海康威视-IP摄像机 远程代码执行漏洞(CVE-2021-36260)</title>
+      <link>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</guid>
+      <description>0x01 漏洞描述 海康威视IP摄像机/NVR设备固件中发现一个未认证的远程代码执行漏洞 0x02 影响版本 漏洞影响IP摄像头和NVR设备固件，其中包括2021</description>
+    </item>
     
     <item>
       <title>搭建大型域环境(根域、子域、辅域、树域)</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/%E5%A4%A9%E8%9E%8D%E4%BF%A1%E4%B8%8A%E7%BD%91%E8%A1%8C%E4%B8%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</guid>
       <description>0x01 漏洞介绍 天融信-上网行为管理系统存在弱口令漏洞并存在任意文件读取漏洞，攻击者可利用该漏洞获取服务器上的铭感文件。 0x02 漏洞复现 fofa语法 ap</description>
-    </item>
-    
-    <item>
-      <title>CVE-2021-36934 漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>0x01 漏洞介绍 Windows 10 中允许以非管理员用户身份检索所有注册表配置单元。例如，这包括 SAM 中的哈希值，可用于以 SYSTEM 身份执行代码 0x02 漏洞利用前提 适用于所有受支持</description>
     </item>
     
   </channel>
