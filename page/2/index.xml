@@ -6,10 +6,19 @@
     <description>Recent content on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>内网穿透工具的使用</title>
+      <link>https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/</guid>
+      <description>0x00 内网穿透技术 当我们拿到一台内网主机后，一般都是有区域隔离的。所以这时候就用到流量代理了。这里简单介绍一下建立通信隧道，常见的有端口转发等 主</description>
+    </item>
     
     <item>
       <title>CVE-2021-26084(Confluence) 漏洞复现</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/smb%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5/</guid>
       <description>前言 温故而知新，今天在整理古老的近乎失传的DNS外带注入方法时，偶然间发现外带数据的装载区域并不一定是 域名前缀。放在后面也是可以的，由于目前</description>
-    </item>
-    
-    <item>
-      <title>Yapi远程命令执行漏洞</title>
-      <link>https://ad-calcium.github.io/2021/07/yapi%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/yapi%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 漏洞介绍 Yapi 由 YMFE开源，旨在为开发、产品、测试人员提供更优雅的接口管理服务，可以帮助开发者轻松创建、发布、维护API。 安全人员在Yapi</description>
     </item>
     
   </channel>
