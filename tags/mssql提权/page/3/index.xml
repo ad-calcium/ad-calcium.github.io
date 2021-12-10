@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>redis未授权</title>
+      <link>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
+      <description>Redis介绍 Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库。 ###安装教程</description>
+    </item>
+    
+    <item>
       <title>SMB外带注入</title>
       <link>https://ad-calcium.github.io/2021/07/smb%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5/</link>
       <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
