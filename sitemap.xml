@@ -59,6 +59,20 @@
   </url>
   
   <url>
+    <loc>https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
     <lastmod>2021-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -416,13 +430,6 @@
   </url>
   
   <url>
-    <loc>https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -522,13 +529,6 @@
   
   <url>
     <loc>https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2021-07-09T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2021-07-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
