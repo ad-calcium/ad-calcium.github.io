@@ -6,10 +6,37 @@
     <description>Recent content in Tags on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 10 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>phpweb前台getshell</title>
+      <link>https://ad-calcium.github.io/2021/07/phpweb%E5%89%8D%E5%8F%B0getshell/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/phpweb%E5%89%8D%E5%8F%B0getshell/</guid>
+      <description>0x01 影响范围 版本 2.0.35 0x02 测试环境： windows 2008+PHPnow1.6.5+phpwebV2.0.35 秘钥加密方式 $k=md5(strrev($dbUser.$dbPass)); $h=$_SERVER[&amp;quot;HTTP_REFERER&amp;quot;]; $t=$_POST[&amp;quot;t&amp;quot;]; $m=$_POST[&amp;quot;m&amp;quot;]; $act=$_POST[&amp;quot;act&amp;quot;]; $path=$_POST[&amp;quot;path&amp;quot;]; $md5=md5($k.$t); if($m!=$md5){ echo &amp;quot;ERROR: 安全性校验错误&amp;quot;; } 0x03 漏洞检测方法 1、获取秘钥 POST /3151/base/post.php HTTP/1.1 Host: 192.168.59.138 User-Agent: Mozilla/5.0 (Windows NT 10.0;</description>
+    </item>
+    
+    <item>
+      <title>离线安装docker</title>
+      <link>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>1.下载docker-19.03.8.tgz wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.8.tgz 2.解压 docker-19.03.8.tgz tar -xvf docker-19.03.8.tgz 复制 sudo cp docker/* /usr/bin/ 4.复制一下内容到 vim /etc/systemd/system/docker.service [Unit] Description=Docker Application Container Engine Documentation=https://docs.docker.com After=network-online.target firewalld.service Wants=network-online.target [Service] Type=notify # the default is not to use systemd for cgroups</description>
+    </item>
+    
+    <item>
+      <title>NetLogon 域内提权漏洞（CVE-2020-1472）</title>
+      <link>https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</guid>
+      <description>漏洞介绍 2020年08月12日，Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏</description>
+    </item>
     
     <item>
       <title>redis未授权</title>
