@@ -6,7 +6,7 @@
     <description>Recent content in 漏洞复现 on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Dec 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,15 +27,6 @@
       
       <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</guid>
       <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231437 CDN 2021 完全攻击指南（一）中主要介绍了当下</description>
-    </item>
-    
-    <item>
-      <title>域内一把梭哈(CVE-2021-42278、CVE-2021-42287 ) </title>
-      <link>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E5%86%85%E4%B8%80%E6%8A%8A%E6%A2%AD%E5%93%88cve-2021-42278cve-2021-42287/</link>
-      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E5%86%85%E4%B8%80%E6%8A%8A%E6%A2%AD%E5%93%88cve-2021-42278cve-2021-42287/</guid>
-      <description>0x01 漏洞详情 该漏洞是由于Active Directory 域服务没有进行适当的安全限制，导致可绕过安全限制进行权限提升。 0x02 影响版本 Windows Server 2012 R2 (Server Core installation) Windows Server 2012 R2 Windows Server 2012 (Server Core</description>
     </item>
     
     <item>
@@ -189,6 +180,15 @@
       
       <guid>https://ad-calcium.github.io/2021/09/%E8%A7%A3%E5%86%B3win10-%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
       <description>起因 在Win10使用过程中，总是会出现无法新建文件夹或者新建文件无法自动刷新，需要手动刷新才能解决。 问题 什么问题呢 ？在文件夹下 新建或者删除一</description>
+    </item>
+    
+    <item>
+      <title>CVE-2021-40444 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/09/cve-2021-40444%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/cve-2021-40444%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞描述 CVE-2021-40444：微软MSHTML引擎存在代码执行漏洞，攻击者通过精心制作包含恶意ActiveX的Offcie文档，诱</description>
     </item>
     
   </channel>
