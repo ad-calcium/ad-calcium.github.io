@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>域渗透 on AD钙奶的博客</title>
+    <link>https://ad-calcium.github.io/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/</link>
+    <description>Recent content in 域渗透 on AD钙奶的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://ad-calcium.github.io/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CVE-2021-40444 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/09/cve-2021-40444%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/cve-2021-40444%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞描述 CVE-2021-40444：微软MSHTML引擎存在代码执行漏洞，攻击者通过精心制作包含恶意ActiveX的Offcie文档，诱</description>
+    </item>
+    
+    <item>
+      <title>利用RDP协议搭建Socks5代理隧道</title>
+      <link>https://ad-calcium.github.io/2021/09/%E5%88%A9%E7%94%A8-rdp-%E5%8D%8F%E8%AE%AE%E6%90%AD%E5%BB%BA-socks5-%E4%BB%A3%E7%90%86%E9%9A%A7%E9%81%93/</link>
+      <pubDate>Sun, 12 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/%E5%88%A9%E7%94%A8-rdp-%E5%8D%8F%E8%AE%AE%E6%90%AD%E5%BB%BA-socks5-%E4%BB%A3%E7%90%86%E9%9A%A7%E9%81%93/</guid>
+      <description>SocksOverRDP 项目地址：https://github.com/nccgroup/SocksOverRDP SocksOverRDP 可以将 SOCKS 代理的功能添加到远程桌面服务，它使用动</description>
+    </item>
+    
+    <item>
+      <title>Windows server 2012 AD CA证书服务搭建</title>
+      <link>https://ad-calcium.github.io/2021/09/windows-server-2012-ad-ca%E8%AF%81%E4%B9%A6%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sun, 05 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/windows-server-2012-ad-ca%E8%AF%81%E4%B9%A6%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</guid>
+      <description>一、AD CS的功能 证书颁发机构（CA）：可以向用户、机构和服务颁发证书。 CA WEB注册：用户可以通过web浏览器申请证书。 联机响应程序服务：联</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2012 R2安装域控制器和辅域</title>
+      <link>https://ad-calcium.github.io/2021/09/windows-server-2012-r2%E5%AE%89%E8%A3%85%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8C%E8%BE%85%E5%9F%9F/</link>
+      <pubDate>Sun, 05 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/windows-server-2012-r2%E5%AE%89%E8%A3%85%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8C%E8%BE%85%E5%9F%9F/</guid>
+      <description>1. 安装域控 一、准备工作 首先准备1台比较干净的服务器，推荐使用 Windows Server 2012 R2，使用别的服务器可能会出现问题。 二、修改主机名 三、安装域 打开服务器管理</description>
+    </item>
+    
+    <item>
+      <title>impacket套件使用</title>
+      <link>https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>0x00 前言 Impacket官方介绍为用于处理网络协议的Python类的集合，该集合包含了渗透测试中常见的工具种类，包括远程命令执行、信息收集、票</description>
+    </item>
+    
+    <item>
+      <title>windows抓取hash总结</title>
+      <link>https://ad-calcium.github.io/2021/09/windows%E6%8A%93%E5%8F%96hash%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/windows%E6%8A%93%E5%8F%96hash%E6%80%BB%E7%BB%93/</guid>
+      <description>0×00 前言 市面上可见到的读Windows本地密码的大多工具都是变则法子的去读lsass.exe这个密码的内存或者SAM数据库，然后从里面提</description>
+    </item>
+    
+    <item>
+      <title>内网穿透工具的使用</title>
+      <link>https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/</guid>
+      <description>0x00 内网穿透技术 当我们拿到一台内网主机后，一般都是有区域隔离的。所以这时候就用到流量代理了。这里简单介绍一下建立通信隧道，常见的有端口转发等 主</description>
+    </item>
+    
+    <item>
+      <title>CVE-2021-26084(Confluence) 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞介绍 Confluence Server Webwork OGNL 注入漏洞（CVE-2021-26084），远程攻击者在经过身份验证或在特定环境下未经身份验证的情况下，可构造OGNL表达式</description>
+    </item>
+    
+    <item>
+      <title>mssql提权之使用clr bypass360</title>
+      <link>https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/</link>
+      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/</guid>
+      <description>0x01 前言 使用SQL Server提权的时候，发现各种组件都被拦截，无法绕过360执行系统命令，查询资料发现使用SQL Server CLR可以加载shellc</description>
+    </item>
+    
+    <item>
+      <title>exchange2019安装教程</title>
+      <link>https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
+      <description>要求 Exchange 2019 目录服务器要求 域控制器：林中的所有域控制器都需要运行 Windows Server 2012 R2 Standard 或 Datacenter版本以上 Active Directory 林的功能级别：Windows Server 2012 R2 或</description>
+    </item>
+    
+    <item>
+      <title>ProxyShell漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞介绍 国外安全研究人员在8月初公开了Microsoft Exchange多个高危漏洞（ProxyShell）利用的技术细节、PoC(概念验</description>
+    </item>
+    
+    <item>
+      <title>天融信上网行为管理系统存在任意文件读取漏洞</title>
+      <link>https://ad-calcium.github.io/2021/07/%E5%A4%A9%E8%9E%8D%E4%BF%A1%E4%B8%8A%E7%BD%91%E8%A1%8C%E4%B8%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E5%A4%A9%E8%9E%8D%E4%BF%A1%E4%B8%8A%E7%BD%91%E8%A1%8C%E4%B8%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 漏洞介绍 天融信-上网行为管理系统存在弱口令漏洞并存在任意文件读取漏洞，攻击者可利用该漏洞获取服务器上的铭感文件。 0x02 漏洞复现 fofa语法 ap</description>
+    </item>
+    
+    <item>
+      <title>CVE-2021-36934 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞介绍 Windows 10 中允许以非管理员用户身份检索所有注册表配置单元。例如，这包括 SAM 中的哈希值，可用于以 SYSTEM 身份执行代码 0x02 漏洞利用前提 适用于所有受支持</description>
+    </item>
+    
+    <item>
+      <title>jdc未授权访问</title>
+      <link>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
+      <description>0x01 漏洞描述 jdc用于对接青龙面板 2.0使用，用于自助扫码功能，由于开发者未对checkcookie进行鉴权，导致攻击者通过该漏洞获取全部co</description>
+    </item>
+    
+    <item>
+      <title>CVE-2021-1675 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>复现环境 靶机：Windows Server 2019 攻击机：kali 漏洞介绍 Windows Print Spooler是Windows的打印机后台处理程序，广泛的应用于各种内网中，攻击</description>
+    </item>
+    
+    <item>
+      <title>ezOFFICE 任意文件上传</title>
+      <link>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
+      <description>0x01 漏洞描述 万户Ezoffice系统是一套基于jsp的oa系统，该系统基于J2EE架构技术的三层架构，完全采用B/S体系结构，广泛应用于各个行</description>
+    </item>
+    
+    <item>
+      <title>MSSQL获取shell和提权</title>
+      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
+      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
+    </item>
+    
+    <item>
+      <title>MSSQL获取shell和提权</title>
+      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
+      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
+    </item>
+    
+    <item>
+      <title>Citrix路径遍历（CVE-2019-19781）</title>
+      <link>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</guid>
+      <description>0x01 漏洞描述 Citrix旗下多款交付控制器和网关存在RCE漏洞，攻击者在无需身份验证的情况下就可执行任意命令。根据其他安全网站的说法，这个RC</description>
+    </item>
+    
+    <item>
+      <title>F5 BIG-IP TMUI(CVE-2020-5902)远程代码执行漏洞</title>
+      <link>https://ad-calcium.github.io/2021/07/f5-big-ip-tmuicve-2020-5902%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/f5-big-ip-tmuicve-2020-5902%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 漏洞简述 F5 BIG-IP 是美国F5公司一款集成流量管理、DNS、出入站规则、web应用防火墙、web网关、负载均衡等功能的应用交付平台。 在 F5 BIG-IP 产品的流</description>
+    </item>
+    
+  </channel>
+</rss>
