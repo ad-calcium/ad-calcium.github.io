@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>JD羊毛脚本漏洞</title>
+      <link>https://ad-calcium.github.io/2021/07/jd%E7%BE%8A%E6%AF%9B%E8%84%9A%E6%9C%AC%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/jd%E7%BE%8A%E6%AF%9B%E8%84%9A%E6%9C%AC%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 漏洞检测 漏洞payload: http://IP/shell 0x02 漏洞验证 在server.js代码中, 使用了在线的shell控制台, 该控制台未进行鉴权, 导致存在未授权访问 通</description>
+    </item>
+    
+    <item>
       <title>phpweb前台getshell</title>
       <link>https://ad-calcium.github.io/2021/07/phpweb%E5%89%8D%E5%8F%B0getshell/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
@@ -31,10 +40,10 @@
     
     <item>
       <title>NetLogon 域内提权漏洞（CVE-2020-1472）</title>
-      <link>https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</link>
+      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8Fnetlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</link>
       <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ad-calcium.github.io/2021/07/netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</guid>
+      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8Fnetlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</guid>
       <description>漏洞介绍 2020年08月12日，Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏</description>
     </item>
     
