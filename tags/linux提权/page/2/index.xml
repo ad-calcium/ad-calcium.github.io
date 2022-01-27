@@ -6,9 +6,19 @@
     <description>Recent content in linux提权 on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>解决Win10 文件夹下无法自动刷新的问题</title>
+      <link>https://ad-calcium.github.io/2021/09/%E8%A7%A3%E5%86%B3win10-%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/%E8%A7%A3%E5%86%B3win10-%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>起因 在Win10使用过程中，总是会出现无法新建文件夹或者新建文件无法自动刷新，需要手动刷新才能解决。 问题 什么问题呢 ？在文件夹下 新建或者删除一</description>
+    </item>
     
     <item>
       <title>CVE-2021-40444 漏洞复现</title>
@@ -179,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</guid>
       <description>0x01 漏洞描述 Citrix旗下多款交付控制器和网关存在RCE漏洞，攻击者在无需身份验证的情况下就可执行任意命令。根据其他安全网站的说法，这个RC</description>
-    </item>
-    
-    <item>
-      <title>F5 BIG-IP TMUI(CVE-2020-5902)远程代码执行漏洞</title>
-      <link>https://ad-calcium.github.io/2021/07/f5-big-ip-tmuicve-2020-5902%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/f5-big-ip-tmuicve-2020-5902%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 漏洞简述 F5 BIG-IP 是美国F5公司一款集成流量管理、DNS、出入站规则、web应用防火墙、web网关、负载均衡等功能的应用交付平台。 在 F5 BIG-IP 产品的流</description>
     </item>
     
   </channel>
