@@ -653,4 +653,16 @@
     <priority>0.5</priority>
   </url>
   
+  <url>
+    <loc>https://ad-calcium.github.io/1/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
 </urlset>

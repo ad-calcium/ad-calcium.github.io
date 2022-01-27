@@ -103,5 +103,14 @@ Hugo makes use of a variety of open source projects including:
  https://github.</description>
     </item>
     
+    <item>
+      <title>Linux Polkit 权限提升(CVE-2021-4034)</title>
+      <link>https://ad-calcium.github.io/1/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/1/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</guid>
+      <description>0x01 漏洞介绍 polkit 的 pkexec 实用程序中存在一个本地权限提升漏洞。当前版本的 pkexec 无法正确处理调用参数计数，并最终尝试将环境变量作为命令执行。攻击者可以通过控</description>
+    </item>
+    
   </channel>
 </rss>
