@@ -6,9 +6,37 @@
     <description>Recent content in Cobalt strike on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/cobalt-strike/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>jdc未授权访问</title>
+      <link>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
+      <description>0x01 漏洞描述 jdc用于对接青龙面板 2.0使用，用于自助扫码功能，由于开发者未对checkcookie进行鉴权，导致攻击者通过该漏洞获取全部co</description>
+    </item>
+    
+    <item>
+      <title>CVE-2021-1675 漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <description>复现环境 靶机：Windows Server 2019 攻击机：kali 漏洞介绍 Windows Print Spooler是Windows的打印机后台处理程序，广泛的应用于各种内网中，攻击</description>
+    </item>
+    
+    <item>
+      <title>ezOFFICE 任意文件上传</title>
+      <link>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
+      <description>0x01 漏洞描述 万户Ezoffice系统是一套基于jsp的oa系统，该系统基于J2EE架构技术的三层架构，完全采用B/S体系结构，广泛应用于各个行</description>
+    </item>
     
     <item>
       <title>MSSQL获取shell和提权</title>
@@ -136,33 +164,6 @@
       <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
 Hugo makes use of a variety of open source projects including:
  https://github.</description>
-    </item>
-    
-    <item>
-      <title>Cobalt strike上线后自动迁移进程</title>
-      <link>https://ad-calcium.github.io/1/01/cobalt-strike%E4%B8%8A%E7%BA%BF%E5%90%8E%E8%87%AA%E5%8A%A8%E8%BF%81%E7%A7%BB%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/1/01/cobalt-strike%E4%B8%8A%E7%BA%BF%E5%90%8E%E8%87%AA%E5%8A%A8%E8%BF%81%E7%A7%BB%E8%BF%9B%E7%A8%8B/</guid>
-      <description>0x00 前言 通过cs上线之后之后担心掉线，所以有改文章。通过进程注入方式，当有新的主机上线之后将进程注入explorer.exe进程中 0x01 解决上述问</description>
-    </item>
-    
-    <item>
-      <title>域渗透 - GPP漏洞</title>
-      <link>https://ad-calcium.github.io/1/01/%E5%9F%9F%E6%B8%97%E9%80%8F-gpp%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/1/01/%E5%9F%9F%E6%B8%97%E9%80%8F-gpp%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 基础知识 1.组策略的认识 组策略（英语：Group Policy）是微软Windows NT家族操作系统的一个特性，它可以控制用户帐户和计算机帐</description>
-    </item>
-    
-    <item>
-      <title>域渗透 - 组策略下发文件</title>
-      <link>https://ad-calcium.github.io/1/01/%E5%9F%9F%E6%B8%97%E9%80%8F-%E7%BB%84%E7%AD%96%E7%95%A5%E4%B8%8B%E5%8F%91%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/1/01/%E5%9F%9F%E6%B8%97%E9%80%8F-%E7%BB%84%E7%AD%96%E7%95%A5%E4%B8%8B%E5%8F%91%E6%96%87%E4%BB%B6/</guid>
-      <description>0x01 前言 当我们拿下域控或者域管的权限，如何使用组策略批量上线。 0x02 利用前提 拥有更改某组策略的权限或者域管权限 0x03 利用思路 1、利用OU+启动脚本 2、</description>
     </item>
     
   </channel>

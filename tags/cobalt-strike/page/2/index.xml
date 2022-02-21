@@ -6,9 +6,37 @@
     <description>Recent content in Cobalt strike on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/cobalt-strike/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>搭建大型域环境(根域、子域、辅域、树域)</title>
+      <link>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</link>
+      <pubDate>Sun, 31 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</guid>
+      <description>主机信息 用途 操作系统 主机名 域名 IP地址 DNS 根域 windows 2012 DC1 adlab.com 10.10.10.50 127.0.0.1 辅域 windows 2019 DC4 adlab.com 10.10.10.20 127.0.0.1和10.10.10.50 子域 windows 2012 DC2 sec.adlab.com 10.10.11.50 127.0.0</description>
+    </item>
+    
+    <item>
+      <title>GITLAB 远程命令执行漏洞(CVE-2021-22205)</title>
+      <link>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</link>
+      <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</guid>
+      <description>0x01 漏洞背景 GitLab是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，可通过Web界面访问公开或私人项目。 近日，GitLab发</description>
+    </item>
+    
+    <item>
+      <title>Dedecms_V5.8.1 RCE</title>
+      <link>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</link>
+      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</guid>
+      <description>前言 DedeCMS是国内专业的PHP网站内容管理系统-织梦内容管理系统，采用XML名字空间风格核心模板：模板全部使用文件形式保存，对用户设计</description>
+    </item>
     
     <item>
       <title>通达oa11.9前台注入</title>
@@ -161,33 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
       <description>0x01 漏洞介绍 Windows 10 中允许以非管理员用户身份检索所有注册表配置单元。例如，这包括 SAM 中的哈希值，可用于以 SYSTEM 身份执行代码 0x02 漏洞利用前提 适用于所有受支持</description>
-    </item>
-    
-    <item>
-      <title>jdc未授权访问</title>
-      <link>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
-      <description>0x01 漏洞描述 jdc用于对接青龙面板 2.0使用，用于自助扫码功能，由于开发者未对checkcookie进行鉴权，导致攻击者通过该漏洞获取全部co</description>
-    </item>
-    
-    <item>
-      <title>CVE-2021-1675 漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
-      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
-      <description>复现环境 靶机：Windows Server 2019 攻击机：kali 漏洞介绍 Windows Print Spooler是Windows的打印机后台处理程序，广泛的应用于各种内网中，攻击</description>
-    </item>
-    
-    <item>
-      <title>ezOFFICE 任意文件上传</title>
-      <link>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
-      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
-      <description>0x01 漏洞描述 万户Ezoffice系统是一套基于jsp的oa系统，该系统基于J2EE架构技术的三层架构，完全采用B/S体系结构，广泛应用于各个行</description>
     </item>
     
   </channel>

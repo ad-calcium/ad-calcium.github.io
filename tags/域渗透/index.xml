@@ -6,7 +6,7 @@
     <description>Recent content in 域渗透 on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Tue, 14 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Feb 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/index.xml" rel="self" type="application/rss+xml" />
     
@@ -36,6 +36,33 @@
       
       <guid>https://ad-calcium.github.io/2022/02/%E5%90%91%E6%97%A5%E8%91%B5%E5%AD%98%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecnvd-2022-10270/</guid>
       <description>0x01 漏洞描述 上海贝锐信息科技股份有限公司向日葵个人版for Windows存在命令执行漏洞，攻击者可利用该漏洞获取服务器控制权。 0x02 漏洞版本 11.1.1 10.3.0.27372 11.0.0.33162</description>
+    </item>
+    
+    <item>
+      <title>域渗透 - GPP漏洞</title>
+      <link>https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-gpp%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Sat, 05 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-gpp%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 基础知识 1.组策略的认识 组策略（英语：Group Policy）是微软Windows NT家族操作系统的一个特性，它可以控制用户帐户和计算机帐</description>
+    </item>
+    
+    <item>
+      <title>域渗透 - 组策略下发文件</title>
+      <link>https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-%E7%BB%84%E7%AD%96%E7%95%A5%E4%B8%8B%E5%8F%91%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Sat, 05 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-%E7%BB%84%E7%AD%96%E7%95%A5%E4%B8%8B%E5%8F%91%E6%96%87%E4%BB%B6/</guid>
+      <description>0x01 前言 当我们拿下域控或者域管的权限，如何使用组策略批量上线。 0x02 利用前提 拥有更改某组策略的权限或者域管权限 0x03 利用思路 1、利用OU+启动脚本 2、</description>
+    </item>
+    
+    <item>
+      <title>Cobalt strike上线后自动迁移进程</title>
+      <link>https://ad-calcium.github.io/2022/02/cobalt-strike%E4%B8%8A%E7%BA%BF%E5%90%8E%E8%87%AA%E5%8A%A8%E8%BF%81%E7%A7%BB%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/cobalt-strike%E4%B8%8A%E7%BA%BF%E5%90%8E%E8%87%AA%E5%8A%A8%E8%BF%81%E7%A7%BB%E8%BF%9B%E7%A8%8B/</guid>
+      <description>0x00 前言 通过cs上线之后之后担心掉线，所以有改文章。通过进程注入方式，当有新的主机上线之后将进程注入explorer.exe进程中 0x01 解决上述问</description>
     </item>
     
     <item>
@@ -162,33 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</guid>
       <description>0x01 漏洞描述 海康威视IP摄像机/NVR设备固件中发现一个未认证的远程代码执行漏洞 0x02 影响版本 漏洞影响IP摄像头和NVR设备固件，其中包括2021</description>
-    </item>
-    
-    <item>
-      <title>搭建大型域环境(根域、子域、辅域、树域)</title>
-      <link>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</link>
-      <pubDate>Sun, 31 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</guid>
-      <description>主机信息 用途 操作系统 主机名 域名 IP地址 DNS 根域 windows 2012 DC1 adlab.com 10.10.10.50 127.0.0.1 辅域 windows 2019 DC4 adlab.com 10.10.10.20 127.0.0.1和10.10.10.50 子域 windows 2012 DC2 sec.adlab.com 10.10.11.50 127.0.0</description>
-    </item>
-    
-    <item>
-      <title>GITLAB 远程命令执行漏洞(CVE-2021-22205)</title>
-      <link>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</link>
-      <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</guid>
-      <description>0x01 漏洞背景 GitLab是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，可通过Web界面访问公开或私人项目。 近日，GitLab发</description>
-    </item>
-    
-    <item>
-      <title>Dedecms_V5.8.1 RCE</title>
-      <link>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</link>
-      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</guid>
-      <description>前言 DedeCMS是国内专业的PHP网站内容管理系统-织梦内容管理系统，采用XML名字空间风格核心模板：模板全部使用文件形式保存，对用户设计</description>
     </item>
     
   </channel>
