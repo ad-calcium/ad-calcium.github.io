@@ -6,10 +6,37 @@
     <description>Recent content in Tags on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Feb 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Zabbix SAML SSO认证绕过(CVE-2022-23131)</title>
+      <link>https://ad-calcium.github.io/2022/02/zabbix-saml-sso%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87cve-2022-23131/</link>
+      <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/zabbix-saml-sso%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87cve-2022-23131/</guid>
+      <description>0x01 漏洞描述 Zabbix对客户端提交的Cookie会话存在不安全的存储方式，导致在启动SAML SSO认证模式的前提下，恶意用户可通过构造特殊请</description>
+    </item>
+    
+    <item>
+      <title>Fastjson姿势技巧集合</title>
+      <link>https://ad-calcium.github.io/2022/02/fastjson%E5%A7%BF%E5%8A%BF%E6%8A%80%E5%B7%A7%E9%9B%86%E5%90%88/</link>
+      <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/fastjson%E5%A7%BF%E5%8A%BF%E6%8A%80%E5%B7%A7%E9%9B%86%E5%90%88/</guid>
+      <description>文章转载至：https://github.com/safe6Sec/Fastjson 说明 高版本的一些细节还有待更新。本项目涉及的一些姿势和p</description>
+    </item>
+    
+    <item>
+      <title>向日葵存在命令执行漏洞(CNVD-2022-10270)</title>
+      <link>https://ad-calcium.github.io/2022/02/%E5%90%91%E6%97%A5%E8%91%B5%E5%AD%98%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecnvd-2022-10270/</link>
+      <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/%E5%90%91%E6%97%A5%E8%91%B5%E5%AD%98%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecnvd-2022-10270/</guid>
+      <description>0x01 漏洞描述 上海贝锐信息科技股份有限公司向日葵个人版for Windows存在命令执行漏洞，攻击者可利用该漏洞获取服务器控制权。 0x02 漏洞版本 11.1.1 10.3.0.27372 11.0.0.33162</description>
+    </item>
     
     <item>
       <title>Linux Polkit 权限提升(CVE-2021-4034)</title>
@@ -22,10 +49,10 @@
     
     <item>
       <title>域渗透-sAMAccountName spoofing(CVE-2021-42278、CVE-2021-42287 ) </title>
-      <link>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8Fsamaccountname-spoofingcve-2021-42278cve-2021-42287/</link>
+      <link>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8F-samaccountname-spoofingcve-2021-42278cve-2021-42287/</link>
       <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8Fsamaccountname-spoofingcve-2021-42278cve-2021-42287/</guid>
+      <guid>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8F-samaccountname-spoofingcve-2021-42278cve-2021-42287/</guid>
       <description>0x01 漏洞详情 该漏洞是由于Active Directory 域服务没有进行适当的安全限制，导致可绕过安全限制进行权限提升。 0x02 影响版本 Windows Server 2012 R2 (Server Core installation) Windows Server 2012 R2 Windows Server 2012 (Server Core</description>
     </item>
     
@@ -162,33 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</guid>
       <description>前言 DedeCMS是国内专业的PHP网站内容管理系统-织梦内容管理系统，采用XML名字空间风格核心模板：模板全部使用文件形式保存，对用户设计</description>
-    </item>
-    
-    <item>
-      <title>通达oa11.9前台注入</title>
-      <link>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</link>
-      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</guid>
-      <description>0x01 前言 通达OA（Office Anywhere网络智能办公系统）是由北京通达信科科技有限公司自主研发的协同办公自动化软件，是与中国企业管理实践</description>
-    </item>
-    
-    <item>
-      <title>mysql提权</title>
-      <link>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</link>
-      <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</guid>
-      <description>MySQL UDF提权 1.漏洞原理 UDF (user defined function)，即用户自定义函数。是通过添加新函数，对MySQL的功能进行扩充，其实就像使用本地MySQL</description>
-    </item>
-    
-    <item>
-      <title>Apache（CVE-2021-41773）漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</link>
-      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</guid>
-      <description>0x01 漏洞描述 在 Apache HTTP Server 2.4.49 中对路径规范化所做的更改中发现了一个缺陷。早期版本中并没有 ap_normalize_path 这个函数，该函数是在v2.4.49版本中引入的，正是这个函数</description>
     </item>
     
   </channel>

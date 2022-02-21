@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>向日葵 on AD钙奶的博客</title>
+    <link>https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/</link>
+    <description>Recent content in 向日葵 on AD钙奶的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zabbix SAML SSO认证绕过(CVE-2022-23131)</title>
+      <link>https://ad-calcium.github.io/2022/02/zabbix-saml-sso%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87cve-2022-23131/</link>
+      <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/zabbix-saml-sso%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87cve-2022-23131/</guid>
+      <description>0x01 漏洞描述 Zabbix对客户端提交的Cookie会话存在不安全的存储方式，导致在启动SAML SSO认证模式的前提下，恶意用户可通过构造特殊请</description>
+    </item>
+    
+    <item>
+      <title>Fastjson姿势技巧集合</title>
+      <link>https://ad-calcium.github.io/2022/02/fastjson%E5%A7%BF%E5%8A%BF%E6%8A%80%E5%B7%A7%E9%9B%86%E5%90%88/</link>
+      <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/fastjson%E5%A7%BF%E5%8A%BF%E6%8A%80%E5%B7%A7%E9%9B%86%E5%90%88/</guid>
+      <description>文章转载至：https://github.com/safe6Sec/Fastjson 说明 高版本的一些细节还有待更新。本项目涉及的一些姿势和p</description>
+    </item>
+    
+    <item>
+      <title>向日葵存在命令执行漏洞(CNVD-2022-10270)</title>
+      <link>https://ad-calcium.github.io/2022/02/%E5%90%91%E6%97%A5%E8%91%B5%E5%AD%98%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecnvd-2022-10270/</link>
+      <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/02/%E5%90%91%E6%97%A5%E8%91%B5%E5%AD%98%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecnvd-2022-10270/</guid>
+      <description>0x01 漏洞描述 上海贝锐信息科技股份有限公司向日葵个人版for Windows存在命令执行漏洞，攻击者可利用该漏洞获取服务器控制权。 0x02 漏洞版本 11.1.1 10.3.0.27372 11.0.0.33162</description>
+    </item>
+    
+    <item>
+      <title>Linux Polkit 权限提升(CVE-2021-4034)</title>
+      <link>https://ad-calcium.github.io/2022/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</link>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</guid>
+      <description>0x01 漏洞介绍 polkit 的 pkexec 实用程序中存在一个本地权限提升漏洞。当前版本的 pkexec 无法正确处理调用参数计数，并最终尝试将环境变量作为命令执行。攻击者可以通过控</description>
+    </item>
+    
+    <item>
+      <title>域渗透-sAMAccountName spoofing(CVE-2021-42278、CVE-2021-42287 ) </title>
+      <link>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8F-samaccountname-spoofingcve-2021-42278cve-2021-42287/</link>
+      <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/%E5%9F%9F%E6%B8%97%E9%80%8F-samaccountname-spoofingcve-2021-42278cve-2021-42287/</guid>
+      <description>0x01 漏洞详情 该漏洞是由于Active Directory 域服务没有进行适当的安全限制，导致可绕过安全限制进行权限提升。 0x02 影响版本 Windows Server 2012 R2 (Server Core installation) Windows Server 2012 R2 Windows Server 2012 (Server Core</description>
+    </item>
+    
+    <item>
+      <title>CDN 2021 完全攻击指南 （三）</title>
+      <link>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%B8%89/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%B8%89/</guid>
+      <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231441 CDN 2021 完全攻击指南 （二）中主要介绍了协议</description>
+    </item>
+    
+    <item>
+      <title>CDN 2021 完全攻击指南 （二）</title>
+      <link>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</guid>
+      <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231437 CDN 2021 完全攻击指南（一）中主要介绍了当下</description>
+    </item>
+    
+    <item>
+      <title>Apache Log4j任意代码执行漏洞</title>
+      <link>https://ad-calcium.github.io/2021/12/apache-log4j%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/apache-log4j%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 漏洞描述 Apache Log4j存在任意代码执行漏洞，经过分析，该组件存在Java JNDI注入漏洞，当程序将用户输入的数据进行日志，即可触发此漏洞，成</description>
+    </item>
+    
+    <item>
+      <title>CDN 2021 完全攻击指南 （一）</title>
+      <link>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%B8%80/</link>
+      <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%B8%80/</guid>
+      <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/227818 这是一篇全网（无论国内还是国外）最全、</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot漏洞利用总结</title>
+      <link>https://ad-calcium.github.io/2021/12/springboot%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/springboot%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <description>Spring Boot 相关漏洞学习资料，利用方法和技巧合集，黑盒安全评估 check list 文章转载至：https://github.com/LandGrey/SpringB</description>
+    </item>
+    
+    <item>
+      <title>Grafana任意文件读取漏洞(CVE-2021-43798)</title>
+      <link>https://ad-calcium.github.io/2021/12/grafana%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-43798/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/12/grafana%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-43798/</guid>
+      <description>0x01 漏洞详情 Grafana是一个跨平台、开源的数据可视化网络应用程序平台。用户配置连接的数据源之后，Grafana可以在网络浏览器里显示数据图</description>
+    </item>
+    
+    <item>
+      <title>Exchange XSS(CVE-2021-41349)</title>
+      <link>https://ad-calcium.github.io/2021/11/exchange-xsscve-2021-41349/</link>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/exchange-xsscve-2021-41349/</guid>
+      <description>0x01 漏洞说明 Exchange 最近爆出了一个XSS漏洞，编号：CVE-2021-41349，哎哎哎，别走啊，虽然只是一个反射型XSS，但是它发生在Exchan</description>
+    </item>
+    
+    <item>
+      <title>E-Office v9任意文件上传漏洞</title>
+      <link>https://ad-calcium.github.io/2021/11/e-office-v9%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/e-office-v9%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</guid>
+      <description>0x01 漏洞详情 该漏洞为未公开漏洞 CNVD-2021-49104，该漏洞是由于 e-office 未能正确处理上传模块中用户输入导致的，攻击者可以构造恶意的上传数据</description>
+    </item>
+    
+    <item>
+      <title>Apache Druid 任意文件读取漏洞(CVE-2021-36749)</title>
+      <link>https://ad-calcium.github.io/2021/11/apache-druid-loaddata%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-36749/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/apache-druid-loaddata%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-36749/</guid>
+      <description>0x01 组件介绍 Apache Druid 是一个分布式的、支持实时多维 OLAP 分析的数据处理系统。它既支持高速的数据实时摄入处理，也支持实时且灵活的多维数据分析查询。因此 Druid 最</description>
+    </item>
+    
+    <item>
+      <title>Apache ShenYu JWT认证缺陷漏洞(CVE-2021-37580)</title>
+      <link>https://ad-calcium.github.io/2021/11/apache-shenyu-jwt%E8%AE%A4%E8%AF%81%E7%BC%BA%E9%99%B7%E6%BC%8F%E6%B4%9Ecve-2021-37580/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/apache-shenyu-jwt%E8%AE%A4%E8%AF%81%E7%BC%BA%E9%99%B7%E6%BC%8F%E6%B4%9Ecve-2021-37580/</guid>
+      <description>0x01 漏洞详情 ShenYu（原名 Soul）是一款高性能，响应式的网关，同时也是应用于所有微服务场景的，可扩展、高性能、响应式的 API 网关解决方案。 该</description>
+    </item>
+    
+    <item>
+      <title>Metabase 敏感信息泄露漏洞(CVE-2021-41277)</title>
+      <link>https://ad-calcium.github.io/2021/11/metabase-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9Ecve-2021-41277/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/metabase-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9Ecve-2021-41277/</guid>
+      <description>0x01 漏洞描述 metabase 是一个简单、开源的数据分析平台。自定义 GeoJSON 地图（admin-&amp;gt;settings-&amp;gt;maps-&amp;gt;custom maps-&amp;gt;add a m</description>
+    </item>
+    
+    <item>
+      <title>海康威视-IP摄像机 远程代码执行漏洞(CVE-2021-36260)</title>
+      <link>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</guid>
+      <description>0x01 漏洞描述 海康威视IP摄像机/NVR设备固件中发现一个未认证的远程代码执行漏洞 0x02 影响版本 漏洞影响IP摄像头和NVR设备固件，其中包括2021</description>
+    </item>
+    
+    <item>
+      <title>搭建大型域环境(根域、子域、辅域、树域)</title>
+      <link>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</link>
+      <pubDate>Sun, 31 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/%E6%90%AD%E5%BB%BA%E5%A4%A7%E5%9E%8B%E5%9F%9F%E7%8E%AF%E5%A2%83%E6%A0%B9%E5%9F%9F%E5%AD%90%E5%9F%9F%E8%BE%85%E5%9F%9F%E6%A0%91%E5%9F%9F/</guid>
+      <description>主机信息 用途 操作系统 主机名 域名 IP地址 DNS 根域 windows 2012 DC1 adlab.com 10.10.10.50 127.0.0.1 辅域 windows 2019 DC4 adlab.com 10.10.10.20 127.0.0.1和10.10.10.50 子域 windows 2012 DC2 sec.adlab.com 10.10.11.50 127.0.0</description>
+    </item>
+    
+    <item>
+      <title>GITLAB 远程命令执行漏洞(CVE-2021-22205)</title>
+      <link>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</link>
+      <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/gitlab-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-22205/</guid>
+      <description>0x01 漏洞背景 GitLab是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，可通过Web界面访问公开或私人项目。 近日，GitLab发</description>
+    </item>
+    
+    <item>
+      <title>Dedecms_V5.8.1 RCE</title>
+      <link>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</link>
+      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/dedecms_v5.8.1-rce/</guid>
+      <description>前言 DedeCMS是国内专业的PHP网站内容管理系统-织梦内容管理系统，采用XML名字空间风格核心模板：模板全部使用文件形式保存，对用户设计</description>
+    </item>
+    
+  </channel>
+</rss>

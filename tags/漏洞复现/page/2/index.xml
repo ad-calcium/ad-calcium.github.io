@@ -6,10 +6,37 @@
     <description>Recent content in 漏洞复现 on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Feb 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>通达oa11.9前台注入</title>
+      <link>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/%E9%80%9A%E8%BE%BEoa11.9%E5%89%8D%E5%8F%B0%E6%B3%A8%E5%85%A5/</guid>
+      <description>0x01 前言 通达OA（Office Anywhere网络智能办公系统）是由北京通达信科科技有限公司自主研发的协同办公自动化软件，是与中国企业管理实践</description>
+    </item>
+    
+    <item>
+      <title>mysql提权</title>
+      <link>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</link>
+      <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/mysql%E6%8F%90%E6%9D%83/</guid>
+      <description>MySQL UDF提权 1.漏洞原理 UDF (user defined function)，即用户自定义函数。是通过添加新函数，对MySQL的功能进行扩充，其实就像使用本地MySQL</description>
+    </item>
+    
+    <item>
+      <title>Apache（CVE-2021-41773）漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</link>
+      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/10/apache-httpd%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-cve-2021-41773/</guid>
+      <description>0x01 漏洞描述 在 Apache HTTP Server 2.4.49 中对路径规范化所做的更改中发现了一个缺陷。早期版本中并没有 ap_normalize_path 这个函数，该函数是在v2.4.49版本中引入的，正是这个函数</description>
+    </item>
     
     <item>
       <title>解决Win10 文件夹下无法自动刷新的问题</title>
@@ -112,10 +139,10 @@
     
     <item>
       <title>ProxyShell漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/</link>
+      <link>https://ad-calcium.github.io/2021/08/exchange-proxyshell%E5%A4%8D%E7%8E%B0/</link>
       <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/</guid>
+      <guid>https://ad-calcium.github.io/2021/08/exchange-proxyshell%E5%A4%8D%E7%8E%B0/</guid>
       <description>0x01 漏洞介绍 国外安全研究人员在8月初公开了Microsoft Exchange多个高危漏洞（ProxyShell）利用的技术细节、PoC(概念验</description>
     </item>
     
@@ -148,10 +175,10 @@
     
     <item>
       <title>CVE-2021-1675 漏洞复现</title>
-      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8Fcve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
+      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8Fcve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
+      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-cve-2021-1675%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
       <description>复现环境 靶机：Windows Server 2019 攻击机：kali 漏洞介绍 Windows Print Spooler是Windows的打印机后台处理程序，广泛的应用于各种内网中，攻击</description>
     </item>
     
@@ -162,33 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/ezoffice%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
       <description>0x01 漏洞描述 万户Ezoffice系统是一套基于jsp的oa系统，该系统基于J2EE架构技术的三层架构，完全采用B/S体系结构，广泛应用于各个行</description>
-    </item>
-    
-    <item>
-      <title>MSSQL获取shell和提权</title>
-      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
-      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
-      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
-    </item>
-    
-    <item>
-      <title>MSSQL获取shell和提权</title>
-      <link>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</link>
-      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/</guid>
-      <description>一、MSSQL简介 MSSQL(MicroSoft SQL Server数据库)，是微软开发的关系型数据库管理系统DBMS，是一个较大型的数据库，提供数据库的从服务器到终端的完整</description>
-    </item>
-    
-    <item>
-      <title>Citrix路径遍历（CVE-2019-19781）</title>
-      <link>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</link>
-      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/citrix%E8%B7%AF%E5%BE%84%E9%81%8D%E5%8E%86cve-2019-19781/</guid>
-      <description>0x01 漏洞描述 Citrix旗下多款交付控制器和网关存在RCE漏洞，攻击者在无需身份验证的情况下就可执行任意命令。根据其他安全网站的说法，这个RC</description>
     </item>
     
   </channel>
