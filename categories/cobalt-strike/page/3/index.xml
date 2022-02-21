@@ -162,7 +162,7 @@ Hugo makes use of a variety of open source projects including:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ad-calcium.github.io/1/01/%E5%9F%9F%E6%B8%97%E9%80%8F-%E7%BB%84%E7%AD%96%E7%95%A5%E4%B8%8B%E5%8F%91%E6%96%87%E4%BB%B6/</guid>
-      <description>0x01 前言 当我们拿下域控或者域管的权限，如何使用组策略批量下马。 0x02 利用前提 拥有更改某组策略的权限或者域管权限 0x03 利用思路 1、利用OU+启动脚本 2、</description>
+      <description>0x01 前言 当我们拿下域控或者域管的权限，如何使用组策略批量上线。 0x02 利用前提 拥有更改某组策略的权限或者域管权限 0x03 利用思路 1、利用OU+启动脚本 2、</description>
     </item>
     
   </channel>
