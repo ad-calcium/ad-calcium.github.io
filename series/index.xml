@@ -6,10 +6,19 @@
     <description>Recent content in Series on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 21 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring Cloud Gateway 远程代码执行漏洞(CVE-2022-22947)</title>
+      <link>https://ad-calcium.github.io/2022/03/spring-cloud-gateway-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2022-22947/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/03/spring-cloud-gateway-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2022-22947/</guid>
+      <description>0x01 介绍 Spring Cloud Gateway 是基于 Spring Framework 和 Spring Boot 构建的 API 网关，它旨在为微服务架构提供一种简单、有效、统一的 API 路由管理方式。 0x02 漏洞描述 Spring Cloud Gateway是Spri</description>
+    </item>
     
     <item>
       <title>Zabbix SAML SSO认证绕过(CVE-2022-23131)</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/11/metabase-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9Ecve-2021-41277/</guid>
       <description>0x01 漏洞描述 metabase 是一个简单、开源的数据分析平台。自定义 GeoJSON 地图（admin-&amp;gt;settings-&amp;gt;maps-&amp;gt;custom maps-&amp;gt;add a m</description>
-    </item>
-    
-    <item>
-      <title>海康威视-IP摄像机 远程代码执行漏洞(CVE-2021-36260)</title>
-      <link>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</link>
-      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</guid>
-      <description>0x01 漏洞描述 海康威视IP摄像机/NVR设备固件中发现一个未认证的远程代码执行漏洞 0x02 影响版本 漏洞影响IP摄像头和NVR设备固件，其中包括2021</description>
     </item>
     
   </channel>
