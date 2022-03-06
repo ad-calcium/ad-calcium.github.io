@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Metabase 敏感信息泄露漏洞(CVE-2021-41277)</title>
+      <link>https://ad-calcium.github.io/2021/11/metabase-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9Ecve-2021-41277/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/metabase-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9Ecve-2021-41277/</guid>
+      <description>0x01 漏洞描述 metabase 是一个简单、开源的数据分析平台。自定义 GeoJSON 地图（admin-&amp;gt;settings-&amp;gt;maps-&amp;gt;custom maps-&amp;gt;add a m</description>
+    </item>
+    
+    <item>
       <title>海康威视-IP摄像机 远程代码执行漏洞(CVE-2021-36260)</title>
       <link>https://ad-calcium.github.io/2021/11/%E6%B5%B7%E5%BA%B7%E5%A8%81%E8%A7%86-ip%E6%91%84%E5%83%8F%E6%9C%BA-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2021-36260/</link>
       <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/08/exchange-proxyshell%E5%A4%8D%E7%8E%B0/</guid>
       <description>0x01 漏洞介绍 国外安全研究人员在8月初公开了Microsoft Exchange多个高危漏洞（ProxyShell）利用的技术细节、PoC(概念验</description>
-    </item>
-    
-    <item>
-      <title>天融信上网行为管理系统存在任意文件读取漏洞</title>
-      <link>https://ad-calcium.github.io/2021/07/%E5%A4%A9%E8%9E%8D%E4%BF%A1%E4%B8%8A%E7%BD%91%E8%A1%8C%E4%B8%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/%E5%A4%A9%E8%9E%8D%E4%BF%A1%E4%B8%8A%E7%BD%91%E8%A1%8C%E4%B8%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 漏洞介绍 天融信-上网行为管理系统存在弱口令漏洞并存在任意文件读取漏洞，攻击者可利用该漏洞获取服务器上的铭感文件。 0x02 漏洞复现 fofa语法 ap</description>
     </item>
     
   </channel>
