@@ -6,10 +6,19 @@
     <description>Recent content in Series on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 04 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Mar 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ProxyShell漏洞复现</title>
+      <link>https://ad-calcium.github.io/2021/08/exchange-proxyshell%E5%A4%8D%E7%8E%B0/</link>
+      <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/08/exchange-proxyshell%E5%A4%8D%E7%8E%B0/</guid>
+      <description>0x01 漏洞介绍 国外安全研究人员在8月初公开了Microsoft Exchange多个高危漏洞（ProxyShell）利用的技术细节、PoC(概念验</description>
+    </item>
     
     <item>
       <title>天融信上网行为管理系统存在任意文件读取漏洞</title>
