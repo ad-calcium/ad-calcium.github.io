@@ -6,10 +6,19 @@
     <description>Recent content in Posts on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Aug 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>攻防演练复盘</title>
+      <link>https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/</link>
+      <pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/</guid>
+      <description>0x01 前言 红队的攻击是一项系统的工作，整个攻击过程是有章可循、科学合理的，涵盖了从前期准备、攻击实施到靶标控制的各个步骤和环节。按照任务进度划分</description>
+    </item>
     
     <item>
       <title>一次平平无奇的渗透</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/11/exchange-xsscve-2021-41349/</guid>
       <description>0x01 漏洞说明 Exchange 最近爆出了一个XSS漏洞，编号：CVE-2021-41349，哎哎哎，别走啊，虽然只是一个反射型XSS，但是它发生在Exchan</description>
-    </item>
-    
-    <item>
-      <title>E-Office v9任意文件上传漏洞</title>
-      <link>https://ad-calcium.github.io/2021/11/e-office-v9%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/11/e-office-v9%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 漏洞详情 该漏洞为未公开漏洞 CNVD-2021-49104，该漏洞是由于 e-office 未能正确处理上传模块中用户输入导致的，攻击者可以构造恶意的上传数据</description>
     </item>
     
   </channel>
