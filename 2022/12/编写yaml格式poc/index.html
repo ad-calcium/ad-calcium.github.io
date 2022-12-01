@@ -21,7 +21,7 @@
     
     
     <meta name="description" content="编写fscan或者xray的poc方法" />
-    <meta name="generator" content="Hugo 0.91.2 with theme pure" />
+    <meta name="generator" content="Hugo 0.107.0 with theme pure" />
     <title>编写YAML格式POC - AD钙奶的博客</title>
     
     
@@ -40,7 +40,7 @@
 <meta itemprop="name" content="编写YAML格式POC">
 <meta itemprop="description" content="编写fscan或者xray的poc方法"><meta itemprop="datePublished" content="2022-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="7824">
+<meta itemprop="wordCount" content="7836">
 <meta itemprop="keywords" content="编写yaml格式的poc," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="编写YAML格式POC"/>
 <meta name="twitter:description" content="编写fscan或者xray的poc方法"/>
@@ -553,7 +553,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/"> 编写yaml格式的poc </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7824字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7836字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 16分 </span>
       </div>
     </div>
@@ -1058,7 +1058,7 @@ detail:                                      //一个键值对，需要将结果
 <li>
 <p><code>response.content_type.contains('zip') &amp;&amp; r'^PK\x03\x04'.bmatches(response.body)</code>​</p>
 <ul>
-<li>这个规则用来判断返回的内容是否是zip文件，需要同时满足条件：content-type 包含关键字 &ldquo;zip&rdquo;，且 body 匹配上正则r'^PK\x03\x04'（就是zip的文件头）。因为 startsWith 方法只支持字符串的判断，所以这里没有使用。</li>
+<li>这个规则用来判断返回的内容是否是zip文件，需要同时满足条件：content-type 包含关键字 &ldquo;zip&rdquo;，且 body 匹配上正则r&rsquo;^PK\x03\x04&rsquo;（就是zip的文件头）。因为 startsWith 方法只支持字符串的判断，所以这里没有使用。</li>
 </ul>
 </li>
 <li>
@@ -1465,8 +1465,8 @@ rules:
     })
     hljs.initHighlightingOnLoad();
 </script>
-<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
-<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+<script src="https://ad-calcium.github.io/js/application.min.e4989ab4dc212027af8773861b05b6bc333a1217f6b0a1b3377a3a3dbd454483.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.738a460bf4317fac61717f1bca393e53d00973db9754d9f0a81c7312d5874840.js"></script>
 
 <script>
     (function (window) {
@@ -1484,7 +1484,7 @@ rules:
         window.INSIGHT_CONFIG = INSIGHT_CONFIG;
     })(window);
 </script>
-<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.716b0c6a00b68ccc31a2b65345f3412f4246ffa94a90f8e25d525528b4504f9937880692bbe619023233caba5d0a17ebe23d7cfb57cd3a88f23ea337ad5e4d00.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
 <script>
     tocbot.init({
