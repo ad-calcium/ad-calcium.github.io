@@ -6,10 +6,19 @@
     <description>Recent content on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 29 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Nov 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exchange XSS(CVE-2021-41349)</title>
+      <link>https://ad-calcium.github.io/2021/11/exchange-xsscve-2021-41349/</link>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/11/exchange-xsscve-2021-41349/</guid>
+      <description>0x01 漏洞说明 Exchange 最近爆出了一个XSS漏洞，编号：CVE-2021-41349，哎哎哎，别走啊，虽然只是一个反射型XSS，但是它发生在Exchan</description>
+    </item>
     
     <item>
       <title>E-Office v9任意文件上传漏洞</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/09/cve-2021-26084confluence-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</guid>
       <description>0x01 漏洞介绍 Confluence Server Webwork OGNL 注入漏洞（CVE-2021-26084），远程攻击者在经过身份验证或在特定环境下未经身份验证的情况下，可构造OGNL表达式</description>
-    </item>
-    
-    <item>
-      <title>SMB外带注入</title>
-      <link>https://ad-calcium.github.io/2021/09/smb%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/09/smb%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5/</guid>
-      <description>前言 温故而知新，今天在整理古老的近乎失传的DNS外带注入方法时，偶然间发现外带数据的装载区域并不一定是 域名前缀。放在后面也是可以的，由于目前</description>
     </item>
     
   </channel>
