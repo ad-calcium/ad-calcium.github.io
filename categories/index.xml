@@ -6,10 +6,19 @@
     <description>Recent content in Categories on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Thu, 01 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Dec 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>注册ChatGPT教程</title>
+      <link>https://ad-calcium.github.io/2022/12/%E6%B3%A8%E5%86%8Cchatgpt%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 07 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2022/12/%E6%B3%A8%E5%86%8Cchatgpt%E6%95%99%E7%A8%8B/</guid>
+      <description>‍ 0x01 前言 最近ChatGPT很火，但是有人注册会经常出现不服务当前地区问题，现在手把手教你解决。 0x02 准备 1.代理，要求是，韩国，日本，印度，新加</description>
+    </item>
     
     <item>
       <title>编写YAML格式POC</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/12/springboot%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
       <description>Spring Boot 相关漏洞学习资料，利用方法和技巧合集，黑盒安全评估 check list 文章转载至：https://github.com/LandGrey/SpringB</description>
-    </item>
-    
-    <item>
-      <title>Grafana任意文件读取漏洞(CVE-2021-43798)</title>
-      <link>https://ad-calcium.github.io/2021/12/grafana%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-43798/</link>
-      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/12/grafana%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9Ecve-2021-43798/</guid>
-      <description>0x01 漏洞详情 Grafana是一个跨平台、开源的数据可视化网络应用程序平台。用户配置连接的数据源之后，Grafana可以在网络浏览器里显示数据图</description>
     </item>
     
   </channel>
