@@ -700,10 +700,10 @@ echo &gt; /www/server/panel/logs/task.pid
 echo &gt; /www/server/panel/logs/terminal.log
 </code></pre>
 <p>还有网站日志，毕竟你搞别人了，屁股要擦干净</p>
-<pre><code>tail -n 20  www.vdouya.top.log
+<pre><code>tail -n 20  xxxxx.log
 
-sed -i '/IP/d' /www/wwwlogs/www.vdouya.top.log
-sed -i '/IP/d' /www/wwwlogs/www.vdouya.top.log
+sed -i '/IP/d' /www/wwwlogs/xxxxxx.log
+sed -i '/IP/d' /www/wwwlogs/xxxxx.log
 </code></pre>
 <p>还有反弹shell，在进程中会存在，通过ps -aux查看进程，将反弹shell的进程、提权的进程都kill掉等等</p>
 
