@@ -40,5 +40,14 @@ Hugo makes use of a variety of open source projects including:
  https://github.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://ad-calcium.github.io/1/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/1/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/</guid>
+      <description>记一次SQL注入引发的日志分析案例 ++++ author = &amp;ldquo;AD钙奶&amp;rdquo; title = &amp;ldquo;记一次SQL注入引发的日志分析案例&amp;rdquo</description>
+    </item>
+    
   </channel>
 </rss>
