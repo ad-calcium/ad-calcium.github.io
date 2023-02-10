@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        黑群辉洗白方案-7.X版本 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章" />
+    <meta name="generator" content="Hugo 0.91.2 with theme pure" />
+    <title>黑群辉洗白方案-7.X版本 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="黑群辉洗白方案-7.X版本" />
+<meta property="og:description" content="买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-05T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2023/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/12/%E6%B3%A8%E5%86%8Cchatgpt%E6%95%99%E7%A8%8B/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/12/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8Fpoc/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2022/05/%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E6%B8%97%E9%80%8F/" />
+
+<meta itemprop="name" content="黑群辉洗白方案-7.X版本">
+<meta itemprop="description" content="买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章"><meta itemprop="datePublished" content="2023-02-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1294">
+<meta itemprop="keywords" content="黑群辉," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="黑群辉洗白方案-7.X版本"/>
+<meta name="twitter:description" content="买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>不忘初心方能始终</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link" rel="1">cobalt-strike<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link" rel="2">exchange系列<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">linux提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="3">mssql<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">mysql提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link" rel="2">spring<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link" rel="2">web<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="7">web安全<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link" rel="1">win10相关<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link" rel="1">zabbix<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link" rel="3">信息收集<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="1">内网<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="12">内网渗透<span
+               class="tag-list-count">12</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link" rel="4">内网环境搭建<span
+               class="tag-list-count">4</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link" rel="1">向日葵<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="6">域渗透<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="2">小技巧<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link" rel="1">攻防演练<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="tag-list-link" rel="1">渗透测试<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="28">漏洞复现<span
+               class="tag-list-count">28</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="tag-list-link" rel="1">编写yaml格式的poc<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link" rel="1">钓鱼<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/" class="tag-list-link" rel="1">黑群辉<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/cobalt-strike/" class="category-list-link">cobalt-strike</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/exchange%E7%B3%BB%E5%88%97/" class="category-list-link">exchange系列</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="category-list-link">信息收集</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">6</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-list-link">内网环境搭建</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="category-list-link">攻防演练</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-list-link">渗透测试</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">32</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="category-list-link">编写yaml格式的poc</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E9%BB%91%E7%BE%A4%E8%BE%89/" class="category-list-link">黑群辉</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link">cobalt-strike</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link">exchange系列</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link">linux提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link">mysql提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link">spring</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link">web</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link">win10相关</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link">zabbix</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link">信息收集</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link">内网环境搭建</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link">向日葵</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link">域渗透</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link">攻防演练</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="tag-list-link">渗透测试</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">28</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="tag-list-link">编写yaml格式的poc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link">钓鱼</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/" class="tag-list-link">黑群辉</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/" class="title">黑群辉洗白方案-7.X版本</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-02-05 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-02-05</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/" class="title">记一次SQL注入引发的日志分析案例</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-01-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-01-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2022/12/%E6%B3%A8%E5%86%8Cchatgpt%E6%95%99%E7%A8%8B/" class="title">注册ChatGPT教程</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2022-12-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-12-07</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2022/12/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8Fpoc/" class="title">编写YAML格式POC</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2022-12-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-12-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2022/08/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%A4%8D%E7%9B%98/" class="title">攻防演练复盘</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2022-08-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-08-29</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/"
+    >黑群辉洗白方案-7.X版本</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/" class="article-date">
+  <time datetime="2023-02-05 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-02-05</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E9%BB%91%E7%BE%A4%E8%BE%89/"> 黑群辉 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/"> 黑群辉 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1294字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>‍</p>
+<h2 id="0x01-前言">0x01 前言</h2>
+<p>　　买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章</p>
+<p>　　‍</p>
+<h2 id="0x02-全黑群晖半洗白全洗白-有什么区别">0x02 全黑群晖/半洗白/全洗白 有什么区别</h2>
+<h3 id="21-半洗白和全洗白需要什么条件">2.1 半洗白和全洗白需要什么条件</h3>
+<p>　　全洗白：SN码和mac地址都正确(一般需要去淘宝或者闲鱼购买，不同的型号价格不一样，一般10-20元)</p>
+<p>　　半洗白：SN码正确，mac地址对不上(网上一般可找到sn码子，网上花点时间找找即可，白嫖)</p>
+<p>　　‍</p>
+<h3 id="32-全黑群晖-半洗白-全洗白-有什么区别">3.2 全黑群晖/ 半洗白 /全洗白 有什么区别</h3>
+<p>　　1、没洗白：</p>
+<p>　　⑴ 不能注册和登录QuickConnect（简称“QC”，就是没有公网的用户利用群晖服务器进行内网穿透）；</p>
+<p>　　⑵ DS Photo/Moments套件的预览图是黑的；</p>
+<p>　　⑶ DS Video看片时视频质量的高、中、低码率不能自由切换只能选择原码；</p>
+<p>　　⑷ DS Video不能离线转码（群晖默认不能播放RM/RMVB等文件格式，以前网上下载的影片多为此类格式，所以有时需要转换成能播放的MP4文件格式）。</p>
+<p>　　2、半洗白：只需要正确的序列号即可,mac 地址不合法也无所谓,可以使用视频的缩略图和转码功能,但是无法使用 qc 功能</p>
+<p>　　⑴ DS Photo/Moments预览图正常；</p>
+<p>　　⑵ DS Video的视频质量高、中、低码率可以自由切换；</p>
+<p>　　⑶ DS Video可以离线转码。但是不能注册和登录QuickConnect。</p>
+<p>　　3、全洗白：以上的限制全部都没有啦包括登录QuickConnect。只有全洗白，才能够正常的登录QC，群晖的所有功能都可以使用(<strong>dsm7会检测qc或者ddns，不建议使用该功能</strong>)</p>
+<p>　　​<img src="assets/ce524b29f555cb7b458097287a26d8f-20230210093101-ufhwxqy.jpg" alt="ce524b29f555cb7b458097287a26d8f">​</p>
+<p>　　‍</p>
+<p>　　‍</p>
+<p>　　‍</p>
+<h2 id="0x03-简易洗白教程">0x03 简易洗白教程</h2>
+<h3 id="31-修改ip地址">3.1 修改ip地址</h3>
+<p>　　登录群晖后台&ndash;控制面板&ndash;网络&ndash;网络界面&ndash;点击编辑</p>
+<p>　　​​<img src="assets/image-20230210091322-s24qv5g.png" alt="image">​</p>
+<p>　　‍</p>
+<p>　　改成自动获取网络设备，如下图（此操作是为了避免mac地址变动造成群晖局域网IP变更【如果路由器后台设置mac-IP地址绑定的请先取消绑定】）</p>
+<p>　　​<img src="assets/image-20230210091507-qzrjzk2.png" alt="image">​</p>
+<p>　　‍</p>
+<h3 id="32-开启ssh">3.2 开启ssh</h3>
+<p>　　开启SSH，端口默认22即可：【洗白完成后即可关闭ssh】；</p>
+<p>　　​​<img src="assets/image-20230210091554-pa36y6x.png" alt="image">​</p>
+<p>　　‍</p>
+<h3 id="33-登录ssh并切户root用户">3.3 登录ssh并切户root用户</h3>
+<p>　　‍</p>
+<p>　　登录ssh，输入群晖管理账号回车，密码回车【输入的密码是看不见的】，输入 <code>sudo -i ​</code>​   回车，再次输入密码回车。整个流程如图；</p>
+<p>　　​<img src="assets/image-20230203130509-9hdxg3v.png" alt="image">​</p>
+<p>　　‍</p>
+<h3 id="34-挂载boot目录">3.4 挂载boot目录</h3>
+<p>　　‍</p>
+<p>　　复制下面的代码,鼠标进入putty窗口后[右键粘贴]再回车，回车后画面如图；</p>
+<pre><code>mkdir -p /tmp/boot 
+cd /dev 
+mount -t vfat synoboot1 /tmp/boot/ 
+cd /tmp/boot/boot 
+cd grub 
+vi grub.cfg
+</code></pre>
+<p>　　​<img src="assets/image-20230203130557-c6koizn.png" alt="image">​</p>
+<h3 id="35-修改sn和mac地址">3.5 修改SN和MAC地址</h3>
+<p>　　方向键进入最下方2大段内容修改sn、mac1；务必注意不要修改其他内容，sn mac前后都有一个空格。</p>
+<p>　　​​<img src="assets/image-20230210093835-31u5epk.png" alt="image">​​</p>
+<p>　　进入群晖网页后台，重启下群晖系统洗白流程完毕。在重启的过程中中注册个账号<code>https://account.synology.cn/zh-cn/profile</code>​</p>
+<p>　　‍</p>
+<h3 id="36-验证洗白功能">3.6 验证洗白功能</h3>
+<p>　　注册成功之后登录群辉，在设置中登录登录账号，解锁全部功能</p>
+<p>　　​<img src="assets/image-20230210091708-teg1dop.png" alt="image">​</p>
+<p>　　‍</p>
+<p>　　在套件中心安装<code>Active Backup for Business ​</code>​ <code>Synology Photos</code>​ <code>Advanced Media Extensions</code>​三个套件是否正常，打开<code>Advanced Media Extensions</code>​，检查解码是不是正常</p>
+<p>　　​<img src="assets/image-20230210094334-5tc9oyh.png" alt="image">​</p>
+<p>　　‍</p>
+<p>　　‍</p>
+<h2 id="0x04-洗白教程">0x04 洗白教程</h2>
+<p>　　如果不想用上述方法洗白的，先将群辉关机，将启动盘插入电脑，使用<code>DiskGenius</code>​找到U盘，找到grub.cfg文件，修改里面的SN码和MAC地址</p>
+<p>　　​​<img src="assets/image-20230210111713-h2660bf.png" alt="image">​​</p>
+<p>　　‍</p>
+<h2 id="0x05-参考教程">0x05 参考教程</h2>
+<pre><code>https://docs.qq.com/doc/DVGxMbm5Pc0xTd2hj
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/" title="黑群辉洗白方案-7.X版本" target="_blank" rel="external">https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2023/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/" title="记一次SQL注入引发的日志分析案例"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2023
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-289626488-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>

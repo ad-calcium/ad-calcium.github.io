@@ -6,10 +6,19 @@
     <description>Recent content in Categories on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>impacket套件使用</title>
+      <link>https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/09/impacket%E5%A5%97%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>0x00 前言 Impacket官方介绍为用于处理网络协议的Python类的集合，该集合包含了渗透测试中常见的工具种类，包括远程命令执行、信息收集、票</description>
+    </item>
     
     <item>
       <title>windows抓取hash总结</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</guid>
       <description>漏洞介绍 2020年08月12日，Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏</description>
-    </item>
-    
-    <item>
-      <title>redis未授权</title>
-      <link>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
-      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
-      <description>Redis介绍 Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库。 安装教程 第1步</description>
     </item>
     
   </channel>

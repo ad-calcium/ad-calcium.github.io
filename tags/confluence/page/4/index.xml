@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>redis未授权</title>
+      <link>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/redis%E6%9C%AA%E6%8E%88%E6%9D%83/</guid>
+      <description>Redis介绍 Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库。 安装教程 第1步</description>
+    </item>
+    
+    <item>
       <title>Yapi远程命令执行漏洞</title>
       <link>https://ad-calcium.github.io/2021/07/yapi%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
