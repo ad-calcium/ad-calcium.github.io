@@ -6,10 +6,19 @@
     <description>Recent content in 黑群辉 on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NetLogon 域内提权漏洞（CVE-2020-1472）</title>
+      <link>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E5%9F%9F%E6%B8%97%E9%80%8F-netlogon-%E5%9F%9F%E5%86%85%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9Ecve-2020-1472/</guid>
+      <description>漏洞介绍 2020年08月12日，Windows官方 发布了 NetLogon 特权提升漏洞 的风险通告，该漏洞编号为 CVE-2020-1472，漏洞等级：严重，漏</description>
+    </item>
     
     <item>
       <title>redis未授权</title>

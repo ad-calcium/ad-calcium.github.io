@@ -6,10 +6,19 @@
     <description>Recent content in web dev on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 05 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/web-dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>黑群晖DSM7.X引导用arpl编译教程</title>
+      <link>https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.x%E5%BC%95%E5%AF%BC%E7%94%A8arpl%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.x%E5%BC%95%E5%AF%BC%E7%94%A8arpl%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</guid>
+      <description>0x01 前言 因为换了块华擎的J3455的主板，网卡是Realtek RTL8111GR​，网上没有现成的引导文件，所以说只能自己编译了，由于第一次编</description>
+    </item>
     
     <item>
       <title>黑群辉洗白方案-7.X版本</title>
@@ -17,7 +26,7 @@
       <pubDate>Sun, 05 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/</guid>
-      <description>‍ 0x01 前言 买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章 ‍ 0x02 全黑群晖/半洗白/全洗白 有什么区别 2.1 半洗白和全洗白</description>
+      <description>0x01 前言 买了个黑群辉不洗白有些功能用不了，买个洗白码也用不了多少钱，所以就有了此篇文章 0x02 全黑群晖/半洗白/全洗白 有什么区别 2.1 半洗白和全洗白需要</description>
     </item>
     
     <item>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</guid>
       <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231437 CDN 2021 完全攻击指南（一）中主要介绍了当下</description>
-    </item>
-    
-    <item>
-      <title>Apache Log4j任意代码执行漏洞</title>
-      <link>https://ad-calcium.github.io/2021/12/apache-log4j%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</link>
-      <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/12/apache-log4j%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</guid>
-      <description>0x01 漏洞描述 Apache Log4j存在任意代码执行漏洞，经过分析，该组件存在Java JNDI注入漏洞，当程序将用户输入的数据进行日志，即可触发此漏洞，成</description>
     </item>
     
   </channel>

@@ -4,56 +4,63 @@
   
   <url>
     <loc>https://ad-calcium.github.io/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/categories/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ad-calcium.github.io/categories/nas/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/posts/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/series/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/tags/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/series/web-dev/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.x%E5%BC%95%E5%AF%BC%E7%94%A8arpl%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ad-calcium.github.io/categories/%E9%BB%91%E7%BE%A4%E8%BE%89/</loc>
-    <lastmod>2023-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
