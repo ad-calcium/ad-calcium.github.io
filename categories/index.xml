@@ -6,10 +6,19 @@
     <description>Recent content in Categories on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Feb 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>记一次艰难的web打点</title>
+      <link>https://ad-calcium.github.io/2023/02/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84web%E6%89%93%E7%82%B9/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2023/02/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84web%E6%89%93%E7%82%B9/</guid>
+      <description>‍ 0x01 前言 由于近期参加了某地区的攻防演练，近期会分享几篇关于本次攻防演练的文章，写的比较水。如果写的不好的地方，还请各位师傅指点。 0x02 外网打点 当</description>
+    </item>
     
     <item>
       <title>黑群晖DSM7.X引导用arpl编译教程</title>
@@ -35,7 +44,7 @@
       <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://ad-calcium.github.io/2023/01/%E8%AE%B0%E4%B8%80%E6%AC%A1sql%E6%B3%A8%E5%85%A5%E5%BC%95%E5%8F%91%E7%9A%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/</guid>
-      <description>‍ 外网渗透 通过awvs，发现存在注入一枚，sqlmap一把梭哈，没梭哈成功的说明姿势不对 sqlmap -r 222.txt --batch --random-agent --force-ssl --current-db 跑出来的注入类型还挺多的 Parameter: MULTIPART #1* ((custom) POST) Type: boolean-based</description>
+      <description>‍0x01 前言 平时喜欢打战练手，所以才有此文章，写的比较水。如果写的不好的地方，还请各位师傅指点。 0x02 外网渗透 通过awvs，发现存在注入一枚，</description>
     </item>
     
     <item>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%B8%89/</guid>
       <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231441 CDN 2021 完全攻击指南 （二）中主要介绍了协议</description>
-    </item>
-    
-    <item>
-      <title>CDN 2021 完全攻击指南 （二）</title>
-      <link>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</link>
-      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2021/12/cdn-2021-%E5%AE%8C%E5%85%A8%E6%94%BB%E5%87%BB%E6%8C%87%E5%8D%97%E4%BA%8C/</guid>
-      <description>文章转载安全客，源地址：https://www.anquanke.com/post/id/231437 CDN 2021 完全攻击指南（一）中主要介绍了当下</description>
     </item>
     
   </channel>

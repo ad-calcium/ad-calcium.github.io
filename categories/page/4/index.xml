@@ -6,10 +6,19 @@
     <description>Recent content in Categories on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Feb 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>离线安装docker</title>
+      <link>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>1.下载docker-19.03.8.tgz wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.8.tgz 2.解压 docker-19.03.8.tgz tar -xvf docker-19.03.8.tgz 复制 sudo cp docker/* /usr/bin/ 4.复制一下内容到 vim /etc/systemd/system/docker.service [Unit] Description=Docker Application Container Engine Documentation=https://docs.docker.com After=network-online.target firewalld.service Wants=network-online.target [Service] Type=notify # the default is not to use systemd for cgroups</description>
+    </item>
     
     <item>
       <title>NetLogon 域内提权漏洞（CVE-2020-1472）</title>
