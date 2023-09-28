@@ -40,7 +40,7 @@
 <meta itemprop="name" content="黑群晖DSM7.XCPU型号识别错误的解决方法">
 <meta itemprop="description" content="因为通过arpl引导编译了系统，cpu显示有点问题，原本CPU是i5-4590T系统显示的是J3455，作为强迫症的我，肯定是接受不了的，网站一顿查阅资料，最终解决了该问题。"><meta itemprop="datePublished" content="2023-03-13T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="287">
+<meta itemprop="wordCount" content="286">
 <meta itemprop="keywords" content="黑群辉," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="黑群晖DSM7.XCPU型号识别错误的解决方法"/>
 <meta name="twitter:description" content="因为通过arpl引导编译了系统，cpu显示有点问题，原本CPU是i5-4590T系统显示的是J3455，作为强迫症的我，肯定是接受不了的，网站一顿查阅资料，最终解决了该问题。"/>
@@ -257,8 +257,8 @@
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="29">漏洞复现<span
-               class="tag-list-count">29</span></a>
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="28">漏洞复现<span
+               class="tag-list-count">28</span></a>
             
             
             <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
@@ -324,7 +324,7 @@ function tagCloud(where, min, max) {
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-list-link">渗透测试</a><span class="category-list-count">2</span></li>
-            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">33</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">32</span></li>
             <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="category-list-link">编写yaml格式的poc</a><span class="category-list-count">1</span></li>
         </ul>
     </div>
@@ -444,7 +444,7 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
-                    class="tag-list-count">29</span></li>
+                    class="tag-list-count">28</span></li>
             
             
             <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
@@ -571,7 +571,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/"> 黑群辉 </a>
   </span>
 
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 287字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 286字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
       </div>
     </div>
@@ -579,8 +579,8 @@ function tagCloud(where, min, max) {
       <h2 id="0x01-前言">0x01 前言</h2>
 <p>因为通过arpl引导编译了系统，cpu显示有点问题，原本CPU是i5-4590T系统显示的是J3455，作为强迫症的我，肯定是接受不了的，网站一顿查阅资料，最终解决了该问题。</p>
 <h2 id="0x02-解决方法">0x02 解决方法</h2>
-<p>1.如图所示，CPU始终显示i5-4590T，实际是N3150</p>
-<p><img src="images/image-20230312223335075.png" alt="image-20230312223335075"></p>
+<p>1.如图所示，CPU实际是i5-4590T，实际是J3455</p>
+<p><img src="images/image-20230317094315832.png" alt="image-20230317094315832"></p>
 <p>2.下载修复包，下载最新版本的cpuinfo，github地址<code>https://github.com/FOXBI/ch_cpuinfo</code></p>
 <pre><code>wget https://gitcode.net/mirrors/FOXBI/ch_cpuinfo/-/archive/ch_cpuinfo/ch_cpuinfo-ch_cpuinfo.tar
 </code></pre>
@@ -596,6 +596,7 @@ chmod +x ch_cpuinfo
 </code></pre>
 <p><img src="images/image-20230312224643493.png" alt="image-20230312224643493"></p>
 <p>等待1~2分钟,<strong>重新登录系统即可看到正确的cpu型号</strong></p>
+<p><img src="images/image-20230317094244233.png" alt="image-20230317094244233"></p>
 <p>Tips：如果更换不同型号的主板，需要重新执行ch_cpuinfo</p>
 <h2 id="0x03-参考地址">0x03 参考地址</h2>
 <pre><code>https://blog.csdn.net/Ya_lv/article/details/126331763
