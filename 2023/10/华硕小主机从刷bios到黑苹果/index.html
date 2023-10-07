@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        华硕小主机从刷bios到黑苹果 - AD钙奶的博客
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结果刷好之后直接丢吃灰了。" />
+    <meta name="generator" content="Hugo 0.91.2 with theme pure" />
+    <title>华硕小主机从刷bios到黑苹果 - AD钙奶的博客</title>
+    
+    
+    <link rel="stylesheet" href="https://ad-calcium.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="华硕小主机从刷bios到黑苹果" />
+<meta property="og:description" content="看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结果刷好之后直接丢吃灰了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ad-calcium.github.io/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-06T00:00:00+00:00" />
+<meta property="og:see_also" content="https://ad-calcium.github.io/2023/03/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.xcpu%E5%9E%8B%E5%8F%B7%E8%AF%86%E5%88%AB%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2023/03/weblogic%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Ccve-2023-21839/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2023/02/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84web%E6%89%93%E7%82%B9/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.x%E5%BC%95%E5%AF%BC%E7%94%A8arpl%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" /><meta property="og:see_also" content="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E8%BE%89%E6%B4%97%E7%99%BD%E6%96%B9%E6%A1%88-7.x%E7%89%88%E6%9C%AC/" />
+
+<meta itemprop="name" content="华硕小主机从刷bios到黑苹果">
+<meta itemprop="description" content="看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结果刷好之后直接丢吃灰了。"><meta itemprop="datePublished" content="2023-10-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-10-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3374">
+<meta itemprop="keywords" content="黑苹果," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="华硕小主机从刷bios到黑苹果"/>
+<meta name="twitter:description" content="看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结果刷好之后直接丢吃灰了。"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/ad-calcium" target="_blank">
+            <img class="img-circle img-rotate" src="https://ad-calcium.github.io/avatar.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">AD钙奶</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>不忘初心方能始终</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link" rel="1">cobalt-strike<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link" rel="1">confluence<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link" rel="2">exchange系列<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">linux提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link" rel="3">mssql<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="2">mssql提权<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link" rel="1">mysql提权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link" rel="2">spring<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link" rel="2">web<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link" rel="7">web安全<span
+               class="tag-list-count">7</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="1">web渗透<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link" rel="1">win10相关<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link" rel="1">zabbix<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link" rel="3">信息收集<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link" rel="1">内网<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="12">内网渗透<span
+               class="tag-list-count">12</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link" rel="4">内网环境搭建<span
+               class="tag-list-count">4</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link" rel="1">凭据窃取<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link" rel="1">向日葵<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link" rel="6">域渗透<span
+               class="tag-list-count">6</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link" rel="1">安装博客<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link" rel="2">小技巧<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link" rel="1">攻防演练<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link" rel="1">未授权<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link" rel="1">横向移动<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link" rel="1">流量代理<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="tag-list-link" rel="1">渗透测试<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link" rel="28">漏洞复现<span
+               class="tag-list-count">28</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link" rel="1">端口复用<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="tag-list-link" rel="1">编写yaml格式的poc<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="1">软件安装<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link" rel="1">钓鱼<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/" class="tag-list-link" rel="3">黑群辉<span
+               class="tag-list-count">3</span></a>
+            
+            
+            <a href="https://ad-calcium.github.io/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" class="tag-list-link" rel="1">黑苹果<span
+               class="tag-list-count">1</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  15 ,  30 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/cobalt-strike/" class="category-list-link">cobalt-strike</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/exchange%E7%B3%BB%E5%88%97/" class="category-list-link">exchange系列</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/nas/" class="category-list-link">nas</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/sql%E6%B3%A8%E5%85%A5/" class="category-list-link">sql注入</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/web%E5%AE%89%E5%85%A8/" class="category-list-link">web安全</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="category-list-link">信息收集</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-list-link">内网渗透</a><span class="category-list-count">6</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-list-link">内网环境搭建</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="category-list-link">凭据窃取</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-list-link">小技巧</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%8A%98%E8%85%BE/" class="category-list-link">折腾</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="category-list-link">攻防演练</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-list-link">数据库</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="category-list-link">未授权漏洞</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="category-list-link">横向移动</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-list-link">渗透测试</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-list-link">漏洞复现</a><span class="category-list-count">32</span></li>
+            <li class="category-list-item"><a href="https://ad-calcium.github.io/categories/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="category-list-link">编写yaml格式的poc</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/cobalt-strike/" class="tag-list-link">cobalt-strike</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/confluence/" class="tag-list-link">confluence</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/exchange%E7%B3%BB%E5%88%97/" class="tag-list-link">exchange系列</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/linux%E6%8F%90%E6%9D%83/" class="tag-list-link">linux提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql/" class="tag-list-link">mssql</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mssql%E6%8F%90%E6%9D%83/" class="tag-list-link">mssql提权</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/mysql%E6%8F%90%E6%9D%83/" class="tag-list-link">mysql提权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/spring/" class="tag-list-link">spring</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web/" class="tag-list-link">web</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E5%AE%89%E5%85%A8/" class="tag-list-link">web安全</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/web%E6%B8%97%E9%80%8F/" class="tag-list-link">web渗透</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/win10%E7%9B%B8%E5%85%B3/" class="tag-list-link">win10相关</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/zabbix/" class="tag-list-link">zabbix</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="tag-list-link">信息收集</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91/" class="tag-list-link">内网</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="tag-list-link">内网渗透</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="tag-list-link">内网环境搭建</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%87%AD%E6%8D%AE%E7%AA%83%E5%8F%96/" class="tag-list-link">凭据窃取</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%90%91%E6%97%A5%E8%91%B5/" class="tag-list-link">向日葵</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="tag-list-link">域渗透</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2/" class="tag-list-link">安装博客</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="tag-list-link">小技巧</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" class="tag-list-link">攻防演练</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%9C%AA%E6%8E%88%E6%9D%83/" class="tag-list-link">未授权</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8/" class="tag-list-link">横向移动</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B5%81%E9%87%8F%E4%BB%A3%E7%90%86/" class="tag-list-link">流量代理</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="tag-list-link">渗透测试</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="tag-list-link">漏洞复现</a><span
+                    class="tag-list-count">28</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8/" class="tag-list-link">端口复用</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E7%BC%96%E5%86%99yaml%E6%A0%BC%E5%BC%8F%E7%9A%84poc/" class="tag-list-link">编写yaml格式的poc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="tag-list-link">软件安装</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%92%93%E9%B1%BC/" class="tag-list-link">钓鱼</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%BB%91%E7%BE%A4%E8%BE%89/" class="tag-list-link">黑群辉</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://ad-calcium.github.io/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" class="tag-list-link">黑苹果</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/" class="title">华硕小主机从刷bios到黑苹果</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-10-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-10-06</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/03/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.xcpu%E5%9E%8B%E5%8F%B7%E8%AF%86%E5%88%AB%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="title">黑群晖DSM7.XCPU型号识别错误的解决方法</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-03-13 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-03-13</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/03/weblogic%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Ccve-2023-21839/" class="title">weblogic命令执行(CVE-2023-21839)</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-03-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-03-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/02/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84web%E6%89%93%E7%82%B9/" class="title">记一次艰难的web打点</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-02-20 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-02-20</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://ad-calcium.github.io/2023/02/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.x%E5%BC%95%E5%AF%BC%E7%94%A8arpl%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" class="title">黑群晖DSM7.X引导用arpl编译教程</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2023-02-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-02-07</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/"
+    >华硕小主机从刷bios到黑苹果</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://ad-calcium.github.io/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/" class="article-date">
+  <time datetime="2023-10-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-10-06</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/"> 折腾 </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"> 黑苹果 </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3374字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="0x01-前言">0x01 前言</h2>
+<p>看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结果刷好之后直接丢吃灰了。</p>
+<h2 id="0x02-主机配置">0x02 主机配置</h2>
+<pre><code>型号：华硕chromebox3 cn62
+
+cpu：i5-8250u
+内存：海力士 4g*2  2400
+固态：闪迪128g固态（原机自带sata协议的m2，插槽支持nvme和sata协议的m2固态，2280）
+网卡：intel7265NGW网卡
+</code></pre>
+<p>买过来是chromebox的系统，需要刷bios才能安装系统。群友说可以把系统升级到最新这样子就不用编程器了，我是直接购买了编程器，直接嘎嘎乱刷。</p>
+<h2 id="0x03-编程器相关">0x03 编程器相关</h2>
+<h3 id="31编程器软件和驱动安装">3.1编程器软件和驱动安装</h3>
+<p>编程器软件</p>
+<p><img src="images/image-20230916130812707.png" alt="image-20230916130812707"></p>
+<p>安装编程器驱动</p>
+<p>进入 <code>CH341-Drivers</code> 驱动目录</p>
+<p><img src="images/image-20230916130832404.png" alt="image-20230916130832404"></p>
+<p>进入 <code>CH341Parallel_driver_support WIN7</code> 目录</p>
+<p><img src="images/image-20230916130905160.png" alt="image-20230916130905160"></p>
+<p>选择 <code>CH341PAR.EXE</code></p>
+<p><img src="images/image-20230916130915426.png" alt="image-20230916130915426"></p>
+<p>点击安装即可</p>
+<p><img src="images/image-20230916130931301.png" alt="image-20230916130931301"></p>
+<h3 id="32编程器架子用法">3.2编程器架子用法</h3>
+<p>按照我这种插法就行</p>
+<p><img src="images/image-20230916131149461.png" alt=""></p>
+<p>cms 芯片在 bios 电池旁边，很容易就找到了，夹夹子是有讲究的，要一侧对着 cms 芯片的，夹子的一侧要与 cms 小芯片相对，当一边对上之后在自然的放开(<strong>切勿直接垂直夹着，那样大几率对不准，这里是新手的坑点，小主机不用通电</strong>)</p>
+<p><img src="images/image-20230916131138201.png" alt="image-20230916131138201"></p>
+<h3 id="33刷写-bios">3.3刷写 BIOS</h3>
+<p>上述操作都完成之后，我们就可以打开刷写 bios 的软件了，如下图，点击检测 FLASH 型号，如果提示 fff 就是夹子没夹好，重新把夹 cms 芯片的夹子重新对准并从新夹。</p>
+<p><img src="images/image-20230915224309570.png" alt="image-20230915224309570"></p>
+<p>还有一种报错，提示 <code>在连接至 USBAsp 时发生错误CH341(-1)</code> 这种一般是插错了，检查一下上述操作。笔者在开始的时候也是疯狂报错。</p>
+<p><img src="images/image-20230916131431752.png" alt="image-20230916131431752"></p>
+<p>当上述操作都正确的时候，点击检测 FLASH 芯片则会提示以下信息，选择 FLASH 芯片要选择 <code>W25Q128JV(WINBOND)</code></p>
+<p><img src="images/image-20230915224619065.png" alt="image-20230915224619065"></p>
+<p>选择 bios 刷机程序，我这边选择的是 <code>g2corebot.bin</code></p>
+<p><img src="images/image-20230916131813735.png" alt="image-20230916131813735"></p>
+<p>选择好之后，点击自动执行即可</p>
+<p><img src="images/image-20230922235746906.png" alt="image-20230922235746906"></p>
+<p>已经在刷机了</p>
+<p><img src="images/image-20230915223810584.png" alt="image-20230915223810584"></p>
+<p><img src="images/image-20230915224025774.png" alt="image-20230915224025774"></p>
+<p>当写入成功会有相关提示，例如下图，说明刷写完成</p>
+<p><img src="images/image-20230915224515022.png" alt="image-20230915224515022"></p>
+<p>刷机成功后，再次开机是 coreboot 兔子 BIOS(感觉这个 bios 有 bug，有的时候进 bios 设置会卡死，如果常见时间没动那就直接断电在重新开吧)</p>
+<p><img src="images/image-20230916132259795.png" alt="image-20230916132259795"></p>
+<p>进入 bios 是这样子的界面</p>
+<p><img src="images/image-20230916132448445.png" alt="image-20230916132448445"></p>
+<p>接下来的操作就简单了，和安装系统差不多了，根据自己得喜好安装 Windows 系统或者黑苹果，笔者这边喜欢用黑苹果，所以搞个黑苹果</p>
+<h2 id="0x04-安装-macos">0x04 安装 MACOS</h2>
+<h3 id="41制作启动盘并刻录">4.1制作启动盘并刻录</h3>
+<pre><code>macOS Ventura 13.4.1 (22F82)
+https://www.aliyundrive.com/s/gDSytaiiVfa
+</code></pre>
+<p>镜像下载好之后使用 etcher 工具刻录到 U 盘</p>
+<pre><code>https://www.balena.io/etcher
+</code></pre>
+<p><img src="images/image-20230916132933601.png" alt="image-20230916132933601"></p>
+<p>这里就看你U盘的速度了</p>
+<p><img src="images/image-20230922205631413.png" alt="image-20230922205631413"></p>
+<p>换了个固态烧的很快很快</p>
+<p><img src="images/image-20230922211528009.png" alt="image-20230922211528009"></p>
+<h3 id="42下载-efi-引导文件">4.2下载 efi 引导文件</h3>
+<p><a href="https://github.com/sqlsec/Asus-ChromeBox-i7-8550U/releases/download/1.0/EFI.zip">https://github.com/sqlsec/Asus-ChromeBox-i7-8550U/releases/download/1.0/EFI.zip</a></p>
+<p>将引导 EFI 引导拷贝到 U 盘里这样就可以直接引导了</p>
+<p><img src="images/image-20230922212930364.png" alt="image-20230922212930364"></p>
+<h3 id="43开始安装-macos">4.3开始安装 MACOS</h3>
+<p>开进按 <code>esc</code> 进入 bios，选择需要的引导盘即可</p>
+<p><img src="images/image-20230916132505261.png" alt="image-20230916132505261"></p>
+<p>然后选择「Install macOS Ventura」</p>
+<p><img src="images/image-20230922212128227.png" alt="image-20230922212128227"></p>
+<h4 id="431格式化磁盘">4.3.1格式化磁盘</h4>
+<p>进入系统之后</p>
+<p><img src="images/image-20230916133850974.png" alt="image-20230916133850974"></p>
+<p>点击显示所有设备</p>
+<p><img src="images/image-20230916134144167.png" alt="image-20230916134144167"></p>
+<p>找到你的固态选择 <code>抹除</code></p>
+<p><img src="images/image-20230916133926884.png" alt="image-20230916133926884"></p>
+<p>填写名称，格式选择 APFS, 方案选择 GUID 分区</p>
+<p><img src="images/image-20230922213310729.png" alt="image-20230922213310729"></p>
+<p>抹盘完成后关掉窗口：</p>
+<p><img src="images/image-20230916134039729.png" alt="image-20230916134039729"></p>
+<h4 id="432第一遍进度条">4.3.2第一遍进度条</h4>
+<p>点击安装 MAC OS</p>
+<p><img src="images/image-20230916134049928.png" alt="image-20230916134049928"></p>
+<p>选择继续</p>
+<p><img src="images/image-20230916134100567.png" alt="image-20230916134100567"></p>
+<p>点击同意</p>
+<p><img src="images/image-20230916134110057.png" alt="image-20230916134110057"></p>
+<p>选择你刚刚格式化的磁盘</p>
+<p><img src="images/image-20230916134333314.png" alt="image-20230916134333314"></p>
+<p>接着会开始从 U 盘中拷贝镜像写入到硬盘中(这里很慢很慢，等等吧)</p>
+<p><img src="images/image-20230916134355201.png" alt="image-20230916134355201"></p>
+<h4 id="433第二遍进度条">4.3.3第二遍进度条</h4>
+<p>上述安装好之后会重启系统，继续选择我们的 U 盘引导</p>
+<p><img src="images/image-20230916134457148.png" alt="image-20230916134457148"></p>
+<p>选择 <code>macOS Install</code></p>
+<p><img src="images/image-20230916134518170.png" alt="image-20230916134518170"></p>
+<p>会在等待一次进度条(这个进度条后面会显示安装的剩余时间，我们耐心等待即可。)</p>
+<p><img src="images/image-20230916134601396.png" alt="image-20230916134601396"></p>
+<p>上面的进度条走完之后会自动重启，继续选择 U 盘启动</p>
+<p><img src="images/image-20230916134721863.png" alt="image-20230916134721863"></p>
+<h4 id="434第三次进度条">4.3.4第三次进度条</h4>
+<p>继续选择 <code>macOS Install</code>, 会继续走一遍进度条, 耐心等待</p>
+<p><img src="images/image-20230916134740286.png" alt="image-20230916134740286"></p>
+<p>继续耐心等待，又要跑一次进度条</p>
+<p><img src="images/image-20230916135221171.png" alt="image-20230916135221171"></p>
+<h4 id="435第四次进度条">4.3.5第四次进度条</h4>
+<p>继续选择 U 盘引导</p>
+<p><img src="images/image-20230916135252951.png" alt="image-20230916135252951"></p>
+<p>此时 OC 的界面如下，可以看到我们之前自定义名称的 Mac 格式的硬盘出现了</p>
+<p><img src="images/image-20230916135314698.png" alt="image-20230916135314698"></p>
+<p>选择 <code>MACOC</code>, 这个时候会再走一次进度条</p>
+<p><img src="images/image-20230916135411755.png" alt="image-20230916135411755"></p>
+<h4 id="436第五遍进度条">4.3.6第五遍进度条</h4>
+<p>继续选择 U 盘引导</p>
+<p><img src="images/image-20230916135252951.png" alt="image-20230916135252951"></p>
+<p>选择我们自定义的硬盘名称，这个时候会再走一次进度条，这次进度条不会重启了，顺利的话会进入到苹果的初始化界面。</p>
+<p><img src="images/image-20230916135511544.png" alt="image-20230916135511544"></p>
+<h4 id="437初始化设置">4.3.7初始化设置</h4>
+<p>上面步骤顺利的话会来到苹果的初始化设置界面，选择中国</p>
+<p><img src="images/image-20230916135558962.png" alt="image-20230916135558962"></p>
+<p>点击继续即可</p>
+<p><img src="images/image-20230916135628707.png" alt="image-20230916135628707"></p>
+<p>选择以后</p>
+<p><img src="images/image-20230916135636688.png" alt="image-20230916135636688"></p>
+<p>为了快速结束安装过程，选择 <code>我的电脑不接入互联网</code></p>
+<p><img src="images/image-20230916135718060.png" alt="image-20230916135718060"></p>
+<p>选择继续</p>
+<p><img src="images/image-20230916135731383.png" alt="image-20230916135731383"></p>
+<p>选择以后</p>
+<p><img src="images/image-20230916135746386.png" alt="image-20230916135746386"></p>
+<p>选择同意即可</p>
+<p><img src="images/image-20230916135801752.png" alt="image-20230916135801752"></p>
+<p>输入自己得用户名密码等信息</p>
+<p><img src="images/image-20230916135814399.png" alt="image-20230916135814399"></p>
+<p>选择继续</p>
+<p><img src="images/image-20230916135825817.png" alt="image-20230916135825817"></p>
+<p>选择继续</p>
+<p><img src="images/image-20230916135838197.png" alt="image-20230916135838197"></p>
+<p>根据自己喜好去选择外观</p>
+<p><img src="images/image-20230916135852401.png" alt="image-20230916135852401"></p>
+<p>成功进入系统</p>
+<p><img src="images/image-20230916135914478.png" alt="image-20230916135914478"></p>
+<h2 id="0x05-bug-解决">0x05 BUG 解决</h2>
+<h4 id="51无线网卡">5.1无线网卡</h4>
+<p>既然都用了黑苹果了，肯定想更好的体验他的功能，直接买了个苹果免驱网卡BCM94360CS2，需要在买一个转接卡，大概在58左右，插上去之后直接是免驱的(这里遇到个贼坑的地方，我买个了网卡转m.2的死活找不到蓝牙，后面还重新购买了个网卡，最后才发现是转换卡的问题，谁能想到这么坑，如果遇到我这种问题的先去windows里看看能不能读出来读不出来就去找闲鱼卖家)</p>
+<!-- raw HTML omitted -->
+<h4 id="52有线网卡">5.2有线网卡</h4>
+<p>安装好之后有线网卡用不了，根据国光博客的方法修改网卡的配置文件</p>
+<p>编辑 <code>OC/Kexts/RealtekRTL8111.kext/Contents/Info.plist</code> 文件，找到 <code>fallbackMAC</code> 然后把机器底部的 Mac (Windows 下查看也可以，使用ipconfig /all命令查看) 填进去，像下面这样。（可以使用 windows 直接打卡找到以下文件进行编辑，如果在机身背部没有找到网卡信息，可以进入 PE 读取网卡信息，把网卡信息填到以下文件即可）</p>
+<pre><code class="language-markup">&lt;key&gt;fallbackMAC&lt;/key&gt;
+&lt;string&gt;00:00:00:00:17:AF&lt;/string&gt;
+</code></pre>
+<h4 id="53调节亮度">5.3调节亮度</h4>
+<p>使用 MonitorControl 来设置调节显示器的亮度和声音</p>
+<p><img src="images/image-20230916140356280.png" alt="image-20230916140356280"></p>
+<h4 id="54声音输出">5.4声音输出</h4>
+<p>需要自行购买usb转换机这样子可以插耳机，如果不想购买usb转换器可以使用蓝牙耳机</p>
+<h2 id="0x06-其他小技巧">0x06 其他小技巧</h2>
+<h4 id="61挂载磁盘引导分区">6.1挂载磁盘引导分区</h4>
+<p>因为现在的 EFI 放在我们的 U 盘的 EFI 分区下，这样不能每次都插着 U 盘启动吧，所以我们得到 PE 下将 U 盘里面的 EFI 文件夹放到 1TB 硬盘的 EFI 分区下：</p>
+<p>首先下载好 OCC 工具，这个工具就算不挂载也是黑苹果必备工具了，</p>
+<p>OCC 官网下载地址为：https://mackie100projects.altervista.org/download-opencore-configurator/</p>
+<p>打开之后，选择右上角的 OC 图标，点击，找到自己的安装系统的硬盘，点击「挂载分区」：</p>
+<p><img src="images/image-20230916140644722.png" alt="image-20230916140644722"></p>
+<p>输入你的电脑密码</p>
+<p><img src="images/image-20230916140656681.png" alt="image-20230916140656681"></p>
+<p>点击打开分区</p>
+<p><img src="images/image-20230916140709164.png" alt="image-20230916140709164"></p>
+<p>把引导文件拷贝到这里面</p>
+<p><img src="images/image-20230916140727659.png" alt="image-20230916140727659"></p>
+<p>至此完成了，只需要在 bios 里设置一下引导即可。</p>
+<h4 id="62定制usb">6.2定制USB</h4>
+<p>检测工具：https://github.com/USBToolBox/tool/releases/tag/0.1.1</p>
+<p>通过终端打开</p>
+<p><img src="images/image-20230923212352718.png" alt="image-20230923212352718"></p>
+<p>输入 C，按下回车进入设置界面</p>
+<p><img src="images/image-20230923212436074.png" alt="image-20230923212436074"></p>
+<p>打开 T 和 N 两项，分别输入 T 回车，N 回车即可打开，完成后按 B 返回上一个界面，下面操作方式一样，不再赘述。</p>
+<p>T 选项就是打开接口类型提示，N 选项会把生成的 kext 内部调整为调用 macOS 原生类 AppleUSBHostMergeProperties，这是比较好的方法，原因如下（不想读可跳过，无影响）：</p>
+<ul>
+<li>USBToolBox 生成的最终 USBMap.kext 其实是一种“Codeless Kernel Extensions”，字面意思是无代码核心扩展（简称 codeless kext），其核心作用是使新设备与现有驱动程序匹配。</li>
+<li>codeless kext 是不包含可执行文件的核心扩展包（kext bundle），其中 info.plist 的 IOKitPersonalities 节点（字典类型）会在遇到匹配的新设备时使之与现有的驱动程序（kext）匹配。而后者都必须具有一个可执行文件。codeless kext 通常用于驱动用户的 USB 和 HID 设备（HID：Human Interface Device，例如触摸设备等）。由于内核驱动程序实现了标准协议，因此这些类别中的几乎所有设备都可以使用它。</li>
+<li>打开 USBToolBox 的这个选项，其生成的 USBMap.kext 会将 USB 端口上的设备共享到 macOS 提供的通用驱动程序 AppleUSBMergeNub.kext，以实现驱动 USB 设备，而不必通过其他方式中转。</li>
+</ul>
+<p>返回主界面后使用 D 选项开始识别 USB 接口</p>
+<p><img src="images/image-20230923212550388.png" alt="image-20230923212550388"></p>
+<p>使用 USB3.0 的 U 盘挨个插拔一遍接口（包括机型前部接口），注意每次插拔间隔不要过快(建议5s以上)，插上后，等系统正确识别出 U 盘，再安全移除设备。如果有Type-C接口，建议正反面都插一次，全部插完后，按B返回主界面。</p>
+<p><img src="images/image-20231007101202465.png" alt="image-20231007101202465"></p>
+<p>下一步，按下 <strong>S</strong> 回车创建 USBMap.kext</p>
+<p><img src="images/image-20231007101339024.png" alt="image-20231007101339024"></p>
+<p>按下 <strong>K</strong> 回车创建 USBMap.kext(如果超过15个需要删除多余的)</p>
+<p><img src="images/image-20231007101500756.png" alt="image-20231007101500756"></p>
+<p>下面就是接口选择和 Kext 创建界面：</p>
+<p>按下 K 回车创建 USBMap.kext，此时可能弹出这个界面：</p>
+<p>这是因为这里选择了使用原生 AppleUSBHostController，在 Windows 中是无法识别 Mac 机型的，其实就是 SMBIOS ID（机型 ID），所以这里把笔者的机型手动输入：Macmini8,1</p>
+<p><img src="images/image-20231007102032194.png" alt="image-20231007102032194"></p>
+<p>这个机型 ID 可以通过 macOS 的终端命令来提取：</p>
+<pre><code class="language-bash">system_profiler -detailLevel mini SPHardwareDataType
+</code></pre>
+<p>运行后，终端会输出类似下面的结果：</p>
+<pre><code class="language-bash">Hardware Overview:
+
+      Model Name: iMac
+      Model Identifier: iMac20,1
+      Processor Name: 10-Core Intel Core i9
+      Processor Speed: 3.7 GHz
+      Number of Processors: 1
+      Total Number of Cores: 10
+      L2 Cache (per Core): 256 KB
+      L3 Cache: 20 MB
+      Hyper-Threading Technology: Enabled
+      Memory: 32 GB
+      System Firmware Version: 1554.100.64.0.0
+</code></pre>
+<p>其中的 Model Identifier 就是我们需要的信息，这个其实也可以通过  → 关于本机 → 系统报告 → 硬件 → 硬件概览 来获取，第二项“型号标识符”就是。然后返回 Windows，输入到 USBToolBox 即可。</p>
+<p>如果你忘了自己的机型又不想切换回 macOS，可参考</p>
+<p><a href="https://support.apple.com/zh-cn/HT201300">识别 MacBook Pro 机型</a>。</p>
+<p><a href="https://support.apple.com/zh-cn/HT201894">识别 Mac mini 机型</a>。</p>
+<p>最后，生成的 USBMap.kext 会出现在软件的目录里，拷贝下来，或使用 Diskgenuis 等软件把它拷贝到 EFI 目录</p>
+<p>如果选择直接回到 macOS，手动把 USBMap.kext 放到 EFI 目录：</p>
+<ul>
+<li>Clover 放到 /EFI/CLOVER/Kexts/Others（或其它数字命名的文件夹如果你知道是起什么作用的话）</li>
+<li>OpenCore 放到 /EFI/OC/Kexts/</li>
+</ul>
+<p>最后重启进入macOS系统。</p>
+<h2 id="0x07-参考地址">0x07 参考地址</h2>
+<pre><code>http://imacos.top/2022/08/22/windows-usb-macos-bigsur-11-3-usbtoolbox/
+https://apple.sqlsec.com/6-%E5%AE%9E%E7%94%A8%E5%A7%BF%E5%8A%BF/6-1.html
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://ad-calcium.github.io/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/" title="华硕小主机从刷bios到黑苹果" target="_blank" rel="external">https://ad-calcium.github.io/2023/10/%E5%8D%8E%E7%A1%95%E5%B0%8F%E4%B8%BB%E6%9C%BA%E4%BB%8E%E5%88%B7bios%E5%88%B0%E9%BB%91%E8%8B%B9%E6%9E%9C/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ad-calcium" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://ad-calcium.github.io/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ad-calcium" target="_blank"><span class="text-dark">AD钙奶</span><small class="ml-1x"></small></a></h3>
+        <div>Good Good Study, Day Day Up~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://ad-calcium.github.io/2023/03/%E9%BB%91%E7%BE%A4%E6%99%96dsm7.xcpu%E5%9E%8B%E5%8F%B7%E8%AF%86%E5%88%AB%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="黑群晖DSM7.XCPU型号识别错误的解决方法"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+  <div class="copyright">
+    &copy;2020  -
+    2023
+
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://ad-calcium.github.io/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://ad-calcium.github.io/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/ad-calcium.github.io\/',
+            CONTENT_URL: 'https:\/\/ad-calcium.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://ad-calcium.github.io/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-289626488-X', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>
