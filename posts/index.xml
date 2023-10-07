@@ -6,10 +6,19 @@
     <description>Recent content in Posts on AD钙奶的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 13 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Oct 2023 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://ad-calcium.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>华硕小主机从刷bios到黑苹果</title>
+      <link>https://ad-calcium.github.io/2023/10/%E9%BB%91%E8%8B%B9%E6%9E%9C/</link>
+      <pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ad-calcium.github.io/2023/10/%E9%BB%91%E8%8B%B9%E6%9E%9C/</guid>
+      <description>0x01 前言 看到群里开车小主机只要四百多，在犹豫之下买了一个，到手之后安装了个黑苹果(过程一路坎坷)，同事也买了个差不多的小主机说用起来有点卡，结</description>
+    </item>
     
     <item>
       <title>黑群晖DSM7.XCPU型号识别错误的解决方法</title>
@@ -180,15 +189,6 @@
       
       <guid>https://ad-calcium.github.io/2022/02/cobalt-strike%E4%B8%8A%E7%BA%BF%E5%90%8E%E8%87%AA%E5%8A%A8%E8%BF%81%E7%A7%BB%E8%BF%9B%E7%A8%8B/</guid>
       <description>0x00 前言 通过cs上线之后之后担心掉线，所以有改文章。通过进程注入方式，当有新的主机上线之后将进程注入explorer.exe进程中 0x01 解决上述问</description>
-    </item>
-    
-    <item>
-      <title>Linux Polkit 权限提升(CVE-2021-4034)</title>
-      <link>https://ad-calcium.github.io/2022/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</link>
-      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://ad-calcium.github.io/2022/01/linux-polkit-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87cve-2021-4034/</guid>
-      <description>0x01 漏洞介绍 polkit 的 pkexec 实用程序中存在一个本地权限提升漏洞。当前版本的 pkexec 无法正确处理调用参数计数，并最终尝试将环境变量作为命令执行。攻击者可以通过控</description>
     </item>
     
   </channel>
